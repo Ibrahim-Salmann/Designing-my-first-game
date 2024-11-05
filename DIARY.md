@@ -34,3 +34,10 @@ The assets are from open source websites whare are as follows:
 In Godot, a node is a fundamental building block with a specific function (e.g., Sprite, Audio, Script) that represents an element of game logic or behavior.
 A scene is a collection of nodes arranged in a tree hierarchy, allowing complex objects or environments to be created and reused throughout the game.
 This structure promotes modularity and simplifies the development process
+
+
+I resolved an issue with sound asset imports in Godot that were causing errors on Windows.
+The problem stemmed from macOS-specific metadata files (__MACOSX folders and ._ files) embedded in the sound pack, which Windows couldn’t interpret correctly.
+These extra files were purely metadata that macOS adds, and they aren’t actually needed for the game. 
+I deleted the unnecessary files and re-imported the sound assets directly, clearing up the import errors.
+It’s a good reminder of the platform differences that can sneak into asset management!
