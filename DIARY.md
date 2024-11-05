@@ -19,3 +19,18 @@ For this projet, I will be developing 2-D game for the sake of a first time deve
 As for the GDD, I will make a word documnet and store it in the Documnets Folder with the Project Plan.
 , while importhing the gaming assets from open source websites.
 I will make notes on new information I read, tasks I preformed, and where I will be needing to go.
+
+
+Imprted the assets.
+
+I may seen like I have imported too much, though there are two reasons for that:
+	1) Some pacakes include a varity of textures, characters, and objects to use, thus there'll be more options for decorating the levels when constructing the Nodes and the Scenes{I'll explain later}.
+	2) If there are assets that I end up not using, I'll probaly remove them.
+	
+The assets are from open source websites whare are as follows:
+	1) https://itch.io/game-assets/free/tag-top-down
+	2) https://opengameart.org/
+
+In Godot, a node is a fundamental building block with a specific function (e.g., Sprite, Audio, Script) that represents an element of game logic or behavior.
+A scene is a collection of nodes arranged in a tree hierarchy, allowing complex objects or environments to be created and reused throughout the game.
+This structure promotes modularity and simplifies the development process
