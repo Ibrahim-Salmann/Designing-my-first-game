@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8rbggyfmi124"
+path="res://.godot/imported/bubble2.wav-0a0180defba28565338759ec7f20d202.sample"
+
+[deps]
+
+source_file="res://Product/Assets/rpg_sound_pack/RPG Sound Pack/inventory/bubble2.wav"
+dest_files=["res://.godot/imported/bubble2.wav-0a0180defba28565338759ec7f20d202.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

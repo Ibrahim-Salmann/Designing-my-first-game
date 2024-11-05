@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://t3d1q145kr7x"
+path="res://.godot/imported/cloth.wav-b7bcc78134f933859de16e9887f755c0.sample"
+
+[deps]
+
+source_file="res://Product/Assets/rpg_sound_pack/RPG Sound Pack/inventory/cloth.wav"
+dest_files=["res://.godot/imported/cloth.wav-b7bcc78134f933859de16e9887f755c0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

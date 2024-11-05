@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://12yeocufs6ep"
+path="res://.godot/imported/metal-small1.wav-177cca73894c5f165fb7fc6b4ee4735e.sample"
+
+[deps]
+
+source_file="res://Product/Assets/rpg_sound_pack/RPG Sound Pack/inventory/metal-small1.wav"
+dest_files=["res://.godot/imported/metal-small1.wav-177cca73894c5f165fb7fc6b4ee4735e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
