@@ -41,3 +41,29 @@ The problem stemmed from macOS-specific metadata files (__MACOSX folders and ._ 
 These extra files were purely metadata that macOS adds, and they aren’t actually needed for the game. 
 I deleted the unnecessary files and re-imported the sound assets directly, clearing up the import errors.
 It’s a good reminder of the platform differences that can sneak into asset management!
+
+
+Entry: 12/11/2024
+
+Today, I delved into what a Game Design Document (GDD) truly is and the essential role it plays in game development.
+Essentially, a GDD is a comprehensive blueprint for a game, detailing everything from the big-picture vision to the smallest mechanics, ensuring that all team members are aligned and that ideas are consistently documented.
+
+The GDD’s outline usually includes several sections: 
+1. Introduction, which sets the tone and goals of the project;
+2. Game Overview, where the game concept and target audience are outlined;
+3. Gameplay, explaining the core mechanics and controls;
+4. Story and Narrative, describing the storyline and key themes;
+5. Characters, detailing the main protagonists, antagonists, and any supporting NPCs;
+6. Levels and Environments, breaking down each game location and its unique features;
+7. User Interface (UI), outlining the menus and HUD elements;
+8. Art and Visuals, discussing the style, colors, and overall aesthetic;
+9. Audio, which covers the music, sound effects, and ambient sounds;
+10. Technical Details, specifying the game engine, platform requirements, and technical constraints;
+11. Marketing and Promotion, where target audiences and marketing strategies are planned;
+12. Budget and Schedule, estimating costs and setting deadlines.
+
+So far, I’ve drafted sections on the Introduction, Game Overview, Gameplay, Story and Narrative, Levels and Environments, and User Interface (UI).
+Each of these sections is shaping up well, helping to solidify the core design and establish the game’s atmosphere.
+Yet, there’s still more to cover, like Characters—which will bring depth to our protagonist and NPCs—and Art and Visuals, where I’ll outline the game’s stylistic direction.
+The Audio section also needs fleshing out to set the right ambiance. Lastly, the Technical Details, Marketing and Promotion, and Budget and Schedule will round out the GDD, giving it the structure needed to take Wimbledon’s Lot from concept to reality.
+
