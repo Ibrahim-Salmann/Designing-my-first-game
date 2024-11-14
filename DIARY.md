@@ -67,3 +67,12 @@ Each of these sections is shaping up well, helping to solidify the core design a
 Yet, there’s still more to cover, like Characters—which will bring depth to our protagonist and NPCs—and Art and Visuals, where I’ll outline the game’s stylistic direction.
 The Audio section also needs fleshing out to set the right ambiance. Lastly, the Technical Details, Marketing and Promotion, and Budget and Schedule will round out the GDD, giving it the structure needed to take Wimbledon’s Lot from concept to reality.
 
+Entry: 13/11/2024
+
+Today marks a milestone: I finally completed the remaining sections of the Game Design Document for Wimbledon’s Lot.
+Adding depth to the Characters section brought our protagonist and NPCs to life, giving each a unique story and purpose in the game world.
+The Art and Visuals section now clearly defines the game’s stylistic direction, inspired by vibrant, retro 32-bit graphics, ensuring a consistent visual atmosphere.
+Audio is carefully outlined to set the perfect ambiance, from sound effects to atmospheric music.
+I finished with the Technical Details, Marketing and Promotion, and Budget and Schedule sections, giving the GDD a robust, well-rounded structure.
+Now, it’s a complete document, ready for others to read and envision Wimbledon’s Lot as a reality.
+
