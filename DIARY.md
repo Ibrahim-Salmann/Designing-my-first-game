@@ -85,3 +85,32 @@ Additionally, I added an oval-shaped Collision Node to the scene to enable the c
 
 In the Game node, which includes player(idel), and the newly created camera in which is how the player will see the character they will be controlling.
 Ran a successful animation. 
+
+Gnerating the script for the movement of the player, the engine generated the basic movement for the player as this:
+	
+extends CharacterBody2D
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_axis("ui_left", "ui_right")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+	
+	However, I changed the script to accomodated for the vertial movement of the player as for my intentions of the game I invisioned.
+	
