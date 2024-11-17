@@ -160,3 +160,11 @@ This change allows for smoother and more dynamic animations, making the characte
 
 Reorganized my assets into clearly labeled and easily identifiable folders to improve efficiency.
 This new structure eliminates the need to shuffle through multiple folders to locate the required assets, streamlining the workflow and saving time during development.
+
+I need to work on the following:
+	- Create animations for player movement in all directions.
+	- Determine if additional assets are needed for weapon usage and death scenes.
+	- Evaluate whether these assets are freely available or behind a paywall due to complexity.
+	- Address any bugs encountered during the process.
+	- Focus branch player1.0 on idle and run animations for player movement only.
+	
