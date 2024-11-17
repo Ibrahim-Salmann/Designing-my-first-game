@@ -76,3 +76,9 @@ Audio is carefully outlined to set the perfect ambiance, from sound effects to a
 I finished with the Technical Details, Marketing and Promotion, and Budget and Schedule sections, giving the GDD a robust, well-rounded structure.
 Now, it’s a complete document, ready for others to read and envision Wimbledon’s Lot as a reality.
 
+Entry: 17/11/2024
+
+Created a new branch called player1.0 to focus on developing the main playable character.
+Began by designing the protagonist that the player will control. First, I imported the character's idle animation, which consists of 7 frames, and increased its resolution for better visual quality.
+Then, I set up a scene named Player (Idle) using a Node, where I incorporated the idle animation.
+Additionally, I added an oval-shaped Collision Node to the scene to enable the character to interact with and collide with objects in the game world.
