@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bli2urk1pe3ol"]
+
+[ext_resource type="Script" path="res://Product/Scripts/player.gd" id="1_3jtev"]
+[ext_resource type="Texture2D" uid="uid://cie7684rror8g" path="res://Product/Assets/cute-characters/player.png" id="2_f4yp2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmgqf"]
+atlas = ExtResource("2_f4yp2")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpon5"]
+atlas = ExtResource("2_f4yp2")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndai0"]
+atlas = ExtResource("2_f4yp2")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh034"]
+atlas = ExtResource("2_f4yp2")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc5dc"]
+atlas = ExtResource("2_f4yp2")
+region = Rect2(192, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76ysn"]
+atlas = ExtResource("2_f4yp2")
+region = Rect2(240, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2obup"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmgqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpon5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndai0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh034")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc5dc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76ysn")
+}],
+"loop": true,
+"name": &"Idel",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yknip"]
+radius = 5.0
+height = 20.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_3jtev")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -19)
+sprite_frames = SubResource("SpriteFrames_2obup")
+animation = &"Idel"
+autoplay = "Idel"
+frame = 2
+frame_progress = 0.687429
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -10)
+shape = SubResource("CapsuleShape2D_yknip")

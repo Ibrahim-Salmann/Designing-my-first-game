@@ -27,4 +27,4 @@ func _physics_process(delta: float) -> void:
 	velocity.y += input_vector.y * SPEED  # If adding vertical movement directly
 
 	# Move and slide with the updated velocity
-	move_and_slide()
+	move_and_slide() 
