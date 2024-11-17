@@ -157,3 +157,6 @@ Fixed the bug:
 
 Updated the character image to a new set that includes animation frames for both horizontal and vertical movements, replacing the previous set that only supported horizontal motion.
 This change allows for smoother and more dynamic animations, making the character's movement feel more natural and responsive in all directions. 
+
+Reorganized my assets into clearly labeled and easily identifiable folders to improve efficiency.
+This new structure eliminates the need to shuffle through multiple folders to locate the required assets, streamlining the workflow and saving time during development.
