@@ -82,3 +82,6 @@ Created a new branch called player1.0 to focus on developing the main playable c
 Began by designing the protagonist that the player will control. First, I imported the character's idle animation, which consists of 7 frames, and increased its resolution for better visual quality.
 Then, I set up a scene named Player (Idle) using a Node, where I incorporated the idle animation.
 Additionally, I added an oval-shaped Collision Node to the scene to enable the character to interact with and collide with objects in the game world.
+
+In the Game node, which includes player(idel), and the newly created camera in which is how the player will see the character they will be controlling.
+Ran a successful animation. 

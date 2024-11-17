@@ -38,9 +38,8 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a8mil"]
-radius = 7.0
-height = 26.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pqxx8"]
+radius = 9.0
 
 [node name="Player(Idel)" type="CharacterBody2D"]
 
@@ -49,8 +48,10 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_2obup")
 animation = &"Idel"
 autoplay = "Idel"
-frame_progress = 0.671349
+frame_progress = 0.918603
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
-position = Vector2(-1, 2)
-shape = SubResource("CapsuleShape2D_a8mil")
+[node name="CharacterBody2D" type="CharacterBody2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/CharacterBody2D"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_pqxx8")
