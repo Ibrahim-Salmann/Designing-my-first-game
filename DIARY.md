@@ -184,3 +184,7 @@ Lastly, I organized the code in the existing player.gd script rather than creati
 Still trying to figure out the movement of the player and being able to controll the character.
 All animations of idle, run, and attack are made facing all directions (death animantion will be implimented when creating enemies).
 As off now, I'm getting the controlls working.
+
+Got the controlls working. However I was able to perfom the basic movement of the idle animation.
+The run animation and the attack (which I will soon impliment wll come about later), is yet to be implimented.
+Also, need to get rid of a bug where the collision shape 2D sprite is still on the character while moving.
