@@ -188,3 +188,5 @@ As off now, I'm getting the controlls working.
 Got the controlls working. However I was able to perfom the basic movement of the idle animation.
 The run animation and the attack (which I will soon impliment wll come about later), is yet to be implimented.
 Also, need to get rid of a bug where the collision shape 2D sprite is still on the character while moving.
+
+Fixed the bug  where the collision shape 2D sprite is still on the character, by turning off the visibility under the Inspector tab.
