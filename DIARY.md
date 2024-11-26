@@ -180,3 +180,7 @@ I clarified my understanding of input mapping in the project settings and confir
 
 Through this process, I learned to integrate animations properly by adding AnimationPlayer nodes and connecting them to player movement, ensuring seamless transitions between states like idle and running.
 Lastly, I organized the code in the existing player.gd script rather than creating a new one, maintaining clarity and avoiding duplication.
+
+Still trying to figure out the movement of the player and being able to controll the character.
+All animations of idle, run, and attack are made facing all directions (death animantion will be implimented when creating enemies).
+As off now, I'm getting the controlls working.
