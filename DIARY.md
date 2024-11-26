@@ -168,3 +168,15 @@ I need to work on the following:
 	- Address any bugs encountered during the process.
 	- Focus branch player1.0 on idle and run animations for player movement only.
 	
+Entry: 26/11/2024
+
+I worked extensively on fixing and improving the player movement in my game.
+Initially, I encountered several issues where the player character wouldn't move despite no errors or warnings in the script.
+After detailed debugging, I realized the importance of properly setting up the node hierarchy and physics properties.
+Specifically, I adjusted the CollisionShape2D and StaticBody2D nodes, ensuring they had the correct configurations and physics layers/masks to interact correctly.
+
+I also rewrote the player.gd script to handle Zelda-style movement, adding logic to normalize input vectors for smooth diagonal movement and ensuring the move_and_slide() function worked as intended.
+I clarified my understanding of input mapping in the project settings and confirmed the use of ui_left, ui_right, ui_up, and ui_down for movement.
+
+Through this process, I learned to integrate animations properly by adding AnimationPlayer nodes and connecting them to player movement, ensuring seamless transitions between states like idle and running.
+Lastly, I organized the code in the existing player.gd script rather than creating a new one, maintaining clarity and avoiding duplication.
