@@ -190,3 +190,49 @@ The run animation and the attack (which I will soon impliment wll come about lat
 Also, need to get rid of a bug where the collision shape 2D sprite is still on the character while moving.
 
 Fixed the bug  where the collision shape 2D sprite is still on the character, by turning off the visibility under the Inspector tab.
+
+Entry: 03/12/2024
+
+Going to finish the character movement controlls.
+
+Successfully implemented animation switching for my character in Godot!
+Here’s a summary of how I achieved it:
+	
+	To make the character play "Run" animations when moving (using WASD inputs) and transition to "Idle" animations when no input is provided,
+	while retaining the last movement direction.
+	
+	Node Setup:
+		Added an AnimatedSprite2D node as a child of my Player node.
+		Loaded the necessary animations into the AnimatedSprite2D, including:
+			Idle animations: Idle_left, Idle_right, Idle_up, Idle_down.
+			Running animations: Run_left, Run_right, Run_up, Run_down.
+		
+	Script Setup:
+		Attached a script to the Player node.
+		Declared constants and variables:
+			SPEED to control movement speed.
+			animated_sprite to reference the AnimatedSprite2D.
+			last_direction to track the last direction of movement for idle animations.
+			
+	Movement Logic:
+		Used Input.get_action_strength to detect WASD inputs and calculate the movement vector.
+		Normalized the vector to ensure consistent speed in all directions.
+		Used move_and_slide() to move the character.
+		
+	Animation Switching:
+		Created a get_direction function to determine the character’s direction (left, right, up, or down) based on input.
+		Implemented a handle_animation function:
+			Played the "Run" animation when the character was moving.
+			Played the appropriate "Idle" animation when the character stopped, using last_direction to determine which idle animation to show.
+			
+	Debugging and Fixing Indentation Issues:
+		Encountered a mixed tab/space indentation error.
+		Resolved it by converting all indentation to tabs for consistency.
+		
+	Outcome:
+		The character now:
+			Transitions smoothly between "Run" animations while moving in any direction.
+			Remains in the correct "Idle" animation when no input is detected.
+			Retains the last movement direction for idle animations
+
+..
