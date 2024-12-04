@@ -237,3 +237,5 @@ Here’s a summary of how I achieved it:
 
 Now to start creating the world.
 There are many places and levels to create, but for now I'm going to start with the mai hub, where you first interact with the game.
+
+I will be adding more assets for the world building and level design.

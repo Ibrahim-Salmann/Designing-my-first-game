@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biipnd7qj6dk6"
-path="res://.godot/imported/Idle-Sheet.png-c47bae440cee09ee45661aaceedcd1da.ctex"
+uid="uid://bhssuqyigvp2w"
+path="res://.godot/imported/Trees.png-be7585bd07d12a4f6fd1305b96b9dce3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Product/Assets/Characters/other dungeon pack/Enemy/Skeleton Crew/Skeleton - Warrior/Idle/Idle-Sheet.png"
-dest_files=["res://.godot/imported/Idle-Sheet.png-c47bae440cee09ee45661aaceedcd1da.ctex"]
+source_file="res://Product/Assets/Interface/Green Woods/Trees.png"
+dest_files=["res://.godot/imported/Trees.png-be7585bd07d12a4f6fd1305b96b9dce3.ctex"]
 
 [params]
 
