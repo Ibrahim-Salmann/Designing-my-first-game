@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://e7h11uhkwbn8"]
+[gd_scene load_steps=3 format=3 uid="uid://e7h11uhkwbn8"]
 
 [ext_resource type="PackedScene" uid="uid://bli2urk1pe3ol" path="res://Product/Scenes/player.tscn" id="1_f8y10"]
+
+[sub_resource type="TileSet" id="TileSet_bj8fk"]
 
 [node name="Game" type="Node2D"]
 
@@ -9,3 +11,6 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, -8)
 zoom = Vector2(2.8, 2.8)
+
+[node name="TileMapLayer-1" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_bj8fk")
