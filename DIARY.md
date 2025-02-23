@@ -282,3 +282,28 @@ I’m excited to continue experimenting with tile sets and paths.
 I want to explore different techniques for creating more dynamic and interesting level designs.
 Perhaps I'll even look into procedural generation to create vast and varied landscapes automatically.
 The possibilities seem endless!
+
+23/02/2025
+
+Today, I focused on populating my overworld with the basic building blocks of its environment: 
+the regular grass tiles. After setting up the `TileSet` and terrain types yesterday, 
+it was time to put those tools to practical use.
+
+I opened my `TileMap` scene and made sure I had the "Grass" terrain selected in the Inspector. 
+Then, with the "Paint" tool active, I began laying down the foundation of the landscape. 
+It was a simple process, but it felt incredibly satisfying to see the world start to fill out.
+
+I paid attention to creating a natural-looking distribution of grass, avoiding overly uniform patterns. 
+I varied the density and placement of the tiles to give the terrain a more organic feel. 
+I also made sure to leave space for other elements like paths, buildings, and water features, 
+which I'll be adding later.
+
+The process was quite therapeutic, almost like digital gardening. I could see the overworld 
+taking shape, and it gave me a better sense of the scale and layout of the game. 
+I also realized the importance of planning the terrain layout early on, as it will 
+influence the placement of other game elements.
+
+I'm getting more comfortable with Godot's tile system, and I'm looking forward to adding 
+more variety to the landscape. I'm thinking about incorporating different shades of grass, 
+as well as some subtle variations in tile placement to create a more visually 
+interesting environment.
