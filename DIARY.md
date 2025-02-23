@@ -307,3 +307,35 @@ I'm getting more comfortable with Godot's tile system, and I'm looking forward t
 more variety to the landscape. I'm thinking about incorporating different shades of grass, 
 as well as some subtle variations in tile placement to create a more visually 
 interesting environment.
+
+I also ventured into adding water tiles to my overworld, bringing a new dimension to the landscape. 
+It was exciting to see how the water features transformed the overall look and feel of the map.
+
+First, I imported the water tiles into my `TileSet` and defined a new terrain type for them. 
+I experimented with different water tile variations to find the right aesthetic, 
+settling on a combination of deep water and shallow water tiles.
+
+Then, I carefully painted the water tiles onto the `TileMap`, creating lakes, rivers, and ponds. 
+I tried to create natural-looking shorelines and varied the depth of the water to give it a sense of realism. 
+I made sure to leave enough space for bridges and other decorations that I plan to add later.
+
+Adding the water tiles made the overworld feel much more dynamic and interesting. 
+The reflections and subtle animations of the water added a layer of visual depth that was previously missing.
+
+I also started planning the placement of bridges and other decorations. 
+I want to create a world that feels both natural and functional, 
+with clear paths and points of interest. I'm thinking about adding things like:
+
+* Wooden bridges spanning rivers and lakes.
+* Small docks and piers along the shorelines.
+* Rocks and vegetation along the water's edge.
+* Maybe even some floating objects or creatures in the water itself.
+
+I'm excited to see how these decorations will further enhance the overworld. 
+I'm also thinking about adding interactive elements to the water, 
+such as fishing spots or hidden underwater areas.
+
+The process of adding water tiles and planning decorations has been a lot of fun. 
+It's rewarding to see the overworld come to life, tile by tile. 
+I'm looking forward to continuing to build and refine the world, 
+adding more details and interactive elements as I go.
