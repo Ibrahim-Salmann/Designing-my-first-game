@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://e7h11uhkwbn8"]
 
 [ext_resource type="PackedScene" uid="uid://bli2urk1pe3ol" path="res://Product/Scenes/player.tscn" id="1_f8y10"]
-[ext_resource type="Texture2D" uid="uid://dd5pvfxfbl6rv" path="res://Product/Assets/Interface/Overworld.png" id="2_sf1qh"]
+[ext_resource type="Texture2D" uid="uid://dd5pvfxfbl6rv" path="res://Product/Assets/Interface/Green Woods/Overworld.png" id="2_sf1qh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6n11u"]
 texture = ExtResource("2_sf1qh")
