@@ -359,3 +359,29 @@ I'm focusing on making this area visually distinct, perhaps with a small clearin
 
 The sheer scale of the landscape is becoming apparent, and it's exciting to imagine the player exploring every corner.
 I'm carefully considering the placement of each tile, ensuring the world feels both natural and purposeful.
+
+Today,I tackled the challenge of creating bridge tiles that seamlessly integrate with the overworld, without clashing with the existing grassland tiles.
+It was a meticulous process, but the results are definitely worth the effort.
+
+The key was to create a separate `TileMap` node specifically for decorations, which I named "TileMap_Decorations."
+This allowed me to paint bridge tiles (and other decorative elements) on top of the base grassland layer without causing any overlap or visual glitches.
+It's like having two separate canvases stacked on top of each other, where I can paint on the top layer without affecting the bottom one.
+
+In Godot, this is achieved by using multiple `TileMap` nodes and managing their Z-index (their stacking order).
+By placing the "TileMap_Decorations" node above the main grassland `TileMap` node, I ensured that the bridge tiles would always appear on top.
+
+Painting the bridge tiles was a delicate process.
+I had to carefully align them with the edges of the grassland tiles, ensuring a smooth and natural transition.
+It was like painting on a real canvas, where every stroke mattered. My mouse became my paintbrush, and the `TileMap` was my canvas, and I meticulously placed each tile.
+
+It was a bit tedious, I'll admit.
+But I know this attention to detail is crucial for creating a polished and immersive game world.
+I'm willing to put in the grind to make sure everything looks just right.
+
+The ability to layer `TileMap` nodes in Godot is incredibly powerful.
+It allows for a great deal of flexibility and control over the level design.
+I can now add all sorts of decorations, from bridges and fences to rocks and trees, without worrying about them interfering with the base terrain.
+
+I'm starting to see the overworld come to life, and it's incredibly rewarding.
+Each tile I place brings me one step closer to creating a playable game.
+I'm excited to see how it all comes together in the end.
