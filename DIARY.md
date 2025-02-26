@@ -339,3 +339,23 @@ The process of adding water tiles and planning decorations has been a lot of fun
 It's rewarding to see the overworld come to life, tile by tile. 
 I'm looking forward to continuing to build and refine the world, 
 adding more details and interactive elements as I go.
+
+25/02/2025
+
+Improved the water tiles to create rivers, by adding more tiles to the already created water with grass tileset.
+
+26/02/2025
+
+Today was all about expanding the overworld and laying the groundwork for key locations.
+I spent a good chunk of time painting tiles to create a much larger landscape.
+This included adding cliffs along certain edges, which instantly added verticality and visual interest.
+
+I also mapped out areas where bridges would connect different sections of the map, ensuring smooth player traversal.
+I'm visualizing wooden bridges spanning narrow ravines and stone bridges crossing wider rivers.
+
+Most importantly, I began to define the area where the player's house will be located.
+It'll serve as a central hub, potentially offering save points, a merchant, or even the starting point of the adventure.
+I'm focusing on making this area visually distinct, perhaps with a small clearing or a unique terrain feature.
+
+The sheer scale of the landscape is becoming apparent, and it's exciting to imagine the player exploring every corner.
+I'm carefully considering the placement of each tile, ensuring the world feels both natural and purposeful.
