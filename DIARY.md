@@ -385,3 +385,37 @@ I can now add all sorts of decorations, from bridges and fences to rocks and tre
 I'm starting to see the overworld come to life, and it's incredibly rewarding.
 Each tile I place brings me one step closer to creating a playable game.
 I'm excited to see how it all comes together in the end.
+
+01/03/2025
+
+Today, I embarked on the challenging task of adding cliff tiles to my overworld,
+transforming the landscape with dramatic elevation changes.
+The vision was to have the main hub situated atop a cliff, with multiple cliff mountings allowing the player to ascend and descend.
+It was a grand idea, but the execution proved to be quite the undertaking.
+
+Constructing the cliffs was far more complex than I anticipated.
+The overlapping of tile sets caused numerous headaches.
+I found myself constantly deleting and erasing tiles, trying to achieve a clean and seamless look.
+Managing the different layers of cliff tiles was particularly difficult.
+There were instances where the grass tiles wouldn't align properly with the cliff edges, requiring me to painstakingly erase and redraw them. It felt like I was constantly battling the tiles, trying to force them into place.
+
+At one point, I had to completely start over with the cliff construction.
+The tiles were simply refusing to cooperate, and the result was a messy and disjointed landscape.
+It was frustrating, but I knew I couldn't compromise on the quality of the terrain.
+So, I took a deep breath and began again, carefully placing each tile and meticulously adjusting the layers.
+
+After hours of painstaking work, I finally managed to create the cliffs I envisioned.
+The main hub now sits proudly atop a towering cliff, with multiple pathways leading up and down.
+It's a significant improvement, and I'm proud of the effort I put in.
+
+Now, I'm moving on to the next stage: adding waterfalls, more cliff variations, and, most importantly, collision.
+The collision is crucial for defining the boundaries of the world and preventing the player from walking through solid objects.
+I'll need to create invisible walls along the cliff edges and around other obstacles.
+
+I also plan to add more decorations to the main hub, making it feel more lived-in and inviting.
+And, of course, I need to ensure that the character's movement is smooth and responsive.
+The collision and movement mechanics are fundamental to the gameplay experience, and I want to get them right.
+
+Today's work was a testament to the challenges of game development.
+It's not always glamorous, and there are times when you have to grind through tedious tasks.
+But the satisfaction of seeing your vision come to life makes it all worthwhile.
