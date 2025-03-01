@@ -419,3 +419,13 @@ The collision and movement mechanics are fundamental to the gameplay experience,
 Today's work was a testament to the challenges of game development.
 It's not always glamorous, and there are times when you have to grind through tedious tasks.
 But the satisfaction of seeing your vision come to life makes it all worthwhile.
+
+Following the work on the cliff terrain and hub area, I decided to test the scene in-game. That's when I encountered a rather glaring issue: the player was completely invisible! After a bit of digging, I realized the problem stemmed from the scene hierarchy. The player node, created early in development, was hidden behind the tilemap layers, effectively rendering it invisible.
+
+To rectify this, I opted for a cleaner approach. I removed the old player node and instantiated the player scene as a direct child of the main scene. This simple change brought the player into view, correctly positioned above the tilemap. Finally, I could see my character moving within the hub!
+
+However, this fix introduced a new challenge. While the player was now visible and responsive, the camera remained stubbornly static. This was a critical oversight. A static camera would break the player's immersion and make exploration cumbersome. My next task was clear: implement a camera follow script.
+
+The goal is to create a smooth, responsive camera that tracks the player's movements seamlessly. Furthermore, the camera must respect the collision boundaries I've established. It should stop moving when the player encounters an invisible wall, preventing the player from seeing beyond the playable area. Revealing the unfinished edges of the world would ruin the illusion of a complete and immersive environment.
+
+This transition from terrain construction to camera implementation highlights the iterative nature of game development. Each step forward reveals new challenges, requiring constant problem-solving and refinement. Now, I'm diving into scripting the camera follow, aiming for a smooth and polished player experience.
