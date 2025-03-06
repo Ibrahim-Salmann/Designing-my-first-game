@@ -476,3 +476,15 @@ I'm almost finished with the terrain itself, and I'm excited to move on to these
 
 I'm pushing my skills to the limit, striving to create a polished and immersive game world.
 The process is demanding, but the satisfaction of seeing the world take shape is incredibly rewarding.
+
+A significant milestone today! I've finally completed the base terrain of the main hub world. 
+Every cliff, every waterfall, and every stretch of grassland is now in place. 
+All that remains is to breathe life into the scene through decorations. 
+
+I'm starting with the water features, adding rocks and lily pads to break up the monotony 
+and create a more natural look. After that, I'll scatter rocks across the land, adding 
+further visual interest. These simple decorations will go a long way in making the world 
+feel more lived-in. 
+
+With the terrain complete, I can now focus on the crucial task of implementing collision, 
+ensuring the player interacts with the world as intended.
