@@ -441,3 +441,38 @@ It should stop moving when the player encounters an invisible wall, preventing t
 
 This transition from terrain construction to camera implementation highlights the iterative nature of game development.
 Each step forward reveals new challenges, requiring constant problem-solving and refinement. Now, I'm diving into scripting the camera follow, aiming for a smooth and polished player experience.
+
+06/03/2025
+
+Dear Diary,
+
+I continued to refine the overworld, focusing on adding waterfalls and further sculpting the cliff terrain.
+The core concept driving my design is creating a cohesive and contained hub world.
+I want to establish clear boundaries, preventing the player from venturing beyond the intended playable area. 
+This is a common practice in 2D game design, especially in games that emphasize exploration within a defined space.
+
+Think of it like creating a diorama or a miniature world.
+You carefully construct the scenery within a box, and you want t empty space beyond. In my case,
+the cliffshe viewer to appreciate the details within that box, not the and invisible walls serve as the "box," defining the limits of the player's exploration.
+
+I'm being meticulous in placing each tile, ensuring that the water flows naturally, the cliffs rise convincingly,
+and the transitions between different terrain types are seamless. It's akin to painting on a canvas, where every brushstroke contributes to the overall composition.
+I'm focusing on the minute details, making sure that each water tile fits perfectly, and that the cliff edges are sharp and defined.
+
+The idea is to create a sense of immersion, where the player feels like they're exploring a real, tangible place.
+The boundaries, though invisible, are meant to be felt. The player should intuitively understand where they can and cannot go,
+without encountering jarring transitions or empty spaces.
+
+I've also been considering the placement of future decorative elements. Rocks, lily pads, and other details will add depth and visual interest to the water features.
+These elements will further enhance the sense of realism and create a more engaging environment.
+
+Collision is another crucial aspect of this process. I need to define the physical boundaries of the world,
+preventing the player from walking through walls or falling off cliffs.
+This will ensure that the player's movement feels grounded and responsive.
+
+Finally, I'm looking forward to adding the houses and NPCs that will populate the hub world. These elements will bring the world to life,
+adding narrative and gameplay depth.
+I'm almost finished with the terrain itself, and I'm excited to move on to these more interactive and narrative-driven aspects of the game.
+
+I'm pushing my skills to the limit, striving to create a polished and immersive game world.
+The process is demanding, but the satisfaction of seeing the world take shape is incredibly rewarding.
