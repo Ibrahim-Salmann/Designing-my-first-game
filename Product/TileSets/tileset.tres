@@ -1,6 +1,15 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://jeqhxj61bhf3"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://jeqhxj61bhf3"]
 
 [ext_resource type="Texture2D" uid="uid://dd5pvfxfbl6rv" path="res://Product/Assets/Interface/Green Woods/Overworld.png" id="1_f7myn"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_1pyqc"]
+tile_data = PackedInt32Array(0, 720896, 7, 65536, 720896, 8, 1, 786432, 7, 65537, 786432, 8)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_rygdv"]
+tile_data = PackedInt32Array(0, 196608, 5, 1, 262144, 5, 2, 327680, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_jrdqi"]
+tile_data = PackedInt32Array(0, 589824, 11, 65536, 589824, 12, 1, 655360, 11, 65537, 655360, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6n11u"]
 texture = ExtResource("1_f7myn")
@@ -395,12 +404,14 @@ texture = ExtResource("1_f7myn")
 15:6/0 = 0
 16:6/0 = 0
 17:6/0 = 0
+18:6/animation_speed = 1.5
 18:6/0 = 0
 18:6/0/terrain_set = 0
 18:6/0/terrain = 11
 18:6/0/terrains_peering_bit/right_side = 11
 18:6/0/terrains_peering_bit/bottom_right_corner = 11
 18:6/0/terrains_peering_bit/bottom_side = 11
+19:6/animation_speed = 1.5
 19:6/0 = 0
 19:6/0/terrain_set = 0
 19:6/0/terrain = 11
@@ -409,6 +420,7 @@ texture = ExtResource("1_f7myn")
 19:6/0/terrains_peering_bit/bottom_side = 11
 19:6/0/terrains_peering_bit/bottom_left_corner = 11
 19:6/0/terrains_peering_bit/left_side = 11
+20:6/animation_speed = 1.5
 20:6/0 = 0
 20:6/0/terrain_set = 0
 20:6/0/terrain = 11
@@ -518,6 +530,7 @@ texture = ExtResource("1_f7myn")
 14:7/0 = 0
 15:7/0 = 0
 17:7/0 = 0
+18:7/animation_speed = 1.5
 18:7/0 = 0
 18:7/0/terrain_set = 0
 18:7/0/terrain = 11
@@ -526,6 +539,7 @@ texture = ExtResource("1_f7myn")
 18:7/0/terrains_peering_bit/bottom_side = 11
 18:7/0/terrains_peering_bit/top_side = 11
 18:7/0/terrains_peering_bit/top_right_corner = 11
+19:7/animation_speed = 1.5
 19:7/0 = 0
 19:7/0/terrain_set = 0
 19:7/0/terrain = 11
@@ -537,6 +551,7 @@ texture = ExtResource("1_f7myn")
 19:7/0/terrains_peering_bit/top_left_corner = 11
 19:7/0/terrains_peering_bit/top_side = 11
 19:7/0/terrains_peering_bit/top_right_corner = 11
+20:7/animation_speed = 1.5
 20:7/0 = 0
 20:7/0/terrain_set = 0
 20:7/0/terrain = 11
@@ -603,19 +618,23 @@ texture = ExtResource("1_f7myn")
 10:8/0/terrains_peering_bit/top_side = 5
 11:8/0 = 0
 12:8/0 = 0
+13:8/next_alternative_id = 2
 13:8/0 = 0
 13:8/0/terrain_set = 0
+14:8/next_alternative_id = 2
 14:8/0 = 0
 14:8/0/terrain_set = 0
 15:8/0 = 0
 16:8/0 = 0
 17:8/0 = 0
+18:8/animation_speed = 1.5
 18:8/0 = 0
 18:8/0/terrain_set = 0
 18:8/0/terrain = 11
 18:8/0/terrains_peering_bit/right_side = 11
 18:8/0/terrains_peering_bit/top_side = 11
 18:8/0/terrains_peering_bit/top_right_corner = 11
+19:8/animation_speed = 1.5
 19:8/0 = 0
 19:8/0/terrain_set = 0
 19:8/0/terrain = 11
@@ -624,6 +643,7 @@ texture = ExtResource("1_f7myn")
 19:8/0/terrains_peering_bit/top_left_corner = 11
 19:8/0/terrains_peering_bit/top_side = 11
 19:8/0/terrains_peering_bit/top_right_corner = 11
+20:8/animation_speed = 1.5
 20:8/0 = 0
 20:8/0/terrain_set = 0
 20:8/0/terrain = 11
@@ -693,8 +713,10 @@ texture = ExtResource("1_f7myn")
 10:9/0 = 0
 11:9/0 = 0
 12:9/0 = 0
+13:9/next_alternative_id = 2
 13:9/0 = 0
 13:9/0/terrain_set = 0
+14:9/next_alternative_id = 2
 14:9/0 = 0
 14:9/0/terrain_set = 0
 15:9/0 = 0
@@ -1635,3 +1657,6 @@ terrain_set_0/terrain_12/color = Color(0.0994211, 0.703382, 0.669927, 1)
 terrain_set_0/terrain_13/name = "cliff on standing water"
 terrain_set_0/terrain_13/color = Color(0.345019, 0.14496, 0.067831, 1)
 sources/0 = SubResource("TileSetAtlasSource_6n11u")
+pattern_0 = SubResource("TileMapPattern_1pyqc")
+pattern_1 = SubResource("TileMapPattern_rygdv")
+pattern_2 = SubResource("TileMapPattern_jrdqi")

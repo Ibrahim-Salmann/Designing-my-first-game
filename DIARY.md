@@ -488,3 +488,28 @@ feel more lived-in.
 
 With the terrain complete, I can now focus on the crucial task of implementing collision, 
 ensuring the player interacts with the world as intended.
+
+I then embarked on the exciting task of decorating the hub world, bringing it to life with trees, rocks, and various foliage.
+The goal is to create a visually rich and immersive environment, filled with natural details.
+
+For smaller, repeating elements like bushes and fences, I'm continuing to use the tile painting method.
+This allows for precise placement and seamless integration with the existing terrain.
+I've created dedicated tile sets for these decorations, ensuring they blend harmoniously with the overall aesthetic.
+
+However, for larger, more distinct objects like trees, rocks, and logs, I'm taking a different approach.
+I'm utilizing the drag-and-drop functionality of the tile panel.
+This allows me to place these objects directly into the overworld, arranging them in natural patterns and clusters.
+It's like sculpting the environment, placing each object with care and consideration.
+
+The key to this process is understanding the layering system within Godot.
+I'm placing these decorations on the "TileMap_Decorations" layer, which sits above the base terrain layer.
+This ensures that the objects appear on top of the ground tiles, preventing any visual overlap or glitches.
+If I were to place these objects on the same layer as the terrain, they would be subject to the tile grid's limitations,
+resulting in unnatural and potentially overlapping arrangements.
+
+This layering technique provides a great deal of flexibility and control.
+I can easily rearrange or remove decorations without affecting the underlying terrain.
+It also allows me to create depth and visual variety, adding a sense of realism to the environment.
+
+In the future, I plan to add even more decorative elements, further enhancing the overworld's visual appeal.
+I'm excited to see how these details contribute to the overall atmosphere and immersion of the game.
