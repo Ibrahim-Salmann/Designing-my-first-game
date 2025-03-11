@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://m155hkituky"
-path="res://.godot/imported/Run-Sheet.png-a5c2e8d87b7260db01dcddeca611bed6.ctex"
+path="res://.godot/imported/Run-Sheet.png-a86ed1bce67ecb3e41ef2e11c743de76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Product/Assets/Characters/Enemy/Skeleton Crew/Skeleton - Rogue/Run/Run-Sheet.png"
-dest_files=["res://.godot/imported/Run-Sheet.png-a5c2e8d87b7260db01dcddeca611bed6.ctex"]
+source_file="res://Product/Assets/Characters/other dungeon pack/Enemy/Skeleton Crew/Skeleton - Rogue/Run/Run-Sheet.png"
+dest_files=["res://.godot/imported/Run-Sheet.png-a86ed1bce67ecb3e41ef2e11c743de76.ctex"]
 
 [params]
 

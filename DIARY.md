@@ -237,3 +237,307 @@ Here’s a summary of how I achieved it:
 
 Now to start creating the world.
 There are many places and levels to create, but for now I'm going to start with the mai hub, where you first interact with the game.
+
+I will be adding more assets for the world building and level design.
+
+As of now, I am setting up the terrain.
+
+16/02/2025
+
+Today was a big day for my game development project!
+I finally managed to wrap my head around creating tile sets and paths in Godot Engine.
+It was a bit of a journey, but I'm thrilled with the progress.
+
+First things first, I created a new scene and added a `TileMap` node, which is the foundation for building the game world. 
+The magic really happens in the Inspector tab.  I started by selecting a `TileSet`.
+This is where I define all the individual tiles that make up my terrain.
+
+Creating the `TileSet` involved a few key steps.
+I added "matching corners and edges," which is crucial for smooth transitions between different terrain types. 
+This prevents jarring visual glitches and makes the world look much more polished. I then added a new terrain type, which I cleverly named "Grass."
+This is where I'll define how grass tiles behave and look.
+
+The real fun began when I imported my "overworld" file.
+This file contains a huge collection of tiles – not just grass, but also buildings, water, and all sorts of decorative elements that will bring my game world to life.
+It’s like a treasure trove of artistic assets!
+
+Next, I selected the "Grass" terrain type within my `TileSet`.
+I then switched to the "Paint" tool and, under the "Terrains" section, I could actually *paint* the terrain onto my `TileMap`.
+I chose my desired grass color and started laying down the foundations of my world. 
+It felt incredibly satisfying to see the landscape taking shape.
+
+Now, for the tricky part: creating paths. 
+I'm still figuring out the most elegant way to handle this, but for now, I'm manually drawing the paths using the tile painting tools. 
+I’m thinking about using a separate tile layer for the path so that I can easily edit it later without affecting the surrounding terrain.  I might even explore using Godot's navigation system for more dynamic pathfinding, but that's a challenge for another day.
+
+The process of creating the path was quite manual. 
+I selected the appropriate path tiles from my overworld file and carefully painted them onto the tile map, trying to create smooth curves and natural-looking transitions. 
+It took some time and patience, but the result is starting to look pretty good.
+
+The beauty of Godot's tile system is its flexibility. 
+I can easily add more terrain types, customize their properties, and paint them onto the map.
+I can also create different layers for things like foreground elements, background details, and even interactive objects.  This layering system is essential for creating complex and visually rich game worlds.
+
+I’m excited to continue experimenting with tile sets and paths.
+I want to explore different techniques for creating more dynamic and interesting level designs.
+Perhaps I'll even look into procedural generation to create vast and varied landscapes automatically.
+The possibilities seem endless!
+
+23/02/2025
+
+Today, I focused on populating my overworld with the basic building blocks of its environment: 
+the regular grass tiles. After setting up the `TileSet` and terrain types yesterday, 
+it was time to put those tools to practical use.
+
+I opened my `TileMap` scene and made sure I had the "Grass" terrain selected in the Inspector. 
+Then, with the "Paint" tool active, I began laying down the foundation of the landscape. 
+It was a simple process, but it felt incredibly satisfying to see the world start to fill out.
+
+I paid attention to creating a natural-looking distribution of grass, avoiding overly uniform patterns. 
+I varied the density and placement of the tiles to give the terrain a more organic feel. 
+I also made sure to leave space for other elements like paths, buildings, and water features, 
+which I'll be adding later.
+
+The process was quite therapeutic, almost like digital gardening. I could see the overworld 
+taking shape, and it gave me a better sense of the scale and layout of the game. 
+I also realized the importance of planning the terrain layout early on, as it will 
+influence the placement of other game elements.
+
+I'm getting more comfortable with Godot's tile system, and I'm looking forward to adding 
+more variety to the landscape. I'm thinking about incorporating different shades of grass, 
+as well as some subtle variations in tile placement to create a more visually 
+interesting environment.
+
+I also ventured into adding water tiles to my overworld, bringing a new dimension to the landscape. 
+It was exciting to see how the water features transformed the overall look and feel of the map.
+
+First, I imported the water tiles into my `TileSet` and defined a new terrain type for them. 
+I experimented with different water tile variations to find the right aesthetic, 
+settling on a combination of deep water and shallow water tiles.
+
+Then, I carefully painted the water tiles onto the `TileMap`, creating lakes, rivers, and ponds. 
+I tried to create natural-looking shorelines and varied the depth of the water to give it a sense of realism. 
+I made sure to leave enough space for bridges and other decorations that I plan to add later.
+
+Adding the water tiles made the overworld feel much more dynamic and interesting. 
+The reflections and subtle animations of the water added a layer of visual depth that was previously missing.
+
+I also started planning the placement of bridges and other decorations. 
+I want to create a world that feels both natural and functional, 
+with clear paths and points of interest. I'm thinking about adding things like:
+
+* Wooden bridges spanning rivers and lakes.
+* Small docks and piers along the shorelines.
+* Rocks and vegetation along the water's edge.
+* Maybe even some floating objects or creatures in the water itself.
+
+I'm excited to see how these decorations will further enhance the overworld. 
+I'm also thinking about adding interactive elements to the water, 
+such as fishing spots or hidden underwater areas.
+
+The process of adding water tiles and planning decorations has been a lot of fun. 
+It's rewarding to see the overworld come to life, tile by tile. 
+I'm looking forward to continuing to build and refine the world, 
+adding more details and interactive elements as I go.
+
+25/02/2025
+
+Improved the water tiles to create rivers, by adding more tiles to the already created water with grass tileset.
+
+26/02/2025
+
+Today was all about expanding the overworld and laying the groundwork for key locations.
+I spent a good chunk of time painting tiles to create a much larger landscape.
+This included adding cliffs along certain edges, which instantly added verticality and visual interest.
+
+I also mapped out areas where bridges would connect different sections of the map, ensuring smooth player traversal.
+I'm visualizing wooden bridges spanning narrow ravines and stone bridges crossing wider rivers.
+
+Most importantly, I began to define the area where the player's house will be located.
+It'll serve as a central hub, potentially offering save points, a merchant, or even the starting point of the adventure.
+I'm focusing on making this area visually distinct, perhaps with a small clearing or a unique terrain feature.
+
+The sheer scale of the landscape is becoming apparent, and it's exciting to imagine the player exploring every corner.
+I'm carefully considering the placement of each tile, ensuring the world feels both natural and purposeful.
+
+Today,I tackled the challenge of creating bridge tiles that seamlessly integrate with the overworld, without clashing with the existing grassland tiles.
+It was a meticulous process, but the results are definitely worth the effort.
+
+The key was to create a separate `TileMap` node specifically for decorations, which I named "TileMap_Decorations."
+This allowed me to paint bridge tiles (and other decorative elements) on top of the base grassland layer without causing any overlap or visual glitches.
+It's like having two separate canvases stacked on top of each other, where I can paint on the top layer without affecting the bottom one.
+
+In Godot, this is achieved by using multiple `TileMap` nodes and managing their Z-index (their stacking order).
+By placing the "TileMap_Decorations" node above the main grassland `TileMap` node, I ensured that the bridge tiles would always appear on top.
+
+Painting the bridge tiles was a delicate process.
+I had to carefully align them with the edges of the grassland tiles, ensuring a smooth and natural transition.
+It was like painting on a real canvas, where every stroke mattered. My mouse became my paintbrush, and the `TileMap` was my canvas, and I meticulously placed each tile.
+
+It was a bit tedious, I'll admit.
+But I know this attention to detail is crucial for creating a polished and immersive game world.
+I'm willing to put in the grind to make sure everything looks just right.
+
+The ability to layer `TileMap` nodes in Godot is incredibly powerful.
+It allows for a great deal of flexibility and control over the level design.
+I can now add all sorts of decorations, from bridges and fences to rocks and trees, without worrying about them interfering with the base terrain.
+
+I'm starting to see the overworld come to life, and it's incredibly rewarding.
+Each tile I place brings me one step closer to creating a playable game.
+I'm excited to see how it all comes together in the end.
+
+01/03/2025
+
+Today, I embarked on the challenging task of adding cliff tiles to my overworld,
+transforming the landscape with dramatic elevation changes.
+The vision was to have the main hub situated atop a cliff, with multiple cliff mountings allowing the player to ascend and descend.
+It was a grand idea, but the execution proved to be quite the undertaking.
+
+Constructing the cliffs was far more complex than I anticipated.
+The overlapping of tile sets caused numerous headaches.
+I found myself constantly deleting and erasing tiles, trying to achieve a clean and seamless look.
+Managing the different layers of cliff tiles was particularly difficult.
+There were instances where the grass tiles wouldn't align properly with the cliff edges, requiring me to painstakingly erase and redraw them. It felt like I was constantly battling the tiles, trying to force them into place.
+
+At one point, I had to completely start over with the cliff construction.
+The tiles were simply refusing to cooperate, and the result was a messy and disjointed landscape.
+It was frustrating, but I knew I couldn't compromise on the quality of the terrain.
+So, I took a deep breath and began again, carefully placing each tile and meticulously adjusting the layers.
+
+After hours of painstaking work, I finally managed to create the cliffs I envisioned.
+The main hub now sits proudly atop a towering cliff, with multiple pathways leading up and down.
+It's a significant improvement, and I'm proud of the effort I put in.
+
+Now, I'm moving on to the next stage: adding waterfalls, more cliff variations, and, most importantly, collision.
+The collision is crucial for defining the boundaries of the world and preventing the player from walking through solid objects.
+I'll need to create invisible walls along the cliff edges and around other obstacles.
+
+I also plan to add more decorations to the main hub, making it feel more lived-in and inviting.
+And, of course, I need to ensure that the character's movement is smooth and responsive.
+The collision and movement mechanics are fundamental to the gameplay experience, and I want to get them right.
+
+Today's work was a testament to the challenges of game development.
+It's not always glamorous, and there are times when you have to grind through tedious tasks.
+But the satisfaction of seeing your vision come to life makes it all worthwhile.
+
+Following the work on the cliff terrain and hub area,
+I decided to test the scene in-game.
+That's when I encountered a rather glaring issue: the player was completely invisible! 
+After a bit of digging, I realized the problem stemmed from the scene hierarchy.
+The player node, created early in development, was hidden behind the tilemap layers, effectively rendering it invisible.
+
+To rectify this, I opted for a cleaner approach.
+I removed the old player node and instantiated the player scene as a direct child of the main scene.
+This simple change brought the player into view, correctly positioned above the tilemap. Finally, I could see my character moving within the hub!
+
+However, this fix introduced a new challenge.
+While the player was now visible and responsive, the camera remained stubbornly static. This was a critical oversight.
+A static camera would break the player's immersion and make exploration cumbersome.
+My next task was clear: implement a camera follow script.
+
+The goal is to create a smooth, responsive camera that tracks the player's movements seamlessly.
+Furthermore, the camera must respect the collision boundaries I've established.
+It should stop moving when the player encounters an invisible wall, preventing the player from seeing beyond the playable area. Revealing the unfinished edges of the world would ruin the illusion of a complete and immersive environment.
+
+This transition from terrain construction to camera implementation highlights the iterative nature of game development.
+Each step forward reveals new challenges, requiring constant problem-solving and refinement. Now, I'm diving into scripting the camera follow, aiming for a smooth and polished player experience.
+
+06/03/2025
+
+Dear Diary,
+
+I continued to refine the overworld, focusing on adding waterfalls and further sculpting the cliff terrain.
+The core concept driving my design is creating a cohesive and contained hub world.
+I want to establish clear boundaries, preventing the player from venturing beyond the intended playable area. 
+This is a common practice in 2D game design, especially in games that emphasize exploration within a defined space.
+
+Think of it like creating a diorama or a miniature world.
+You carefully construct the scenery within a box, and you want t empty space beyond. In my case,
+the cliffshe viewer to appreciate the details within that box, not the and invisible walls serve as the "box," defining the limits of the player's exploration.
+
+I'm being meticulous in placing each tile, ensuring that the water flows naturally, the cliffs rise convincingly,
+and the transitions between different terrain types are seamless. It's akin to painting on a canvas, where every brushstroke contributes to the overall composition.
+I'm focusing on the minute details, making sure that each water tile fits perfectly, and that the cliff edges are sharp and defined.
+
+The idea is to create a sense of immersion, where the player feels like they're exploring a real, tangible place.
+The boundaries, though invisible, are meant to be felt. The player should intuitively understand where they can and cannot go,
+without encountering jarring transitions or empty spaces.
+
+I've also been considering the placement of future decorative elements. Rocks, lily pads, and other details will add depth and visual interest to the water features.
+These elements will further enhance the sense of realism and create a more engaging environment.
+
+Collision is another crucial aspect of this process. I need to define the physical boundaries of the world,
+preventing the player from walking through walls or falling off cliffs.
+This will ensure that the player's movement feels grounded and responsive.
+
+Finally, I'm looking forward to adding the houses and NPCs that will populate the hub world. These elements will bring the world to life,
+adding narrative and gameplay depth.
+I'm almost finished with the terrain itself, and I'm excited to move on to these more interactive and narrative-driven aspects of the game.
+
+I'm pushing my skills to the limit, striving to create a polished and immersive game world.
+The process is demanding, but the satisfaction of seeing the world take shape is incredibly rewarding.
+
+A significant milestone today! I've finally completed the base terrain of the main hub world. 
+Every cliff, every waterfall, and every stretch of grassland is now in place. 
+All that remains is to breathe life into the scene through decorations. 
+
+I'm starting with the water features, adding rocks and lily pads to break up the monotony 
+and create a more natural look. After that, I'll scatter rocks across the land, adding 
+further visual interest. These simple decorations will go a long way in making the world 
+feel more lived-in. 
+
+With the terrain complete, I can now focus on the crucial task of implementing collision, 
+ensuring the player interacts with the world as intended.
+
+I then embarked on the exciting task of decorating the hub world, bringing it to life with trees, rocks, and various foliage.
+The goal is to create a visually rich and immersive environment, filled with natural details.
+
+For smaller, repeating elements like bushes and fences, I'm continuing to use the tile painting method.
+This allows for precise placement and seamless integration with the existing terrain.
+I've created dedicated tile sets for these decorations, ensuring they blend harmoniously with the overall aesthetic.
+
+However, for larger, more distinct objects like trees, rocks, and logs, I'm taking a different approach.
+I'm utilizing the drag-and-drop functionality of the tile panel.
+This allows me to place these objects directly into the overworld, arranging them in natural patterns and clusters.
+It's like sculpting the environment, placing each object with care and consideration.
+
+The key to this process is understanding the layering system within Godot.
+I'm placing these decorations on the "TileMap_Decorations" layer, which sits above the base terrain layer.
+This ensures that the objects appear on top of the ground tiles, preventing any visual overlap or glitches.
+If I were to place these objects on the same layer as the terrain, they would be subject to the tile grid's limitations,
+resulting in unnatural and potentially overlapping arrangements.
+
+This layering technique provides a great deal of flexibility and control.
+I can easily rearrange or remove decorations without affecting the underlying terrain.
+It also allows me to create depth and visual variety, adding a sense of realism to the environment.
+
+In the future, I plan to add even more decorative elements, further enhancing the overworld's visual appeal.
+I'm excited to see how these details contribute to the overall atmosphere and immersion of the game.
+
+11/03/2025
+
+A quick but important fix today.
+I noticed some of the tile map patterns, especially when viewed up close, appeared blurry.
+It's a small detail, but it significantly impacts the overall visual quality.
+I'll need to revisit the tile set textures and ensure they're optimized for the intended resolution.
+Sharp, crisp tiles are essential for a polished look.
+
+Seems like altering the Rendering Quandrant Size under the inspection tab fixed this issue.
+
+The hub world is slowly transforming into a vibrant tapestry of nature.
+Trees stand tall, huts nestled amongst the foliage, and flowers bloom in colorful clusters. Stones dot the landscape, and lily pads float serenely on the water's surface.
+Each element, carefully placed, adds another layer of depth and charm. I could lose myself in this decorative dance, endlessly arranging and refining.
+But the time has come to shift gears, to delve into the core mechanics that will breathe true life into this world.
+
+The collision system now beckons, a crucial step towards a playable game.
+The decorative phase, while fulfilling, is merely a prelude.
+I must now build the invisible walls, the tangible boundaries that will define the player's experience.
+It's a daunting task, but one I must embrace.
+
+There's a nagging thought, though, a whisper of unfinished business. The waterfalls, fountains, and even the humble puddles of water – they yearn for movement, for animation.
+Flags should flutter in the breeze, fountains should dance with water, and puddles should ripple with life.
+This is a challenge for another time, a layer of polish that will add a touch of magic to the world. But for now, collision takes precedence.
+
+The pressure is mounting. The final report looms, a testament to my dedication and progress.
+I must pull myself together, channel my focus, and transform this beautiful canvas into a functional, engaging game.
+It's a race against time, a test of my abilities, but I'm determined to see this through. The hub world, my creation, will come to life.

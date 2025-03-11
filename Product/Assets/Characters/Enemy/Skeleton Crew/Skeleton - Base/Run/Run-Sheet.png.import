@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7vyhbbvq5m75"
-path="res://.godot/imported/Run-Sheet.png-18462de54f72a482ca1192c1d1aac77f.ctex"
+path="res://.godot/imported/Run-Sheet.png-9f16e8e6fffb0497926f5bcb4364257c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Product/Assets/Characters/Enemy/Skeleton Crew/Skeleton - Base/Run/Run-Sheet.png"
-dest_files=["res://.godot/imported/Run-Sheet.png-18462de54f72a482ca1192c1d1aac77f.ctex"]
+source_file="res://Product/Assets/Characters/other dungeon pack/Enemy/Skeleton Crew/Skeleton - Base/Run/Run-Sheet.png"
+dest_files=["res://.godot/imported/Run-Sheet.png-9f16e8e6fffb0497926f5bcb4364257c.ctex"]
 
 [params]
 
