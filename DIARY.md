@@ -513,3 +513,31 @@ It also allows me to create depth and visual variety, adding a sense of realism 
 
 In the future, I plan to add even more decorative elements, further enhancing the overworld's visual appeal.
 I'm excited to see how these details contribute to the overall atmosphere and immersion of the game.
+
+11/03/2025
+
+A quick but important fix today.
+I noticed some of the tile map patterns, especially when viewed up close, appeared blurry.
+It's a small detail, but it significantly impacts the overall visual quality.
+I'll need to revisit the tile set textures and ensure they're optimized for the intended resolution.
+Sharp, crisp tiles are essential for a polished look.
+
+Seems like altering the Rendering Quandrant Size under the inspection tab fixed this issue.
+
+The hub world is slowly transforming into a vibrant tapestry of nature.
+Trees stand tall, huts nestled amongst the foliage, and flowers bloom in colorful clusters. Stones dot the landscape, and lily pads float serenely on the water's surface.
+Each element, carefully placed, adds another layer of depth and charm. I could lose myself in this decorative dance, endlessly arranging and refining.
+But the time has come to shift gears, to delve into the core mechanics that will breathe true life into this world.
+
+The collision system now beckons, a crucial step towards a playable game.
+The decorative phase, while fulfilling, is merely a prelude.
+I must now build the invisible walls, the tangible boundaries that will define the player's experience.
+It's a daunting task, but one I must embrace.
+
+There's a nagging thought, though, a whisper of unfinished business. The waterfalls, fountains, and even the humble puddles of water – they yearn for movement, for animation.
+Flags should flutter in the breeze, fountains should dance with water, and puddles should ripple with life.
+This is a challenge for another time, a layer of polish that will add a touch of magic to the world. But for now, collision takes precedence.
+
+The pressure is mounting. The final report looms, a testament to my dedication and progress.
+I must pull myself together, channel my focus, and transform this beautiful canvas into a functional, engaging game.
+It's a race against time, a test of my abilities, but I'm determined to see this through. The hub world, my creation, will come to life.
