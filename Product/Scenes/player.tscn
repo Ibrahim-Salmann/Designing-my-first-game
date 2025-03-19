@@ -502,5 +502,10 @@ autoplay = "Idle_left"
 frame_progress = 0.182512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.75, -8)
 shape = SubResource("RectangleShape2D_klkdt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -7)
+zoom = Vector2(3, 3)

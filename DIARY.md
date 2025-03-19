@@ -601,3 +601,30 @@ The constant branch switching was clearly contributing to the chaos.
 Instead, I'll commit to the main branch for all decoration-related work.
 This simplifies the workflow and hopefully minimizes the risk of further mishaps.
 Once the decorations are fully restored, I'll create a dedicated branch for collision implementation, keeping those critical mechanics isolated and secure.
+
+19/03/2025
+
+Today was a bit of a wrestle, but I think I've finally got the camera sorted (mostly).
+I spent a good chunk of time trying to get it to follow the player smoothly in my top-down overworld.
+Initially, it was just… stuck. Turns out, a simple zoom issue was throwing me off completely.
+Who knew such a small thing could cause so much frustration?
+
+After fiddling with the Camera2D node's properties, and a lot of double-checking my player's movement script, I managed to get it working.
+The player moves, and the camera follows, which is exactly what I wanted. It's a relief to have that hurdle cleared.
+Though, I'm still not entirely convinced it's perfect. I might need to tweak the smoothness and maybe add some subtle camera shake later on, just to give it a bit more life.
+But for now, it's functional, and that's a win.
+
+With the camera sorted, I'm finally moving on to fleshing out the rest of the overworld.
+It's starting to feel more like a real game now. I've got a basic layout, but it's still pretty bare.
+I need to add some more detailed scenery, maybe some NPCs wandering around, and definitely some points of interest.
+This is where things are going to get more complex, and probably more time-consuming.
+
+I'm also starting to think about the next steps beyond the basic layout.
+Adding collision detection is going to be crucial, so players can't just walk through walls and objects.
+And then there's the whole system for picking up items, managing an inventory, and interacting with the environment.
+That's going to be a big undertaking, but I'm excited to dive into it.
+I'm already brainstorming ideas for how to structure the inventory and how to make the item interactions feel intuitive.
+
+I can feel the scope of this project expanding, and it's both exciting and a little daunting.
+There's so much to do, but I'm determined to see it through. Each step, even the frustrating ones, feels like progress.
+I'm learning so much, and I can't wait to see how this overworld evolves.
