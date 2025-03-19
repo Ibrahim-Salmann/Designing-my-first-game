@@ -661,3 +661,26 @@ Despite the challenges, I'm feeling good about the progress.
 The overworld is starting to take shape, and the collision detection is a major step forward.
 I'm learning a lot about how collision shapes work in Godot, and I'm confident that I'll be able to resolve the remaining issues.
 I'm excited to see how the overworld evolves as I continue to add more details and functionality.
+
+Finally! The bridge issue is resolved.
+I spent a good chunk of time wrestling with those collision shapes, and I'm relieved to have found a solution.
+It was simpler than I initially thought, though. Instead of trying to fine-tune the existing collision shapes, I opted for a more straightforward approach.
+
+I created alternative tiles specifically for the bridge sections. These tiles are visually identical to the original bridge border tiles,
+but they don't have any collision shapes attached. I then went through the scene and replaced the original bridge border tiles with these new, collision-free versions.
+Now, the player can smoothly cross the bridges without getting stuck or blocked by invisible collision.
+It's a bit of a workaround, but it works perfectly for now.
+
+With the bridge issue out of the way, I'm turning my attention to the decorative elements and the cliffs.
+The overworld is starting to feel more populated, but it still lacks a sense of depth and solidity.
+Adding collision to the trees, bushes, houses, and other decorations is the next priority.
+I've already started adding CollisionShape2D nodes to these elements, and it's making a noticeable difference.
+The player can no longer walk through them, which adds a much-needed layer of realism.
+
+The cliffs are another area that needs attention.
+They're currently just flat textures, but I want them to feel like solid, impassable barriers.
+I'll need to add collision shapes to the cliffs as well, and I'm also considering adding some visual depth by using parallax scrolling or layering techniques.
+
+I'm making steady progress, and the overworld is starting to feel more like a cohesive and interactive space.
+There's still a lot to do, but I'm feeling good about the direction the project is heading.
+Adding the collision and refining the boundaries has been a significant step forward, and I'm excited to see how the overworld evolves as I continue to add more details and functionality.
