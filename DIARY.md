@@ -628,3 +628,36 @@ I'm already brainstorming ideas for how to structure the inventory and how to ma
 I can feel the scope of this project expanding, and it's both exciting and a little daunting.
 There's so much to do, but I'm determined to see it through. Each step, even the frustrating ones, feels like progress.
 I'm learning so much, and I can't wait to see how this overworld evolves.
+
+Alright, so things got a lot more… tangible today.
+I spent a good portion of the afternoon tackling collision detection, and I've made some significant progress, but not without a few hiccups.
+
+The main goal was to prevent the player from walking through the water and to keep them within the bounds of the main hub. 
+I'm happy to report that the water collision is working! I added collision shapes to the water tiles, and now the player is properly blocked. 
+It's a huge step towards making the overworld feel more solid and interactive.
+
+However, I immediately ran into a rather annoying issue with the bridges.
+It seems that the border tiles of the bridges are overlapping with the water collision shapes.
+So, even though the bridges are visually above the water, the player is still being blocked as if they were trying to walk through the water itself.
+I’ve temporarily disabled the collision on the bridge border tiles so I can cross them, but that's obviously not a permanent solution.
+I need to figure out how to properly layer the collision shapes so that the bridges function correctly.
+I suspect this might involve adjusting the Z-indices or possibly restructuring the collision shapes themselves.
+
+Another thing I noticed is that the decorative elements, like trees, bushes, and houses, are lacking collision.
+As a result, the player can walk right through them, which breaks the immersion.
+I've got a "Decoration" node in my scene where all these elements reside, and I need to add collision shapes to each of them.
+This is going to be a bit tedious, but it's essential for making the overworld feel believable.
+
+I also need to address the out-of-bounds issue.
+The player is currently confined to the main hub area, which is good, but I need to make sure they can't accidentally wander off into the void.
+I'll need to add collision shapes along the perimeter of the hub to create a solid boundary.
+
+So, to summarize, my immediate to-do list looks like this:
+	Fix the bridge collision issue: Investigate and resolve the overlap between the bridge border tiles and the water collision shapes.
+	Add collision shapes to the decoration nodes: Ensure that trees, bushes, houses, and other decorative elements have proper collision.
+	Create out-of-bounds boundaries: Add collision shapes around the hub perimeter to prevent the player from leaving the playable area.
+	
+Despite the challenges, I'm feeling good about the progress.
+The overworld is starting to take shape, and the collision detection is a major step forward.
+I'm learning a lot about how collision shapes work in Godot, and I'm confident that I'll be able to resolve the remaining issues.
+I'm excited to see how the overworld evolves as I continue to add more details and functionality.
