@@ -601,3 +601,112 @@ The constant branch switching was clearly contributing to the chaos.
 Instead, I'll commit to the main branch for all decoration-related work.
 This simplifies the workflow and hopefully minimizes the risk of further mishaps.
 Once the decorations are fully restored, I'll create a dedicated branch for collision implementation, keeping those critical mechanics isolated and secure.
+
+19/03/2025
+
+Today was a bit of a wrestle, but I think I've finally got the camera sorted (mostly).
+I spent a good chunk of time trying to get it to follow the player smoothly in my top-down overworld.
+Initially, it was just… stuck. Turns out, a simple zoom issue was throwing me off completely.
+Who knew such a small thing could cause so much frustration?
+
+After fiddling with the Camera2D node's properties, and a lot of double-checking my player's movement script, I managed to get it working.
+The player moves, and the camera follows, which is exactly what I wanted. It's a relief to have that hurdle cleared.
+Though, I'm still not entirely convinced it's perfect. I might need to tweak the smoothness and maybe add some subtle camera shake later on, just to give it a bit more life.
+But for now, it's functional, and that's a win.
+
+With the camera sorted, I'm finally moving on to fleshing out the rest of the overworld.
+It's starting to feel more like a real game now. I've got a basic layout, but it's still pretty bare.
+I need to add some more detailed scenery, maybe some NPCs wandering around, and definitely some points of interest.
+This is where things are going to get more complex, and probably more time-consuming.
+
+I'm also starting to think about the next steps beyond the basic layout.
+Adding collision detection is going to be crucial, so players can't just walk through walls and objects.
+And then there's the whole system for picking up items, managing an inventory, and interacting with the environment.
+That's going to be a big undertaking, but I'm excited to dive into it.
+I'm already brainstorming ideas for how to structure the inventory and how to make the item interactions feel intuitive.
+
+I can feel the scope of this project expanding, and it's both exciting and a little daunting.
+There's so much to do, but I'm determined to see it through. Each step, even the frustrating ones, feels like progress.
+I'm learning so much, and I can't wait to see how this overworld evolves.
+
+Alright, so things got a lot more… tangible today.
+I spent a good portion of the afternoon tackling collision detection, and I've made some significant progress, but not without a few hiccups.
+
+The main goal was to prevent the player from walking through the water and to keep them within the bounds of the main hub. 
+I'm happy to report that the water collision is working! I added collision shapes to the water tiles, and now the player is properly blocked. 
+It's a huge step towards making the overworld feel more solid and interactive.
+
+However, I immediately ran into a rather annoying issue with the bridges.
+It seems that the border tiles of the bridges are overlapping with the water collision shapes.
+So, even though the bridges are visually above the water, the player is still being blocked as if they were trying to walk through the water itself.
+I’ve temporarily disabled the collision on the bridge border tiles so I can cross them, but that's obviously not a permanent solution.
+I need to figure out how to properly layer the collision shapes so that the bridges function correctly.
+I suspect this might involve adjusting the Z-indices or possibly restructuring the collision shapes themselves.
+
+Another thing I noticed is that the decorative elements, like trees, bushes, and houses, are lacking collision.
+As a result, the player can walk right through them, which breaks the immersion.
+I've got a "Decoration" node in my scene where all these elements reside, and I need to add collision shapes to each of them.
+This is going to be a bit tedious, but it's essential for making the overworld feel believable.
+
+I also need to address the out-of-bounds issue.
+The player is currently confined to the main hub area, which is good, but I need to make sure they can't accidentally wander off into the void.
+I'll need to add collision shapes along the perimeter of the hub to create a solid boundary.
+
+So, to summarize, my immediate to-do list looks like this:
+	Fix the bridge collision issue: Investigate and resolve the overlap between the bridge border tiles and the water collision shapes.
+	Add collision shapes to the decoration nodes: Ensure that trees, bushes, houses, and other decorative elements have proper collision.
+	Create out-of-bounds boundaries: Add collision shapes around the hub perimeter to prevent the player from leaving the playable area.
+	
+Despite the challenges, I'm feeling good about the progress.
+The overworld is starting to take shape, and the collision detection is a major step forward.
+I'm learning a lot about how collision shapes work in Godot, and I'm confident that I'll be able to resolve the remaining issues.
+I'm excited to see how the overworld evolves as I continue to add more details and functionality.
+
+Finally! The bridge issue is resolved.
+I spent a good chunk of time wrestling with those collision shapes, and I'm relieved to have found a solution.
+It was simpler than I initially thought, though. Instead of trying to fine-tune the existing collision shapes, I opted for a more straightforward approach.
+
+I created alternative tiles specifically for the bridge sections. These tiles are visually identical to the original bridge border tiles,
+but they don't have any collision shapes attached. I then went through the scene and replaced the original bridge border tiles with these new, collision-free versions.
+Now, the player can smoothly cross the bridges without getting stuck or blocked by invisible collision.
+It's a bit of a workaround, but it works perfectly for now.
+
+With the bridge issue out of the way, I'm turning my attention to the decorative elements and the cliffs.
+The overworld is starting to feel more populated, but it still lacks a sense of depth and solidity.
+Adding collision to the trees, bushes, houses, and other decorations is the next priority.
+I've already started adding CollisionShape2D nodes to these elements, and it's making a noticeable difference.
+The player can no longer walk through them, which adds a much-needed layer of realism.
+
+The cliffs are another area that needs attention.
+They're currently just flat textures, but I want them to feel like solid, impassable barriers.
+I'll need to add collision shapes to the cliffs as well, and I'm also considering adding some visual depth by using parallax scrolling or layering techniques.
+
+I'm making steady progress, and the overworld is starting to feel more like a cohesive and interactive space.
+There's still a lot to do, but I'm feeling good about the direction the project is heading.
+Adding the collision and refining the boundaries has been a significant step forward, and I'm excited to see how the overworld evolves as I continue to add more details and functionality.
+
+Okay, so I've reached a point where I need to make some strategic decisions.
+While the basic overworld layout and collision detection are mostly complete, there are still some lingering details, like adding collision to all the decorations.
+I've got houses and market stalls covered, but things like trees and smaller decorative elements are still lacking collision.
+
+However, time is becoming a significant factor.
+The end of term is looming, and I need to prioritize completing the core gameplay mechanics.
+Therefore, I've decided to shift my focus to implementing the item pickup and inventory system.
+The decorations, though important for immersion, can be addressed later.
+Right now, I need to get the fundamental gameplay loop working.
+
+I'm diving straight into programming the item pickup logic and the inventory system.
+I've already started sketching out the data structures and UI elements I'll need.
+My goal is to create a simple yet functional inventory system with slots for storing items.
+I'm also planning to implement a basic pickup mechanism that allows the player to interact with items in the environment and add them to their inventory.
+
+My primary objective is to get the main overworld level fully functional, even if it means sacrificing some of the decorative polish for now.
+If I can achieve that, I'll then move on to creating a single dungeon level, applying the same gameplay mechanics and learning experiences from the overworld.
+I believe that having at least one complete level will demonstrate my understanding of the concepts and be a sufficient deliverable for the project, especially given the time constraints.
+
+I need to communicate this plan to my lecturer, explaining that while I aimed for a multi-level experience, I've prioritized completing a single, fully functional level to meet the core requirements of the project.
+I hope they'll understand the time constraints and appreciate the effort I've put into creating a solid foundation for the game.
+
+I'm feeling a bit pressured by the deadline, but I'm determined to make the most of the remaining time.
+I'm confident that I can deliver a compelling gameplay experience, even if it's within a single level.
+Let's get this inventory system working!
