@@ -684,3 +684,29 @@ I'll need to add collision shapes to the cliffs as well, and I'm also considerin
 I'm making steady progress, and the overworld is starting to feel more like a cohesive and interactive space.
 There's still a lot to do, but I'm feeling good about the direction the project is heading.
 Adding the collision and refining the boundaries has been a significant step forward, and I'm excited to see how the overworld evolves as I continue to add more details and functionality.
+
+Okay, so I've reached a point where I need to make some strategic decisions.
+While the basic overworld layout and collision detection are mostly complete, there are still some lingering details, like adding collision to all the decorations.
+I've got houses and market stalls covered, but things like trees and smaller decorative elements are still lacking collision.
+
+However, time is becoming a significant factor.
+The end of term is looming, and I need to prioritize completing the core gameplay mechanics.
+Therefore, I've decided to shift my focus to implementing the item pickup and inventory system.
+The decorations, though important for immersion, can be addressed later.
+Right now, I need to get the fundamental gameplay loop working.
+
+I'm diving straight into programming the item pickup logic and the inventory system.
+I've already started sketching out the data structures and UI elements I'll need.
+My goal is to create a simple yet functional inventory system with slots for storing items.
+I'm also planning to implement a basic pickup mechanism that allows the player to interact with items in the environment and add them to their inventory.
+
+My primary objective is to get the main overworld level fully functional, even if it means sacrificing some of the decorative polish for now.
+If I can achieve that, I'll then move on to creating a single dungeon level, applying the same gameplay mechanics and learning experiences from the overworld.
+I believe that having at least one complete level will demonstrate my understanding of the concepts and be a sufficient deliverable for the project, especially given the time constraints.
+
+I need to communicate this plan to my lecturer, explaining that while I aimed for a multi-level experience, I've prioritized completing a single, fully functional level to meet the core requirements of the project.
+I hope they'll understand the time constraints and appreciate the effort I've put into creating a solid foundation for the game.
+
+I'm feeling a bit pressured by the deadline, but I'm determined to make the most of the remaining time.
+I'm confident that I can deliver a compelling gameplay experience, even if it's within a single level.
+Let's get this inventory system working!
