@@ -710,3 +710,31 @@ I hope they'll understand the time constraints and appreciate the effort I've pu
 I'm feeling a bit pressured by the deadline, but I'm determined to make the most of the remaining time.
 I'm confident that I can deliver a compelling gameplay experience, even if it's within a single level.
 Let's get this inventory system working!
+
+21/03/2025
+
+Today, I took a deep breath and plunged into the next major phase of this project:
+	implementing the item pickup and inventory system.
+	To keep things organized, I created a new branch called items-inventory-implementation.
+	It feels good to start fresh, knowing this is a critical step towards a functional game.
+
+First, I created a scene called pickup-item.
+Inside, I added a Node2D as the root, along with a Sprite2D and a CollisionShape2D as its children.
+This scene will represent any item the player can pick up in the world.
+I also created a new script called inventory_item.gd.
+This script is where the magic happens, where I'll define the properties and behaviors of each item.
+It's a bit technical, diving into the nitty-gritty of how Godot handles resources and scripts, but it's essential for a robust system.
+
+To start, I created a new folder in my Product directory called resources.
+Inside, I made a resource called gold_coin.tres.
+This resource will hold the data for gold coins, including their sprite, name, and any other relevant information.
+I connected this resource to the inventory_item.gd script, essentially linking the visual representation to its in-game logic.
+
+Now, I'm starting to work on the inventory slots.
+It's a bit of a slog, honestly. I'm definitely feeling the pressure of the crunch.
+Time is slipping away, and there's still so much to do. It's frustrating when things don't come together as quickly as I'd like, but I'm trying to stay focused.
+
+More than the technical challenges, I'm battling the mental ones. I'm trying to keep the demotivation at bay.
+I don’t want to be shackled by the fear of disappointing others, or the pressure of feeling like this is my last chance to make things right.
+I’m trying to focus on the process, on learning and building something I can be proud of, regardless of the outcome.
+I need to keep reminding myself that progress, even slow progress, is still progress. I hope that even when things seem difficult, I can make something that will be impactful.
