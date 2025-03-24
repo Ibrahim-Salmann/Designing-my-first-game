@@ -738,3 +738,47 @@ More than the technical challenges, I'm battling the mental ones. I'm trying to 
 I don’t want to be shackled by the fear of disappointing others, or the pressure of feeling like this is my last chance to make things right.
 I’m trying to focus on the process, on learning and building something I can be proud of, regardless of the outcome.
 I need to keep reminding myself that progress, even slow progress, is still progress. I hope that even when things seem difficult, I can make something that will be impactful.
+
+24/03/2025
+
+Alright, diving deeper into the technical details of the pickup item system.
+I want to make sure I'm documenting this thoroughly, both for my own understanding and in case I need to backtrack or troubleshoot later.
+If I'm making any glaring technical blunders, I hope this log will help me catch them.
+
+In the pickup-item.tscn scene, I started by adding two child nodes: a Sprite2D and a CollisionShape2D.
+The Sprite2D is where I've created the visual representation of the gold coin pickup item.
+I pulled the gold coin sprite from my assets folder and assigned it as the texture for the Sprite2D.
+For the CollisionShape2D, I opted for a simple rectangle shape, as it seemed fitting for a small coin.
+
+I then created a new resource called gold_coin.tres in the Product/Resources folder.
+This resource essentially holds the data associated with the gold coin, such as the sprite texture.
+I connected this resource to the inventory_item.gd script, which I mentioned earlier.
+This script is responsible for managing the properties and behaviors of the coin once it's in the player's inventory.
+
+Now, here's where things got a bit tricky. I noticed that the player wasn't consistently picking up the coin.
+I suspect the issue lies with the CollisionShape2D and how it's interacting with the player's collision.
+To address this, I'm planning to add another layer of collision detection.
+
+My idea is to create a child Area2D node within the pickup-item scene, and then add another CollisionShape2D as a child of that Area2D.
+The Area2D will allow me to detect when the player's collision area overlaps with the coin's pickup area.
+I'll then connect a signal from the Area2D to the pickup-item node, triggering the pickup logic when the player enters the area.
+
+Essentially, I'm creating a "pickup zone" around the coin, separate from the coin's physical collision shape.
+This should give me more precise control over the pickup interaction.
+
+I'm aware that this might seem a bit convoluted, but I'm hoping it will resolve the issue.
+If anything goes wrong, I'm prepared to use git reset to revert to a previous state.
+I'm documenting this process here so that I can easily retrace my steps and understand what went wrong if I need to.
+I'm hoping that by creating this "pickup zone" using an Area2D that the player will be able to pick up the coin. I'm going to implement this now.
+
+With the deadline looming, I'm bracing for an intense push.
+My aim is to dedicate the next five days to finalizing the core gameplay elements.
+This includes setting up essential features like equipment management, the user interface, weapon attacks, item dropping, configuring spell systems, enemy encounters, and seamless scene transitions between the main hub and the shop.
+I'm planning regular progress check-ins to ensure I'm on the right track and to address any potential issues.
+
+My hope is that this concentrated effort will result in a project that exceeds expectations, potentially earning above-average marks.
+I must admit, I'm also experiencing some nervousness regarding the report and the overall evaluation.
+
+However, I'm determined to maintain a positive and optimistic mindset.
+This is my first significant project, and I'm aware that I'll likely face some criticism.
+I'm hoping to learn from it, even if it's difficult, and use it to improve in the future.
