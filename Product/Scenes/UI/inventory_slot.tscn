@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://yao0c6spd50q"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
