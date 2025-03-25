@@ -782,3 +782,23 @@ I must admit, I'm also experiencing some nervousness regarding the report and th
 However, I'm determined to maintain a positive and optimistic mindset.
 This is my first significant project, and I'm aware that I'll likely face some criticism.
 I'm hoping to learn from it, even if it's difficult, and use it to improve in the future.
+
+
+Success! I've finally managed to get the player to successfully pick up the gold coin.
+After a bit more debugging and tweaking, I pinpointed the issue and implemented a solution.
+The key was in the player's Area2D node.
+I connected the area_entered signal from the Area2D to the player's script.
+Then, I wrote a function that would trigger the pickup logic when the player's Area2D overlapped with the coin's Area2D.
+To ensure the player could interact with the coin, I also adjusted the collision layers and masks.
+In the player's CollisionShape2D, I set the layer to "Player" and the mask to "PickupItem".
+This effectively tells the game that the player should only interact with objects on the "PickupItem" layer.
+The coin, of course, is on that layer.
+
+This now means that the player can walk up to the gold coin, and the pickup logic is triggered.
+This is a significant milestone, as it lays the foundation for all future pickup interactions.
+I'm treating the gold coin as a standard template, which I can adapt for other items.
+With the pickup functionality now working, I'm eager to move on to the inventory slot and other inventory-related mechanics.
+Hopefully, I can make significant progress on that front in the coming days.
+
+I am feeling a bit relieved that the pick up item works, and I am going to try to do the inventory slot and inventory items soon.
+Hopefully it goes well.

@@ -48,3 +48,8 @@ func handle_animation() -> void:
 	else:
 		# Play running animation based on current direction
 		animated_sprite.play("Run_" + get_direction(velocity.normalized()))
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area is PickUpItem:
+		area.queue_free()
