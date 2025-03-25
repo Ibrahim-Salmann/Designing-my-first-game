@@ -1,8 +1,34 @@
-[gd_scene format=3 uid="uid://yao0c6spd50q"]
+[gd_scene load_steps=2 format=3 uid="uid://yao0c6spd50q"]
+
+[ext_resource type="Texture2D" uid="uid://br07w0otmsah4" path="res://Product/Assets/Ui/Dialog/FacesetBox.png" id="1_1lrpq"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+texture = ExtResource("1_1lrpq")
+
+[node name="MenuButton" type="MenuButton" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/MenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MenuButton/CenterContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5

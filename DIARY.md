@@ -802,3 +802,21 @@ Hopefully, I can make significant progress on that front in the coming days.
 
 I am feeling a bit relieved that the pick up item works, and I am going to try to do the inventory slot and inventory items soon.
 Hopefully it goes well.
+
+Furthermore,  I focused heavily on building the inventory slot system.
+I created a new scene called inventory_slot.tscn, which will serve as the visual representation of a single inventory slot.
+The root node is a Panel, which will act as the background for the slot.
+I then added four child nodes: NinePatchRect, MenuButton, CenterContainer, and TextureRect.
+
+The NinePatchRect is used to display the background texture of the inventory slot, which I imported as a "fast box" texture.
+This will give each slot a distinct visual appearance.
+The TextureRect is used to display the item that is currently occupying the slot.
+I adjusted the aspect ratio of the TextureRect to ensure that the items are displayed correctly within the slot.
+The MenuButton and CenterContainer are placeholders for future functionality, such as item interaction and quantity display.
+
+I've also imported a large number of assets for various UI elements, including dialogue boxes, inventory screens, and other visual components.
+While I'm aware that some of these assets may not be needed in the final version of the game, I'm keeping them for now as a resource library.
+I'll likely delete the unused assets later to keep the project organized.
+I'm feeling more confident with the development pace now that I've made progress on the inventory system.
+My primary goal remains to complete the first level of the game.
+If time permits, I'll consider adding additional content or features, depending on the deadline and the flexibility I have.
