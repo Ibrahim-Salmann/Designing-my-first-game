@@ -820,3 +820,39 @@ I'll likely delete the unused assets later to keep the project organized.
 I'm feeling more confident with the development pace now that I've made progress on the inventory system.
 My primary goal remains to complete the first level of the game.
 If time permits, I'll consider adding additional content or features, depending on the deadline and the flexibility I have.
+
+06/04/2025
+
+Today marked a significant step forward in the development of my project.
+I spent a good portion of the day fleshing out the fundamental structure of the inventory system.
+My primary focus was on visually representing individual inventory slots, and I opted for a hierarchical approach within the scene tree.
+
+I began by creating a base structure for each slot.
+This involved adding several child nodes, each serving a specific visual and potentially functional purpose.
+I incorporated nodes that will clearly display the price of an item, ensuring this crucial information is readily available to the player.
+Alongside this, I added nodes dedicated to displaying the name of the item occupying the slot, providing immediate identification.
+
+To handle situations where multiple identical items might be present, I also implemented a stack label.
+This will dynamically update to reflect the quantity of the item within that particular slot.
+Finally, I included a button label within the slot structure.
+While its immediate purpose might be visual feedback or a placeholder, it suggests future interactivity, perhaps for selecting, using, or examining the item.
+
+Beyond the visual elements, I also started laying the groundwork for the underlying logic.
+I created a script named inventory_slot.gd.
+Within this script, I declared several onready variables.
+These will serve as direct references to the child nodes I previously added in the scene.
+This approach, leveraging Godot's signal/slot system, ensures efficient access to these visual elements from the script.
+
+Furthermore, I utilized the @export keyword (or potentially export depending on the Godot version) to expose certain properties of the inventory_slot script within the editor's Inspector panel.
+This will likely include a Vorte texture, which I envision as the visual representation of an empty slot or a background element.
+I also anticipate using nine-patch textures (likely configured through a NinePatchRect node, though not explicitly mentioned) for the background of the slot, allowing for flexible resizing without distortion.
+
+Following the creation of this foundational inventory_slot scene and script, I proceeded to instantiate and add several instances of these slots as child nodes to a higher-level inventory container (though the exact parent node wasn't specified).
+Crucially, I then imported (likely using get_node() within the parent's script) references to these newly added inventory_slot nodes into the parent script.
+This establishes the necessary connection, allowing the parent script to manage and interact with the individual inventory slots.
+
+This feels like a solid initial step in building out the inventory system.
+By focusing on creating reusable and well-structured slot elements, I've laid a foundation that should be relatively easy to expand upon.
+The use of onready variables and potentially exported properties in the inventory_slot script will streamline the process of populating and updating the visual information within each slot.
+This initial setup facilitates the next stage, where I can begin implementing the core logic for adding, removing, and managing items within these slots.
+I'm optimistic about moving forward and implementing the actual item management in the near future.
