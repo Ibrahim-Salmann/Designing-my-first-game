@@ -856,3 +856,21 @@ By focusing on creating reusable and well-structured slot elements, I've laid a 
 The use of onready variables and potentially exported properties in the inventory_slot script will streamline the process of populating and updating the visual information within each slot.
 This initial setup facilitates the next stage, where I can begin implementing the core logic for adding, removing, and managing items within these slots.
 I'm optimistic about moving forward and implementing the actual item management in the near future.
+
+While working on the visual representation of the inventory slots within the 2D editor, I noticed an issue.
+Specifically, the initial setup resulted in the creation of twelve individual inventory slots directly within the inventory_slot.tscn scene itself.
+This was not the intended approach, as inventory_slot.tscn should serve as a template for individual slots, not the container for multiple instances.
+This oversight needs correction to ensure proper modularity and efficient management of inventory space.
+
+Furthermore, I encountered an error related to the absence of a "Popper menu".
+This suggests a planned UI element for potential contextual actions or information display related to inventory items.
+However, this component hasn't been implemented yet, and I've decided to address it in a later stage to maintain focus on the core slot functionality.
+
+Despite these minor hurdles, I moved forward by creating a new scene called inventory_ui.tscn.
+This scene will serve as the primary container for the entire inventory UI.
+As the root node of this scene, I added a CanvasLayer node.
+CanvasLayer is a crucial node in Godot for UI elements, as it allows them to be rendered on a separate canvas, independent of the game world's camera and scaling.
+This ensures that the inventory UI remains consistently sized and positioned on the screen, regardless of the viewport or camera settings.
+This CanvasLayer will act as the drawing surface upon which all inventory-related UI elements, including the individual inventory slots, will be placed and managed.
+This establishes a dedicated space for the UI, separating it cleanly from the game world and paving the way for further UI development.
+More updates to come as I refine the slot instantiation and begin populating the inventory UI.

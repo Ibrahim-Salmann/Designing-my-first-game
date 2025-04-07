@@ -31,3 +31,12 @@ func _ready() -> void:
 	
 	on_click_button.visible = single_button_press
 	
+	var popup_menu = menu_button.get_popup()
+	popup_menu.id_pressed.connect(on_popup_menu_item_pressed)
+	
+	
+
+func on_popup_menu_item_pressed(id: int):
+	print_debug(id)
+	
+	
