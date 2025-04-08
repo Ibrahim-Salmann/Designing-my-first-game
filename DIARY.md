@@ -930,46 +930,43 @@ This function simply inverts the visible property of the CanvasLayer, effectivel
 Next, the InventorySlot.gd script, which governs the behavior of each individual inventory slot (likely instantiated within the VBoxContainer of the inventory_ui):
 	
 	extends VBoxContainer
-
-class_name InventorySlot
-
-var is_empty = true
-var is_selected = false
-
-@export var single_button_press = false
-@export var starting_texture: Texture
-@export var start_label: String
-
-@onready var texture_rect: TextureRect = $NinePatchRect/MenuButton/CenterContainer/TextureRect
-@onready var name_label: Label = $NameLabel
-@onready var stack_label: Label = $NinePatchRect/StacksLabel
-@onready var on_click_button: Button = $NinePatchRect/OnClickbutton
-@onready var price_label: Label = $PriceLabel
-@onready var menu_button: MenuButton = $NinePatchRect/MenuButton
-
-var slot_to_equip = "NotEquipable"
-
-func _ready() -> void:
-
-	if starting_texture != null:
-		texture_rect.texture = starting_texture
-
-	if start_label != null:
-		name_label.text = start_label
-
-	menu_button.disable = single_button_press
-	on_click_button.disabled = !single_button_press
-
-	on_click_button.visible = single_button_press
-
-	var popup_menu = menu_button.get_popup()
-	popup_menu.id_pressed.connect(on_popup_menu_item_pressed)
-
-
-
-func on_popup_menu_item_pressed(id: int):
-	print_debug(id)
 	
+	class_name InventorySlot
+	
+	var is_empty = true
+	
+	var is_selected = false
+	
+	@export var single_button_press = false
+	@export var starting_texture: Texture
+	@export var start_label: String
+	@onready var texture_rect: TextureRect = $NinePatchRect/MenuButton/CenterContainer/TextureRect
+	@onready var name_label: Label = $NameLabel
+	@onready var stack_label: Label = $NinePatchRect/StacksLabel
+	@onready var on_click_button: Button = $NinePatchRect/OnClickbutton
+	@onready var price_label: Label = $PriceLabel
+	@onready var menu_button: MenuButton = $NinePatchRect/MenuButton
+	
+	var slot_to_equip = "NotEquipable"
+	
+	func _ready() -> void:
+		if starting_texture != null:
+		texture_rect.texture = starting_texture
+		
+		if start_label != null:
+			name_label.text = start_label
+			
+		menu_button.disable = single_button_press
+		on_click_button.disabled = !single_button_press
+		on_click_button.visible = single_button_press
+		
+		var popup_menu = menu_button.get_popup()
+		popup_menu.id_pressed.connect(on_popup_menu_item_pressed)
+	
+	func on_popup_menu_item_pressed(id: int):
+		print_debug(id)
+	
+
 This script manages the visual elements within each slot.
 It declares variables to track if the slot is empty or selected, and exports properties like single_button_press to control the UI interaction style (either a direct button or a menu).
 @onready variables efficiently retrieve references to the various child nodes within the InventorySlot scene (TextureRect for the item icon, Labels for name, stack, and price, and Buttons for interaction).
@@ -978,33 +975,27 @@ It also configures the visibility and enabled state of the on_click_button and s
 
 The InventoryItem.gd script defines the data structure for individual inventory items:
 	extends Resource
-
-class_name InventoryItem
-
-var stacks = 1
-
-@export_enum("Right_Hand", "Left_Hand", "Potions", "NotEquipable") var slot_type: String = "NotEquipable"
-
-@export var ground_collision_shape: RectangleShape2D
-@export var name: String = ""
-@export var texture: Texture2D
-@export var side_texture: Texture2D
-@export var max_stack: int
-@export var price: int
+	class_name InventoryItem
+	var stacks = 1
+	
+	@export_enum("Right_Hand", "Left_Hand", "Potions", "NotEquipable") var slot_type: String = "NotEquipable"
+	@export var ground_collision_shape: RectangleShape2D
+	@export var name: String = ""
+	@export var texture: Texture2D
+	@export var side_texture: Texture2D
+	@export var max_stack: int
+	@export var price: int
 
 y extending Resource, InventoryItem instances can be easily created and stored, either within the game world or within the inventory data structure itself.
 It includes properties such as stacks to manage item quantity, an @export_enum for slot_type to define where the item can be equipped (a common design pattern for equipment slots in RPGs), a ground_collision_shape for when the item is dropped in the world, a descriptive name, primary and potentially secondary textures (texture and side_texture), max_stack to limit the number of identical items in a single slot, and the item's price.
 
 Finally, the Inventory.gd script (likely attached to a persistent game manager or the player node) handles the overall inventory logic and UI interaction:
 	extends Node
-
-class_name Inventory
-
-@onready var inventory_ui: InventoryUI = $"../InventoryUI"
-
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("toggle_inventory"):
-		inventory_ui.toggle()
+	class_name Inventory
+	@onready var inventory_ui: InventoryUI = $"../InventoryUI"
+	func _input(event: InputEvent) -> void:
+		if Input.is_action_just_pressed("toggle_inventory"):
+			inventory_ui.toggle()
 
 This script retrieves a reference to the InventoryUI node using @onready.
 The _input() function listens for specific input events.
@@ -1013,18 +1004,15 @@ If so, it calls the toggle() function on the inventory_ui instance, making the i
 
 And the PickUpItem.gd script, attached to interactable items in the game world:
 	extends Area2D
-
-class_name PickUpItem
-
-@export var inventory_item: InventoryItem
-@onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	sprite_2d.texture = inventory_item.texture
-	collision_shape_2d.shape = inventory_item.ground_collision_shape
+	class_name PickUpItem
+	
+	@export var inventory_item: InventoryItem
+	@onready var sprite_2d: Sprite2D = $Sprite2D
+	@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+	# Called when the node enters the scene tree for the first time.
+	func _ready() -> void:
+		sprite_2d.texture = inventory_item.texture
+		collision_shape_2d.shape = inventory_item.ground_collision_shape
 	
 This script defines how items in the game world can be picked up.
 It exports an InventoryItem resource, allowing each pick-up item instance in the scene to be associated with specific item data.
