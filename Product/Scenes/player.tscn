@@ -1,9 +1,11 @@
-[gd_scene load_steps=66 format=3 uid="uid://bli2urk1pe3ol"]
+[gd_scene load_steps=68 format=3 uid="uid://bli2urk1pe3ol"]
 
 [ext_resource type="Script" path="res://Product/Scripts/player.gd" id="1_3jtev"]
 [ext_resource type="Texture2D" uid="uid://cie7684rror8g" path="res://Product/Assets/Characters/Players/player.png" id="2_g6uir"]
 [ext_resource type="Texture2D" uid="uid://7x2tnjup1pgo" path="res://Product/Assets/Characters/Players/playerMirror.png" id="3_l7tx4"]
 [ext_resource type="Shape2D" uid="uid://c7wd8ktd2s1h5" path="res://Product/Resources/Player/player_collision_shape.tres" id="4_334lj"]
+[ext_resource type="PackedScene" uid="uid://cpbw53s2elfys" path="res://Product/Scenes/UI/inventory_ui.tscn" id="5_o66m7"]
+[ext_resource type="Script" path="res://Product/Scripts/inventory.gd" id="6_ryfti"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1ryi"]
 atlas = ExtResource("2_g6uir")
@@ -514,5 +516,10 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, -8)
 shape = ExtResource("4_334lj")
+
+[node name="InventoryUI" parent="." instance=ExtResource("5_o66m7")]
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("6_ryfti")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

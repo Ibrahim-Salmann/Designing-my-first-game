@@ -1,3 +1,50 @@
-[gd_scene format=3 uid="uid://cpbw53s2elfys"]
+[gd_scene load_steps=3 format=3 uid="uid://cpbw53s2elfys"]
+
+[ext_resource type="Script" path="res://Product/Scripts/inventory_ui.gd" id="1_jy0vi"]
+[ext_resource type="Texture2D" uid="uid://cerf3cibq0n68" path="res://Product/Assets/Ui/Dialog/DialogBoxFaceset.png" id="2_bx0be"]
 
 [node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("1_jy0vi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0313726, 0.0313726, 0.0313726, 0.780392)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_bx0be")
+region_rect = Rect2(47.5866, 9.15137, 251.393, 48.3137)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2

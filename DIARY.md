@@ -874,3 +874,37 @@ This ensures that the inventory UI remains consistently sized and positioned on 
 This CanvasLayer will act as the drawing surface upon which all inventory-related UI elements, including the individual inventory slots, will be placed and managed.
 This establishes a dedicated space for the UI, separating it cleanly from the game world and paving the way for further UI development.
 More updates to come as I refine the slot instantiation and begin populating the inventory UI.
+
+07/04/2025
+
+Continued work on the inventory_ui.tscn scene today, focusing on its initial structure and basic visibility toggling.
+
+The root CanvasLayer in the inventory_ui now has a ColorRect as a direct child.
+This ColorRect, likely set to a red color, serves as a simple background or visual indicator for the inventory screen at this early stage of development.
+Nested under the ColorRect is a MarginContainer.
+MarginContainer nodes are essential for UI layout in Godot, providing consistent spacing and padding around their child elements.
+This ensures that the content within the inventory screen isn't directly touching the edges, improving visual appeal and readability.
+
+Within the MarginContainer, I've established a further nested structure.
+This includes a NinePatchRect, which will likely be used to create a resizable background for the main inventory area without pixelation.
+The use of a nine-patch texture allows for flexible scaling to accommodate different amounts of content or screen sizes.
+Also within the MarginContainer is a VBoxContainer.
+VBoxContainer nodes arrange their children vertically, making them ideal for stacking elements like the individual inventory slots.
+
+To implement the basic functionality of showing and hiding the inventory screen, I created a script named inventory.gd (referred to as "red scripts" in the original note, likely a temporary naming convention).
+This script is attached to the root CanvasLayer of the inventory_ui scene.
+Within this script, I've connected an input action – specifically, pressing the "Tab" key – to toggle the visibility of the inventory_ui.
+This is a common and intuitive control scheme for accessing inventory in many top-down 2D games.
+
+Interestingly, the previous implementation with 30 pre-existing inventory slots, which were toggled with a button pop-up, is still present in the project.
+This suggests a potential transition or refactoring process where the new inventory_ui is gradually replacing the older system.
+The inventory.gd script likely contains a function, perhaps named toggle_visibility, which is called when the Tab key is pressed.
+This function would then manipulate the visible property of the CanvasLayer (or a relevant child node) to show or hide the entire inventory UI.
+
+Looking ahead, the next steps involve populating this basic UI structure with the actual inventory items.
+This will likely involve instantiating and adding the individual inventory_slot scenes as children of the VBoxContainer.
+I also need to implement the logic for adding items to the inventory, handling item stacking to efficiently represent multiple identical items, and visually presenting these items within the UI slots.
+
+Beyond the core inventory, the project roadmap includes the development of weapon and resource management systems.
+Finally, the goal is to integrate these systems into the action scene, allowing the player to equip weapons and utilize resources within the game world.
+The current focus on establishing a clean and functional inventory UI is a crucial stepping stone towards these more complex gameplay mechanics in this top-down 2D game.
