@@ -26,7 +26,7 @@ func _ready() -> void:
 	if start_label != null:
 		name_label.text = start_label
 	
-	menu_button.disable = single_button_press
+	#menu_button.disable = single_button_press
 	on_click_button.disabled = !single_button_press
 	
 	on_click_button.visible = single_button_press

@@ -1022,3 +1022,50 @@ visually representing the item in the game world and defining its interaction ar
 These scripts collectively form the basic framework for the inventory system, handling UI presentation, individual slot behavior,
 item data, and player interaction for toggling the inventory screen and defining pick-up items.
 The next steps will involve connecting these pieces to enable adding items to the inventory, managing stacks, and displaying the items within the UI slots.
+
+
+I implemented the code responsible for dynamically generating the individual inventory slots within the inventory_ui.tscn scene.
+
+This involved adding the following code block to the InventoryUI.gd script:
+	
+	@onready var grid_container: GridContainer = %GridContainer
+	const INVENTORY_SLOT_SCENE = preload("res://Product/Scenes/UI/inventory_slot.tscn")
+	@export var size = 8
+	@export var colums = 4
+	
+	func _ready():
+		grid_container.columns = colums
+		
+		for i in size:
+			var inventory_slot = INVENTORY_SLOT_SCENE.instantiate()
+			grid_container.add_child(inventory_slot)
+
+Here's a breakdown of what this code achieves:
+
+First, it uses @onready to get a reference to the GridContainer node within the inventory_ui scene, which I've named "GridContainer" (indicated by the % symbol).
+GridContainer is an excellent choice for arranging inventory slots in a structured grid layout, common in many top-down 2D games.
+
+Next, it uses preload() to efficiently load the inventory_slot.tscn scene into a constant named INVENTORY_SLOT_SCENE.
+Preloading optimizes performance by loading the scene into memory when the InventoryUI script is loaded, rather than instantiating it multiple times on the fly.
+
+I've also added two @export variables: size and colums.
+size determines the total number of inventory slots to be created, and colums dictates how many slots will be arranged in each row of the grid. Exposing these variables in the Inspector allows for easy adjustment of the inventory grid dimensions without modifying the code directly, a good practice for game design iteration.
+
+The _ready() function is called once when the InventoryUI node enters the scene tree.
+Inside this function, I first set the columns property of the grid_container to the value of the exported colums variable, establishing the desired grid width.
+
+Then, a for loop iterates size number of times.
+In each iteration, it instantiates a new instance of the inventory_slot.tscn scene using INVENTORY_SLOT_SCENE.instantiate().
+This creates a unique copy of the inventory slot template.
+Immediately after instantiation, grid_container.add_child(inventory_slot) adds this newly created slot as a child of the GridContainer. This automatically arranges the slots in the defined grid layout.
+
+The immediate result of adding this code is that when I run the game and press the Tab button to toggle the inventory UI,
+it now appears populated with the specified number of individual inventory slots arranged in a grid. This is a significant step towards a functional inventory display.
+
+Regarding previous issues, I recalled an error that occurred during initial testing related to the menu_button within the inventory_slot scene.
+To resolve this for the time being and allow the game to run without crashing, I commented out the line menu_button.disable = single_button_press in the InventorySlot.gd script.
+While this might temporarily disable the intended behavior of the menu button, it allows me to continue focusing on other core inventory functionalities.
+I will revisit and properly address this commented-out line later.
+
+With the inventory UI now visually populating with slots, my next priority is to implement the logic for adding items to these slots and handling stackable items.
+This will involve connecting the item pick-up system with the inventory data and updating the UI accordingly.
