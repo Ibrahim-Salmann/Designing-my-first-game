@@ -5,6 +5,8 @@ class_name PickUpItem
 @export var inventory_item: InventoryItem
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@export var stacks: int = 1
+ 
 
 
 # Called when the node enters the scene tree for the first time.

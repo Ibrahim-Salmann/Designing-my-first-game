@@ -1069,3 +1069,101 @@ I will revisit and properly address this commented-out line later.
 
 With the inventory UI now visually populating with slots, my next priority is to implement the logic for adding items to these slots and handling stackable items.
 This will involve connecting the item pick-up system with the inventory data and updating the UI accordingly.
+
+10/04/2025
+
+Today's focus was on a crucial aspect of inventory management: handling stackable items, like our ubiquitous gold coins.
+
+The goal was to allow players to collect multiple instances of the same item and have them occupy a single inventory slot, displaying a quantity.
+
+To achieve this, I revisited the Inventory.gd script and expanded its functionality.
+
+First, I looked at the _on_area_2d_area_entered function (presumably within a player or inventory controller script), specifically the condition for picking up items:
+	if area is PickUpItem:
+
+	inventory.add_item(area.inventory_item, area.stacks)
+	area.queue_free()
+
+This snippet demonstrates the initial interaction with a PickUpItem in the game world.
+When the player's pickup area overlaps with a PickUpItem, it calls the add_item function in the Inventory script, passing the inventory_item resource associated with the pickup and the number of stacks it represents.
+Crucially, after the item is added to the inventory, the PickUpItem node is freed from the scene using queue_free(), removing it from the game world.
+
+Now, let's delve into the Inventory.gd script and the logic for handling stackable items:
+	extends Node
+	class_name Inventory
+	@onready var inventory_ui: InventoryUI = $"../InventoryUI"
+	@export var items: Array[InventoryItem] = []
+	
+	func _input(event: InputEvent) -> void:
+	 if Input.is_action_just_pressed("toggle_inventory"):
+		inventory_ui.toggle()
+		
+	func add_item(item: InventoryItem, stacks: int):
+	  if stacks && item.max_stack > 1:
+		add_stackable_item_to_inventory(item, stacks)
+	  else:
+		items.append(item)
+		# TODO: update ui
+		
+	func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
+	  var item_index = -1
+	  for i in items.size():
+		  if items[i] != null and items[i].name == item.name:
+			  item_index = i
+			
+	 if item_index != -1:
+		var inventory_item = items[item_index]
+
+		if inventory_item.stacks + stacks <= item.max_stack:
+			inventory_item.stacks += stacks
+			# TODO: update player_ui
+		else:
+			var stacks_diff = inventory_item.stacks + stacks - item.max_stack
+			var additional_inventory_item = inventory_item.duplicate(true)
+			inventory_item.stacks = item.max_stack
+			# TODO: update player_ui
+			additional_inventory_item.stacks = stacks_diff
+			items.append(additional_inventory_item)
+			# TODO: update player_ui
+			
+	else:
+		item.stacks = stacks
+		items.append(item)
+		# TODO: update player_ui
+		
+
+The add_item function is the entry point for adding items to the inventory.
+It first checks if the stacks count is greater than zero and if the item's max_stack property (defined in the InventoryItem resource) is greater than 1.
+This condition identifies stackable items.
+If an item is stackable, it calls the add_stackable_item_to_inventory function; otherwise, it simply appends the item to the items array (for non-stackable items).
+A crucial # TODO: update ui comment highlights the need to refresh the inventory UI whenever the items array is modified.
+
+The add_stackable_item_to_inventory function handles the core stacking logic.
+It iterates through the existing items in the inventory to find if an item with the same name already exists.
+If a matching item is found (indicated by a non-negative item_index):
+It retrieves the existing inventory_item.
+It then checks if adding the new stacks to the existing item's stacks would exceed the item's max_stack.
+If not, it simply adds the stacks to the existing item's count and again, a # TODO: update player_ui reminds us to update the visual representation in the inventory slot.
+If adding the stacks would exceed the max_stack, it calculates the stacks_diff – the number of items that would overflow.
+It then duplicates the existing inventory_item using duplicate(true) to create a new additional_inventory_item (the true argument performs a deep copy, ensuring all properties are copied).
+The original inventory_item's stacks are set to max_stack, and the additional_inventory_item's stacks are set to the stacks_diff.
+Finally, the additional_inventory_item is appended to the items array, effectively creating a new stack in a separate inventory slot if the current stack is full.
+Another # TODO: update player_ui is essential here.
+
+If no existing item with the same name is found in the inventory, it means this is the first instance of this stackable item being added.
+In this case, the item's stacks property is set to the incoming stacks value, and the item is appended to the items array.
+Again, the UI needs to be updated.
+
+To test this stacking mechanism, I duplicated the PickUpItem nodes in my game world.
+I then modified their stacks property within the Inspector to represent different quantities: one with a stacks value of 12, another with 88, and a third with 20.
+This allowed me to simulate picking up varying amounts of the same stackable item (like gold coins) and observe how the inventory system handles them.
+
+During development, I encountered and resolved a couple of syntax errors.
+I mistakenly typed inventory.add.item(...) instead of the correct inventory.add_item(...).
+Additionally, I incorrectly used item.append(...) when I should have used items.append(...) to add elements to the items array (which is the inventory itself).
+These small errors highlight the importance of careful syntax and understanding the context of variables and functions.
+
+With this implementation, the inventory system can now correctly handle stackable items,
+consolidating them into single slots and creating new slots when the maximum stack size is reached.
+The next crucial step is to ensure the InventoryUI accurately reflects these changes whenever items are added or their stack counts are modified.
+This will involve updating the labels within the InventorySlot scenes to display the current stack size.
