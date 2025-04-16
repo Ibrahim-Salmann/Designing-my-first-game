@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bo4l2d1k4nc7h"]
+
+[ext_resource type="FontFile" uid="uid://bnewxc4o0qc3o" path="res://Product/Assets/Ui/Font/NormalFont.ttf" id="1_05d4p"]
+
+[resource]
+default_font = ExtResource("1_05d4p")

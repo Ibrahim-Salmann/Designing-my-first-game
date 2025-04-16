@@ -11,7 +11,7 @@ var is_selected = false
 
 @onready var texture_rect: TextureRect = $NinePatchRect/MenuButton/CenterContainer/TextureRect
 @onready var name_label: Label = $NameLabel
-@onready var stack_label: Label = $NinePatchRect/StacksLabel
+@onready var stacks_label: Label = $NinePatchRect/StacksLabel
 @onready var on_click_button: Button = $NinePatchRect/OnClickbutton
 @onready var price_label: Label = $PriceLabel
 @onready var menu_button: MenuButton = $NinePatchRect/MenuButton
@@ -38,5 +38,24 @@ func _ready() -> void:
 
 func on_popup_menu_item_pressed(id: int):
 	print_debug(id)
+	
+
+func add_item(item: InventoryItem):
+	if item.slot_type != "NotEquipable":
+		var popup_menu: PopupMenu = menu_button.get_popup()
+		var equip_slot_array_name = item.slot_type.to_lower().split("_")
+		var equip_slot_name = " ".join(equip_slot_array_name)
+		slot_to_equip = item.slot_type
+		# Syntext Error fixed: expected two arguments but got three. Removed the comma after "Equip to"
+		popup_menu.set_item_text(0, "Equip to " + equip_slot_name)
+		
+	is_empty = false
+	menu_button.disabled = false
+	texture_rect.texture = item.texture
+	name_label.text = item.name
+	if item.stacks < 2:
+		return
+	
+	stacks_label.text = str(item.stacks)
 	
 	

@@ -1195,3 +1195,70 @@ Please understand that these reflections are not rooted in any feelings of depre
 Instead, these are observations made when I look inward, identifying areas for personal growth and development in the future.
 
 For now, however, my immediate focus returns to the game itself, specifically on the next crucial task: presenting the items currently held within the inventory in a clear and user-friendly way within the Inventory UI.
+
+16/04/2025
+
+Today's development focused on bridging the gap between the inventory data and its visual representation within the user interface.
+
+The primary goal was to allow the player to see the items they collect, observe their stacking behavior with a displayed quantity,
+and provide basic interaction options like dropping or equipping.
+
+To achieve this, I implemented changes in both the InventoryUI.gd and InventorySlot.gd scripts.
+
+Within the InventoryUI.gd script, I added the following add_item function:
+	func add_item(item: InventoryItem):
+		var slots = grid_container.get_children().filter(func(slot): return slot.is_empty)
+		var first_empty_slot = slots.front() as InventorySlot
+		first_empty_slot.add_item(item)
+		
+
+This function is responsible for taking an InventoryItem and finding the first available empty slot in the GridContainer.
+It retrieves all child nodes of the grid_container and filters them to select only those where the is_empty property (defined in InventorySlot.gd) is true.
+It then takes the first empty slot from this filtered list and calls its own add_item function, passing the InventoryItem to it for visual presentation.
+
+Correspondingly, I modified the add_item function within the InventorySlot.gd script:
+	func add_item(item: InventoryItem):
+		if item.slot_type != "NotEquipable":
+			var popup_menu: PopupMenu = menu_button.get_popup()
+			var equip_slot_array_name = item.slot_type.to_lower().split("_")
+			var equip_slot_name = " ".join(equip_slot_array_name)
+			slot_to_equip = item.slot_type
+			popup_menu.set_item_text(0, "Equip to " + equip_slot_name)
+		is_empty = false
+		menu_button.disabled = false
+		texture_rect.texture = item.texture
+		name_label.text = item.name
+		if item.stacks < 2:
+			return
+		stacks_label.text = str(item.stacks)
+		
+This function in InventorySlot.gd is now responsible for updating the visual elements of a specific inventory slot based on the InventoryItem it receives.
+
+First, it checks if the item's slot_type is not "NotEquipable".
+If it is an equippable item, it retrieves the PopupMenu associated with the menu_button.
+It then processes the slot_type string (e.g., "Right_Hand") to create a more readable equip slot name ("right hand").
+This name is then used to set the text of the first item (index 0) in the PopupMenu to "Equip to [slot name]", providing the "equip" option.
+The slot_to_equip variable is also updated with the item's slot_type.
+
+Next, it sets the is_empty flag of the slot to false, indicating that it now contains an item, and enables the menu_button, allowing for interaction (like dropping or equipping).
+The texture_rect's texture is set to the item's texture, displaying the item's icon.
+The name_label's text is updated with the item's name.
+A check is performed to see if the item's stacks count is less than 2. If it is, the function returns, preventing the stack label from being displayed for single items.
+Finally, if the stacks count is 2 or greater, the stacks_label's text is set to the string representation of the item's stacks value,
+visually showing the quantity of stacked items like gold coins.
+
+During this process, I encountered and resolved a few syntax errors, a common part of the development cycle.
+Specifically, I initially had an issue with the set_item_text function in PopupMenu,
+where I incorrectly provided three arguments instead of the expected two (the index and the text).
+Removing the extra comma resolved this.
+
+Aside from the scripting, I made a minor organizational adjustment by creating a separate folder for UI resources.
+This allows for quicker loading of assets like the game's font, improving efficiency.
+
+It feels like my understanding of the Godot engine is deepening with each step. The way scenes, scripts, and signals interact is becoming more intuitive.
+
+With the basic presentation of inventory items now functional,
+where collected coins are displayed with their stack count and equippable items offer an "Equip" option,
+I feel like I'm heading in the right direction.
+
+My next immediate focus will be on implementing the weapon management system, building upon this foundational inventory framework.

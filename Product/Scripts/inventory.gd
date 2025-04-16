@@ -16,7 +16,7 @@ func add_item(item: InventoryItem, stacks: int):
 		add_stackable_item_to_inventory(item, stacks)
 	else:
 		item.append(item)
-		# TODO: update ui
+		inventory_ui.add_item(item)
 		
 		
 		
@@ -41,9 +41,9 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 			additional_inventory_item.stacks = stacks_diff
 			# error fixed: syntex error
 			items.append(additional_inventory_item)
-			  # TODO: update player_ui
+			inventory_ui.add_item(additional_inventory_item)
 			
 	else:
 		item.stacks = stacks
 		items.append(item)
-		# TODO: update player_ui
+		inventory_ui.add_item(item)

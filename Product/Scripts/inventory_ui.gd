@@ -18,4 +18,10 @@ func _ready():
 func toggle():
 	visible = !visible
 	
+
+func add_item(item: InventoryItem):
+	var slots = grid_container.get_children().filter(func(slot): return slot.is_empty)
+	var first_empty_slot = slots.front() as InventorySlot
+	first_empty_slot.add_item(item)
+	
  

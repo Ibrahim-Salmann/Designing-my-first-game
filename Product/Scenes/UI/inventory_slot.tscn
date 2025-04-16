@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://yao0c6spd50q"]
+[gd_scene load_steps=4 format=3 uid="uid://yao0c6spd50q"]
 
 [ext_resource type="Texture2D" uid="uid://br07w0otmsah4" path="res://Product/Assets/Ui/Dialog/FacesetBox.png" id="1_1lrpq"]
 [ext_resource type="Script" path="res://Product/Scripts/inventory_slot.gd" id="1_ycidm"]
+[ext_resource type="Theme" uid="uid://bo4l2d1k4nc7h" path="res://Product/Resources/UI/theme.tres" id="3_os5qf"]
 
 [node name="InventorySlot" type="VBoxContainer"]
 offset_right = 40.0
@@ -58,6 +59,10 @@ offset_bottom = 2.0
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 2
+theme = ExtResource("3_os5qf")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PriceLabel" type="Label" parent="."]
 layout_mode = 2
