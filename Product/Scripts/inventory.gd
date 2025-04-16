@@ -32,12 +32,12 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 		if inventory_item.stacks + stacks <= item.max_stack:
 			inventory_item.stacks += stacks
 			items[item_index] = inventory_item
-			  # TODO: update player_ui
+			inventory_ui.update_stack_at_slot_index(inventory_item.stacks, item_index)
 		else:
 			var stacks_diff = inventory_item.stacks + stacks - item.max_stack
 			var additional_inventory_item = inventory_item.duplicate(true)
 			inventory_item.stacks = item.max_stack
-			  # TODO: update player_ui
+			inventory_ui.update_stack_at_slot_index(inventory_item.stacks, item_index)
 			additional_inventory_item.stacks = stacks_diff
 			# error fixed: syntex error
 			items.append(additional_inventory_item)

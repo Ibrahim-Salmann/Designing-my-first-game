@@ -1262,3 +1262,31 @@ where collected coins are displayed with their stack count and equippable items 
 I feel like I'm heading in the right direction.
 
 My next immediate focus will be on implementing the weapon management system, building upon this foundational inventory framework.
+
+Building upon the visual presentation of items, I've now implemented a crucial update to ensure the inventory UI dynamically reflects the items the player collects and their stacking quantities.
+
+With the newly implemented update_stack_at_slot_index function (though the code for this function wasn't explicitly provided in the prompt, its functionality is clear),
+the inventory UI now accurately updates the stack count displayed in each slot as the player picks up more of the same stackable item.
+
+This means that the player can indeed collect and stack up to 100 gold coins (or any item with a max_stack of 100) within a single inventory slot,
+with the UI label reflecting the current quantity.
+
+This dynamic updating of the UI provides immediate and clear feedback to the player regarding their collected resources, enhancing the gameplay experience.
+
+With this core inventory functionality now largely in place, my attention is shifting towards the next significant phase of development: combat.
+
+I've organized the upcoming tasks related to combat under the "items-inventory-implementation" branch in my version control system.
+
+This organization includes several key areas: the creation and integration of weapon items, the management of resources relevant to combat (such as ammunition or mana),
+the mechanics for equipping weapons, and the design and implementation of the on-screen UI elements necessary for displaying combat information.
+
+As I move into the more intricate aspects of attack animations, I plan to create a separate branch specifically for that purpose.
+
+This will ensure a clean and manageable development process, allowing me to focus solely on animation without disrupting the already established inventory and item systems.
+
+Once the attack animations are in a satisfactory state and thoroughly tested, I will merge the "items-inventory-implementation" branch with the main branch of the project and then update the repository,
+integrating all the new combat-related features.
+
+This structured approach to development, utilizing branching and merging, will help maintain code stability and facilitate collaboration (even though I am currently working solo).
+
+The transition to combat mechanics marks an exciting new chapter in this project, and I am eager to begin implementing weapon items and the initial stages of the combat system.

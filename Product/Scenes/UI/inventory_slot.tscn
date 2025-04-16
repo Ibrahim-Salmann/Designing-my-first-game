@@ -56,6 +56,9 @@ offset_left = -25.0
 offset_top = -22.0
 offset_right = -5.0
 offset_bottom = 2.0
+theme = ExtResource("3_os5qf")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 2
