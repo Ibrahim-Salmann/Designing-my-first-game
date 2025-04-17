@@ -15,7 +15,8 @@ func add_item(item: InventoryItem, stacks: int):
 	if stacks && item.max_stack > 1:
 		add_stackable_item_to_inventory(item, stacks)
 	else:
-		item.append(item)
+		# Syntext Error
+		items.append(item)
 		inventory_ui.add_item(item)
 		
 		

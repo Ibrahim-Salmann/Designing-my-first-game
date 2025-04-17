@@ -1290,3 +1290,113 @@ integrating all the new combat-related features.
 This structured approach to development, utilizing branching and merging, will help maintain code stability and facilitate collaboration (even though I am currently working solo).
 
 The transition to combat mechanics marks an exciting new chapter in this project, and I am eager to begin implementing weapon items and the initial stages of the combat system.
+
+17/04/2025
+
+Today's progress marks the exciting first step into implementing combat mechanics, specifically by introducing a weapon item: the sword, and ensuring it can be represented within the inventory.
+
+To define the properties and behavior of weapon items, I created a new script named WeaponItem.gd, which extends the Resource class:
+	
+ extends Resource
+
+   class_name WeaponItem
+
+  @export var in_hand_texture: Texture
+  @export var side_in_hand_texture: Texture
+  @export var collision_shape: RectangleShape2D
+  @export_enum("Melee", "Ranged", "Magic") var attack_type: String
+
+  @export_group("Attachment_position")
+  @export var left_attachment_position: Vector2
+  @export var right_attachment_position: Vector2
+  @export var front_attachment_position: Vector2
+  @export var back_attachment_position: Vector2
+  @export_group("")
+
+  @export_group("Rotation")
+  @export var left_rotation: int
+  @export var right_rotation: int
+  @export var front_rotation: int
+  @export var back_rotation: int
+  @export_group("")
+
+  @export_group("Z index")
+  @export var left_z_index: int
+  @export var right_z_index: int
+  @export var front_z_index: int
+  @export var back_z_index: int
+  @export_group("")
+
+  func get_data_for_direction(direction: String):
+	match direction:
+		"left":
+			return{
+				"attachment_position": left_attachment_position,
+				"rotation": left_rotation,
+				"z_index": left_z_index
+			}
+		"right":
+			return{
+				"attachment_position": right_attachment_position,
+				"rotation": right_rotation,
+				"z_index": right_z_index
+			}
+		"front":
+			return{
+				"attachment_position": front_attachment_position,
+				"roatation": front_rotation,
+				"z_index": front_z_index
+			}
+		"back":
+			return{
+				"attachment_position": back_attachment_position,
+				"rotation": back_rotation,
+				"z_index": back_z_index
+			}
+			
+
+This script defines the WeaponItem class, inheriting from Resource, which makes it suitable for creating reusable weapon data assets within the Godot editor.
+
+It exports several variables that define the visual and functional aspects of a weapon:
+
+in_hand_texture: This Texture will be used to display the sword (or any weapon) when it is held by the player.
+
+side_in_hand_texture: This Texture might be used for a different visual representation of the weapon when viewed from the side, potentially for 2D sprite direction handling.
+
+collision_shape: This RectangleShape2D defines the physical boundaries of the weapon, crucial for hit detection during combat. By including it directly in the resource, each weapon can have a unique hitbox.
+
+attack_type: This uses @export_enum to restrict the possible values to "Melee", "Ranged", or "Magic", categorizing the weapon's attack style. This is important for implementing different combat behaviors later.
+
+The script then defines three @export_group sections: "Attachment_position", "Rotation", and "Z index". These groups organize related properties within the Inspector panel, making it easier to manage the weapon's visual placement and layering relative to the player sprite for different facing directions.
+
+Within each of these groups, there are Vector2 variables for left, right, front, and back attachment positions. These determine where the weapon sprite should be positioned relative to the player's hand or body when equipped and facing a particular direction.
+
+Similarly, integer variables for left, right, front, and back rotations define the weapon's visual orientation for each direction.
+
+Finally, integer variables for left, right, front, and back Z indices control the rendering order (layering) of the weapon sprite relative to other sprites, ensuring it appears correctly in front or behind the player depending on the viewing angle.
+
+The get_data_for_direction function takes a direction string as input and uses a match statement (similar to a switch statement in other languages) to return a dictionary containing the attachment position, rotation,
+and Z index specific to that direction.
+This function encapsulates the logic for retrieving the correct visual transformation data based on the player's facing direction,
+making it easier to handle directional weapon rendering.
+
+To see the sword in action, I created a WeaponItem resource in the editor, assigned it a texture for its in-hand appearance and defined its collision shape.
+By adding an instance of this WeaponItem to the player's inventory (for now, likely done manually for testing), the groundwork is laid for it to be displayed.
+
+I spent some time tweaking the Inspector tabs to ensure these new weapon properties were organized logically and easy to understand,
+reflecting good software design principles focused on user experience within the development environment itself.
+I also addressed a few minor syntax errors that inevitably arise during coding.
+
+My next immediate goal is to dive deeper into scripting the player's ability to equip this sword as their active weapon.
+This will likely involve modifying the player's control script to handle equipping actions and visually attaching the weapon sprite to the player's hand based on their current facing direction,
+utilizing the attachment positions and rotations defined in the WeaponItem resource.
+
+Following the successful implementation of weapon equipping, I will create a new branch in my version control system,
+specifically dedicated to developing the attack animations for the sword. This branched approach will allow me to iterate on the visual aspects of combat without destabilizing the core inventory and item management systems that I've been building.
+Once the animations are satisfactory, I will merge this animation branch back into the main development branch and update the repository, integrating the initial combat mechanics into the game.
+
+This step into weapon implementation feels significant. It marks the transition from purely inventory management towards dynamic gameplay interactions.
+The structure I've established with the WeaponItem resource, including directional visual data, reflects common practices in 2D game development for handling sprite orientation and attachments.
+As a solo developer, organizing these systems clearly is crucial for maintainability and future expansion. The cultural aspect of game development often involves sharing these kinds of reusable data structures within teams to ensure consistency and efficiency.
+Even working alone, adopting these established patterns helps in thinking like a professional software developer.
+The lifestyle of a game developer often involves this iterative process of designing data structures, implementing logic, and then visually realizing those systems in the game world. Seeing the sword appear in the inventory is a tangible reward for the abstract work of writing code and defining data.
