@@ -12,3 +12,4 @@ var stacks = 1
 @export var side_texture: Texture2D
 @export var max_stack: int
 @export var price: int
+@export var weapon_item: WeaponItem

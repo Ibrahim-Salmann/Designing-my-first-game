@@ -6,10 +6,13 @@ class_name Inventory
 
 @export var items: Array[InventoryItem] = []
 
+func _ready() -> void:
+	inventory_ui.equip_item.connect(on_item_equipped)
+
+@warning_ignore("unused_parameter")
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_inventory"):
 		inventory_ui.toggle()
-		
 
 func add_item(item: InventoryItem, stacks: int):
 	if stacks && item.max_stack > 1:
@@ -48,3 +51,7 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 		item.stacks = stacks
 		items.append(item)
 		inventory_ui.add_item(item)
+
+func on_item_equipped(idx: int, slot_to_equip):
+	var item_to_equip = items[idx]
+	print_debug(item_to_equip)

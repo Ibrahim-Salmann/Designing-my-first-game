@@ -516,7 +516,6 @@ visible = false
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(1, -8)
 shape = ExtResource("4_334lj")
 

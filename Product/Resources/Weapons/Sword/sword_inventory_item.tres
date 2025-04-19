@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://8ydrl7q3sway"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://8ydrl7q3sway"]
 
 [ext_resource type="Script" path="res://Product/Scripts/inventory_item.gd" id="1_c053u"]
 [ext_resource type="Shape2D" uid="uid://bo0dbe7fw0yi1" path="res://Product/Resources/Weapons/Sword/sword_ground_collision_shape.tres" id="1_hpsbk"]
 [ext_resource type="Texture2D" uid="uid://67xu8er7rvgc" path="res://Product/Assets/Items or Mechanics/Items/Weapons/Sword2/Sprite.png" id="2_2kjoi"]
+[ext_resource type="Resource" uid="uid://bv6gu4eq834oy" path="res://Product/Resources/Weapons/Sword/sword_weapon_item.tres" id="4_0dwdp"]
 
 [resource]
 script = ExtResource("1_c053u")
@@ -12,3 +13,4 @@ name = "Sword"
 texture = ExtResource("2_2kjoi")
 max_stack = 1
 price = 90
+weapon_item = ExtResource("4_0dwdp")

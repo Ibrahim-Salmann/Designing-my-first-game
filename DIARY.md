@@ -1400,3 +1400,55 @@ The structure I've established with the WeaponItem resource, including direction
 As a solo developer, organizing these systems clearly is crucial for maintainability and future expansion. The cultural aspect of game development often involves sharing these kinds of reusable data structures within teams to ensure consistency and efficiency.
 Even working alone, adopting these established patterns helps in thinking like a professional software developer.
 The lifestyle of a game developer often involves this iterative process of designing data structures, implementing logic, and then visually realizing those systems in the game world. Seeing the sword appear in the inventory is a tangible reward for the abstract work of writing code and defining data.
+
+
+19/04/2025
+
+Today's development focused on enabling the player to equip weapons from their inventory,
+a crucial step towards implementing a functional combat system.
+
+The process involved modifications to several scripts,
+primarily centered around handling the equipping action and communicating it between the inventory UI and the core inventory logic.
+
+First, I declared a new signal in InventoryUI.gd: signal equip_item(index: int, slot_to_equip: String)
+
+This signal, equip_item, is emitted by the InventoryUI when the player selects the "Equip" option from an item's context menu.
+
+It carries two important pieces of data: the index of the inventory slot containing the item to be equipped, and the slot_to_equip string,
+which indicates the intended equipment slot (e.g., "Right_Hand", "Left_Hand").
+
+Next, I edited the on_popup_menu_item_pressed function within InventorySlot.gd.
+
+This function now handles different actions based on the id of the menu item pressed in the PopupMenu.
+
+Instead of the previous generic print_debug(id), I've implemented a match statement to provide specific behavior for different menu options.
+I've also added a "Drop" and "Examine" option, even if their functionality is not fully implemented yet.
+
+When the "Equip to ..." option (assumed to have an ID of 0) is selected, the code checks if the item is actually equippable (i.e., slot_to_equip is not "NotEquipable").
+
+If it is, the script retrieves a reference to the InventoryUI node by traversing the scene tree (getting the parent of the parent).
+It then emits the equip_item signal, passing the slot's index (obtained using get_index()) and the slot_to_equip string.
+The print_debug line is commented out, but kept for debugging purposes.
+I've added placeholder comments for the "Drop" and "Examine" options, indicating where their logic should be implemented later.
+
+To handle this signal, I added the following code to Inventory.gd: func _ready() -> void: inventory_ui.equip_item.connect(on_item_equipped) ; and func on_item_equipped(index: int, slot_to_equip: String): ......
+
+In the _ready() function, I connect the inventory_ui's equip_item signal to a new function called on_item_equipped.
+
+This function is called when the equip_item signal is emitted.  It receives the slot index and the slot_to_equip string as arguments.
+The function retrieves the corresponding item_to_equip from the items array using the provided index.
+Currently, it only prints a debug message to confirm the correct item and slot are being processed.
+I've added a comment to indicate where the actual logic for equipping the item (attaching it to the player, updating the player's appearance, etc.) will be implemented.
+
+Finally, I deleted a duplicate _input function that was present in the Inventory.gd script.
+
+This series of changes establishes the communication pathway for equipping items.
+When the player chooses to equip an item from the inventory UI, the equip_item signal is emitted,
+carrying the necessary information to the Inventory script, which then begins the equipping process.
+
+This is a fundamental step in making the combat system functional.
+The design pattern of using signals to communicate between different parts of the game (UI and game logic) is a cornerstone of good software development,
+promoting modularity and maintainability.
+Being game developers, we often work with complex systems, and signals provide a clean way to decouple components.
+The choice to use a signal here reflects a design decision to separate the UI's responsibility (handling user interaction) from the game logic's responsibility (managing the game state and applying the effects of actions).
+This separation of concerns is a core principle in software engineering and is valuable in any complex project, including game development.
