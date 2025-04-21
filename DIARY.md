@@ -1452,3 +1452,231 @@ promoting modularity and maintainability.
 Being game developers, we often work with complex systems, and signals provide a clean way to decouple components.
 The choice to use a signal here reflects a design decision to separate the UI's responsibility (handling user interaction) from the game logic's responsibility (managing the game state and applying the effects of actions).
 This separation of concerns is a core principle in software engineering and is valuable in any complex project, including game development.
+
+20/04/2025
+
+Today's development session was largely dedicated to resolving a critical error that prevented equipped items from being displayed on the screen.
+
+The error message I encountered during playtesting in the Godot engine was:
+
+"Attempt to call function 'equip_item' in base 'null instance' on a null instance"
+
+This error occurred within the Inventory.gd script, specifically at line 58:
+  extends Node
+  class_name Inventory
+
+ @onready var inventory_ui: InventoryUI = $"../InventoryUI"
+ @onready var on_screen_ui: OnScreenUI = $OnScreenUI
+
+ @export var items: Array[InventoryItem] = []
+
+ func _ready() -> void:
+	inventory_ui.equip_item.connect(on_item_equipped)
+
+ @warning_ignore("unused_parameter")
+ func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("toggle_inventory"):
+		inventory_ui.toggle()
+
+ func add_item(item: InventoryItem, stacks: int):
+	if stacks && item.max_stack > 1:
+		add_stackable_item_to_inventory(item, stacks)
+	else:
+		# Syntext Error
+		items.append(item)
+		inventory_ui.add_item(item)
+
+ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
+	var item_index = -1
+	for i in items.size():
+		if items[i] != null and items[i].name == item.name:
+			item_index = i
+
+	if item_index != -1:
+		var inventory_item = items[item_index]
+
+		if inventory_item.stacks + stacks <= item.max_stack:
+			inventory_item.stacks += stacks
+			items[item_index] = inventory_item
+			inventory_ui.update_stack_at_slot_index(inventory_item.stacks, item_index)
+		else:
+			var stacks_diff = inventory_item.stacks + stacks - item.max_stack
+			var additional_inventory_item = inventory_item.duplicate(true)
+			inventory_item.stacks = item.max_stack
+			inventory_ui.update_stack_at_slot_index(inventory_item.stacks, item_index)
+			additional_inventory_item.stacks = stacks_diff
+			# error fixed: syntex error
+			items.append(additional_inventory_item)
+			inventory_ui.add_item(additional_inventory_item)
+
+	else:
+		item.stacks = stacks
+		items.append(item)
+		inventory_ui.add_item(item)
+
+ func on_item_equipped(index: int, slot_to_equip: String):
+	var item_to_equip = items[index]
+	on_screen_ui.equip_item(item_to_equip, slot_to_equip) # Line 58
+	
+	
+	
+This error message, a common one in Godot, indicates that the code was attempting to call the function equip_item on a variable (on_screen_ui) that held a null value.
+
+In essence, the Inventory script couldn't find the OnScreenUI node in the scene, and therefore, on_screen_ui was never assigned, resulting in a null instance.
+
+To provide more context, here are the relevant code snippets from InventoryUI.gd:
+	extends CanvasLayer
+ class_name InventoryUI
+
+ signal equip_item(index: int, slot_to_equip: String)
+
+ @onready var grid_container: GridContainer = %GridContainer
+ const INVENTORY_SLOT_SCENE = preload("res://Product/Scenes/UI/inventory_slot.tscn")
+
+ @export var size = 8
+ @export var colums = 4
+
+ func _ready():
+	grid_container.columns = colums
+
+	for i in size:
+		var inventory_slot = INVENTORY_SLOT_SCENE.instantiate()
+		grid_container.add_child(inventory_slot)
+
+		inventory_slot.equip_item.connect(func(slot_to_equip: String): equip_item.emit(i, slot_to_equip))
+
+ func toggle():
+	visible = !visible
+
+ func add_item(item: InventoryItem):
+	var slots = grid_container.get_children().filter(func(slot): return slot.is_empty)
+	var first_empty_slot = slots.front() as InventorySlot
+	first_empty_slot.add_item(item)
+
+ func update_stack_at_slot_index(stacks_value: int, inventory_slot_index: int):
+	if inventory_slot_index == -1:
+		return
+	var inventory_slot: InventorySlot = grid_container.get_child(inventory_slot_index)
+	inventory_slot.stacks_label.text = str(stacks_value)
+	
+And from InventorySlot.gd:
+	extends VBoxContainer
+ class_name InventorySlot
+
+ var is_empty = true
+ var is_selected = false
+ signal equip_item
+
+ @export var single_button_press = false
+ @export var starting_texture: Texture
+ @export var start_label: String
+
+ @onready var texture_rect: TextureRect = $NinePatchRect/MenuButton/CenterContainer/TextureRect
+ @onready var name_label: Label = $NameLabel
+ @onready var stacks_label: Label = $NinePatchRect/StacksLabel
+ @onready var on_click_button: Button = $NinePatchRect/OnClickbutton
+ @onready var price_label: Label = $PriceLabel
+ @onready var menu_button: MenuButton = $NinePatchRect/MenuButton
+
+ var slot_to_equip = "NotEquipable"
+
+ func _ready() -> void:
+
+	if starting_texture != null:
+		texture_rect.texture = starting_texture
+
+	if start_label != null:
+		name_label.text = start_label
+
+	#menu_button.disable = single_button_press
+	on_click_button.disabled = !single_button_press
+
+	on_click_button.visible = single_button_press
+
+	var popup_menu = menu_button.get_popup()
+	popup_menu.id_pressed.connect(on_popup_menu_item_pressed)
+
+ func on_popup_menu_item_pressed(id: int):
+	var pressed_menu_item = menu_button.get_popup().get_item_text(id)
+
+	if pressed_menu_item == "Drop":
+		#TODO: handle item dropping
+		print_debug("DROP")
+	elif pressed_menu_item.contains("Equip") && slot_to_equip != "NotEquipable":
+		equip_item.emit(slot_to_equip)
+	#print_debug(id)
+
+ func add_item(item: InventoryItem):
+	if item.slot_type != "NotEquipable":
+		var popup_menu: PopupMenu = menu_button.get_popup()
+		var equip_slot_array_name = item.slot_type.to_lower().split("_")
+		var equip_slot_name = " ".join(equip_slot_array_name)
+		slot_to_equip = item.slot_type
+		# Syntext Error fixed: expected two arguments but got three. Removed the comma after "Equip to"
+		popup_menu.set_item_text(0, "Equip to " + equip_slot_name)
+
+	is_empty = false
+	menu_button.disabled = false
+	texture_rect.texture = item.texture
+	name_label.text = item.name
+	if item.stacks < 2:
+		return
+
+	stacks_label.text = str(item.stacks)
+	
+
+And the relevant OnScreen UI code:
+	extends VBoxContainer
+ class_name OnScreenEquipmentSlot
+
+ @onready var slot_label: Label = $SlotLabel
+ @onready var texture_rect: TextureRect = %TextureRect
+
+ @export var slot_name: String
+
+ func _ready() -> void:
+	slot_label.text = slot_name
+
+ func set_equipment_texture(texture: Texture):
+	texture_rect.texture = texture
+ ```gd
+ extends CanvasLayer
+ class_name OnScreenUI
+
+ @onready var right_hand_slot: OnScreenEquipmentSlot = $MarginContainer/HBoxContainer/RightHandSlot
+ @onready var left_hand_slot: OnScreenEquipmentSlot = $MarginContainer/HBoxContainer/LeftHandSlot
+ @onready var potion_slot: OnScreenEquipmentSlot = $MarginContainer/HBoxContainer/PotionSlot
+ @onready var spell_slot: OnScreenEquipmentSlot = $MarginContainer/HBoxContainer/SpellSlot
+
+ @onready var slots_dictionary = {
+	"Right_Hand": right_hand_slot,
+	"Left_Hand": left_hand_slot,
+	"Potions": potion_slot
+ }
+
+ func equip_item(item: InventoryItem, slot_to_equip: String):
+	slots_dictionary[slot_to_equip].set_equipment_texture(item.texture)
+	
+	
+
+The core issue was a misconfiguration in the scene tree, leading to an incorrect node path.
+
+As the diary entry notes:
+
+"The error occurred because on_screen_ui was assigned using $OnScreenUI, assuming that the OnScreenUI node was a direct child of this Inventory node.
+However, at runtime, the node was not found at that path, resulting in a null reference when calling equip_item()."
+
+The solution involved restructuring the scene:
+
+"RESOLUTION: I moved the OnScreenUI node to be an instant child above both InventoryUI and Inventory in the scene tree,
+ensuring that it is properly instantiated and accessible at the time Inventory is ready. Now $OnScreenUI correctly points to the node, and the error is resolved."
+
+In essence: The Inventory script uses the @onready keyword to get a reference to the OnScreenUI node.
+The $ syntax specifies a relative path within the scene tree. If the OnScreenUI node is not located at the path specified, the @onready variable will be assigned null.
+By adjusting the scene tree so that OnScreenUI is a direct child of the node that contains Inventory, the path $OnScreenUI correctly resolves to the OnScreenUI node.
+
+By correcting the scene structure, the Inventory script was able to correctly access the OnScreenUI node and call its equip_item function, allowing the equipped item to be displayed.
+
+The diary entry concludes with the intention to: "and now I'm going to merge the items-inventory-implementation branch with the main, and moving to combat."
+
+This indicates a successful resolution of the issue and a transition to the next development phase: implementing the combat system.

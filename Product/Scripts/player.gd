@@ -6,6 +6,7 @@ const SPEED = 100.0
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var inventory: Inventory = $Inventory
 # To store the last movement direction for idle animation
+
 var last_direction: String = "down"
 
 func _physics_process(delta: float) -> void:

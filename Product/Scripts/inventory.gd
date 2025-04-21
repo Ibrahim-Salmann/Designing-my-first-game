@@ -3,6 +3,16 @@ extends Node
 class_name Inventory
 
 @onready var inventory_ui: InventoryUI = $"../InventoryUI"
+# FIXED: "Attempt to call function 'equip_item' in base 'null instance' on a null instance"
+# The error occurred because `on_screen_ui` was assigned using `$OnScreenUI`, assuming that 
+# the OnScreenUI node was a direct child of this Inventory node. However, at runtime, the 
+# node was not found at that path, resulting in a null reference when calling `equip_item()`.
+#
+# RESOLUTION: I moved the OnScreenUI node to be an instant child **above** both InventoryUI 
+# and Inventory in the scene tree, ensuring that it is properly instantiated and accessible 
+# at the time `Inventory` is ready. Now `$OnScreenUI` correctly points to the node, and the 
+# error is resolved.
+@onready var on_screen_ui: OnScreenUI = $"../OnScreenUI"
 
 @export var items: Array[InventoryItem] = []
 
@@ -54,4 +64,4 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 
 func on_item_equipped(idx: int, slot_to_equip):
 	var item_to_equip = items[idx]
-	print_debug(item_to_equip)
+	on_screen_ui.equip_item(item_to_equip, slot_to_equip)
