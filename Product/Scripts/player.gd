@@ -4,7 +4,9 @@ const SPEED = 100.0
 
 # Reference to the AnimatedSprite2D node
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var inventory: Inventory = $Inventory
 # To store the last movement direction for idle animation
+
 var last_direction: String = "down"
 
 func _physics_process(delta: float) -> void:
@@ -48,3 +50,10 @@ func handle_animation() -> void:
 	else:
 		# Play running animation based on current direction
 		animated_sprite.play("Run_" + get_direction(velocity.normalized()))
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area is PickUpItem:
+		# Error fixed: syntex error
+		inventory.add_item(area.inventory_item, area.stacks)
+		area.queue_free()
