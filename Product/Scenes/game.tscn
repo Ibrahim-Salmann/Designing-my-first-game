@@ -6023,7 +6023,7 @@ tile_map_data = PackedByteArray("AAD+/xAAAAAGAAgAAAD+/w8AAAAGAAcAAAD+/w4AAAAGAAc
 tile_set = ExtResource("2_euxp4")
 
 [node name="Player" parent="." instance=ExtResource("1_f8y10")]
-position = Vector2(8, 21)
+position = Vector2(-6, -6)
 
 [node name="PickUpItem" parent="." instance=ExtResource("9_ujjvk")]
 position = Vector2(19, 64)

@@ -513,16 +513,17 @@ position = Vector2(0, -7)
 zoom = Vector2(3, 3)
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(1, -8)
 shape = ExtResource("4_334lj")
 
 [node name="OnScreenUI" parent="." instance=ExtResource("7_8l5m0")]
 
 [node name="InventoryUI" parent="." instance=ExtResource("5_o66m7")]
+visible = false
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("6_ryfti")
