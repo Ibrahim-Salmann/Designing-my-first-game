@@ -1,8 +1,12 @@
-[gd_scene load_steps=66 format=3 uid="uid://bli2urk1pe3ol"]
+[gd_scene load_steps=69 format=3 uid="uid://bli2urk1pe3ol"]
 
 [ext_resource type="Script" path="res://Product/Scripts/player.gd" id="1_3jtev"]
 [ext_resource type="Texture2D" uid="uid://cie7684rror8g" path="res://Product/Assets/Characters/Players/player.png" id="2_g6uir"]
 [ext_resource type="Texture2D" uid="uid://7x2tnjup1pgo" path="res://Product/Assets/Characters/Players/playerMirror.png" id="3_l7tx4"]
+[ext_resource type="Shape2D" path="res://Product/Resources/Player/player_collision_shape.tres" id="4_334lj"]
+[ext_resource type="PackedScene" path="res://Product/Scenes/UI/inventory_ui.tscn" id="5_o66m7"]
+[ext_resource type="Script" path="res://Product/Scripts/inventory.gd" id="6_ryfti"]
+[ext_resource type="PackedScene" path="res://Product/Scenes/UI/on_screen_ui.tscn" id="7_8l5m0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1ryi"]
 atlas = ExtResource("2_g6uir")
@@ -487,9 +491,6 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_klkdt"]
-size = Vector2(11.5, 17)
-
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource("1_3jtev")
@@ -503,9 +504,27 @@ autoplay = "Idle_left"
 frame_progress = 0.182512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.75, -8)
-shape = SubResource("RectangleShape2D_klkdt")
+shape = ExtResource("4_334lj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -7)
 zoom = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -8)
+shape = ExtResource("4_334lj")
+
+[node name="OnScreenUI" parent="." instance=ExtResource("7_8l5m0")]
+
+[node name="InventoryUI" parent="." instance=ExtResource("5_o66m7")]
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("6_ryfti")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
