@@ -1712,3 +1712,36 @@ What’s next on my development roadmap: I still need to refine the combat syste
 Specifically, I plan to make the attack animation play only when the player has a sword (or another suitable weapon) equipped in their inventory.
 Soon, I will also begin to add spells to the player's combat repertoire. This addition of spells will introduce more dynamic and varied combat options, adding depth and complexity to the gameplay.
 And of course, the game world will eventually need enemies to fight, which is a whole other exciting challenge!
+
+I started by tackling the challenge of dynamically controlling attack animations based on the weapon's direction.
+I've implemented a system to fetch positional and visual data, including rotation, attachment point, and z-index.
+This data is retrieved from each weapon's WeaponItem resource using a newly created get_data_for_direction() method.
+
+The data structure within the WeaponItem resource utilizes direction keys such as "left", "right", "front", and "back".
+This design choice provides a clean and organized way to map weapon visuals to different attack states.
+
+One issue I encountered was an error related to accessing player.attack_direction. It turned out that this property did not yet exist within the player.gd script.
+This led to a discussion about aligning the direction naming convention. Specifically, we considered whether to use "up"/"down" or "front"/"back".
+I ultimately decided to convert my internal logic within the player script to use "front" and "back".
+This decision was made to ensure consistency and to better match the data structure already established in the WeaponItem resource.
+Maintaining this consistency improves code readability and reduces the potential for future errors.
+
+After resolving the direction naming convention, I focused on ensuring that attacks would only register when a weapon, such as the sword, is actually equipped.
+I updated the _input() logic within the CombatSystem.gd script to check for the presence of either a right_weapon or left_weapon before allowing any attack animation to play.
+This prevents the player from performing empty or ineffective attack animations. I also added a helper function called _set_weapon_pose().
+This function is responsible for applying the direction-based visual transformations to the weapon sprite when an attack occurs.
+This ensures that the weapon is displayed correctly, with the appropriate rotation and position, during the attack animation.
+
+Finally, I addressed an issue where the sword sprite was always visible, even when the player was not attacking.
+I fixed this by initially hiding both the right and left weapon sprites within the _ready() function.
+The weapon sprites are now only made visible during the execution of an attack animation. Once the animation completes, the on_attack_animation_finished() function is called.
+This function resets the visibility of the weapon sprites and also resets the player's attack state. This approach creates a much cleaner and more immersive visual effect.
+The sword now feels like a tangible extension of the player, only appearing when it's actively being used in combat.
+
+The entire flow of the combat system now feels significantly tighter and more polished.
+The animations are clean and responsive, there are no more floating swords, and input is correctly restricted based on whether a weapon is equipped.
+This improved system enhances the overall feel of the game and provides a more satisfying player experience.
+
+My next goals for the combat system are to add hitboxes to the attack animations.
+I also want to implement visual feedback when an attack connects with an enemy.
+This could include things like particle effects, screen shake, or temporary changes in enemy appearance.

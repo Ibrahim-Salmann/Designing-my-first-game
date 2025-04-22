@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 const SPEED = 100.0
 
+signal attack_animation_finished
+
 # Reference to the AnimatedSprite2D node
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var inventory: Inventory = $Inventory
@@ -81,7 +83,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		area.queue_free()
 
 # Attack Animation
-
 func play_attack_animation():
 	if DIRECTION_TO_ATTACK_ANIMATION.has(last_direction) and not is_attacking:
 		is_attacking = true
@@ -95,3 +96,12 @@ func play_attack_animation():
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation.begins_with("Attack"):
 		is_attacking = false
+		# Added for combat_system.gd
+		attack_animation_finished.emit()
+
+@export var attack_direction: String:
+	get:
+		match last_direction:
+			"up": return "back"
+			"down": return "front"
+			_: return last_direction
