@@ -1680,3 +1680,35 @@ By correcting the scene structure, the Inventory script was able to correctly ac
 The diary entry concludes with the intention to: "and now I'm going to merge the items-inventory-implementation branch with the main, and moving to combat."
 
 This indicates a successful resolution of the issue and a transition to the next development phase: implementing the combat system.
+
+21/04/2025
+
+Today marked a significant milestone in my game development journey.
+I successfully merged the items-inventory-implementation branch into the main branch.
+This was accomplished without losing any data or negatively impacting the history of previous successful merges.
+I paid close attention to potential merge conflicts, particularly in the game.tscn scene file, and carefully resolved these conflicts to ensure the integrity of all item and inventory systems.
+After thoroughly confirming the merge's success, I pushed the updated main branch to both GitLab and GitHub.
+This action ensured that the entire codebase and its complete commit history are synchronized across both platforms.
+I also gained valuable insight into how importing projects from GitLab to GitHub can affect the visibility of branches and commits.
+Specifically, I learned how to accurately push all branches and commit history to maintain consistency across different version control systems.
+
+Next, I dove into the exciting task of implementing attack animations for the player character.
+I already had a functional AnimatedSprite2D setup in place, with working idle and run states.
+I expanded the player.gd script to trigger directional attack animations based on the player's last movement direction.
+To prevent the player from moving during attacks, I introduced an is_attacking flag.
+This flag effectively locks player movement and prevents switching between idle and run animations while an attack is in progress.
+I then connected the animation_finished() signal to a new method.
+This method resets the is_attacking flag after each attack animation completes, allowing the player to move again.
+I also identified and fixed an issue where the attack animation would loop indefinitely. This was resolved by ensuring that the attack animation's "Loop" property was correctly disabled within the Godot editor.
+
+A thoughtful design question arose during this process: Should the player be able to move while attacking?
+After careful consideration of the gameplay feel in classic Zelda-like games, I made a deliberate decision.
+I decided that attacks should briefly lock the player in place. This design choice aims to create a more intentional and strategic pace to combat,
+emphasizing deliberate actions over frantic button-mashing.
+This design philosophy reflects a broader trend in game development, where designers often prioritize player agency and meaningful choices over pure action.
+It also touches upon cultural differences in game design, where different regions and player demographics may have varying preferences for game feel and pacing.
+
+What’s next on my development roadmap: I still need to refine the combat system further.
+Specifically, I plan to make the attack animation play only when the player has a sword (or another suitable weapon) equipped in their inventory.
+Soon, I will also begin to add spells to the player's combat repertoire. This addition of spells will introduce more dynamic and varied combat options, adding depth and complexity to the gameplay.
+And of course, the game world will eventually need enemies to fight, which is a whole other exciting challenge!
