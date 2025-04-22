@@ -1745,3 +1745,29 @@ This improved system enhances the overall feel of the game and provides a more s
 My next goals for the combat system are to add hitboxes to the attack animations.
 I also want to implement visual feedback when an attack connects with an enemy.
 This could include things like particle effects, screen shake, or temporary changes in enemy appearance.
+
+I've been experimenting with how removing or clearing resources impacts gameplay within the Godot engine.
+Specifically, I opened the sword_weapon_item.tres file, located at res://Product/Resources/Weapons/Sword/sword_weapon_item.tres, and cleared the assigned "in-hand" texture and collision shape.
+Upon running the game, the sword predictably disappeared, as it was now lacking the necessary visual and physical properties.
+
+These experiments yielded some key observations:
+	Sprite Texture:
+		Setting a sprite's texture to null results in the sprite becoming permanently invisible unless a new texture is explicitly assigned.
+		This highlights the importance of managing resource dependencies and understanding how the engine handles null values in visual components.
+	Node/Resource Dependency:
+		Removing a node or resource without carefully checking its dependencies throughout the project can lead to broken functionality in seemingly unrelated areas.
+		For example, deleting the sword_weapon_item.tres file without considering its connections to equipment logic, combat systems, and other game mechanics can introduce subtle bugs that may be difficult to trace and debug.
+		This underscores the importance of modular design and dependency management in game development.
+	Error Handling:
+		To further investigate the consequences of resource removal, I deleted the .tres resource directly through the Godot inspector and then ran the game to observe the resulting errors.
+		As expected, this action caused significant issues, demonstrating the critical role these resource files play in the game's structure and behavior.
+		I immediately reverted this change using Git by executing git restore Product/Resources/Weapons/Sword/sword_weapon_item.tres in Git Bash, effectively recovering the deleted resource.
+		This experience reinforced the value of version control in safeguarding against accidental data loss and facilitating rapid recovery from experimental changes.
+		
+A word of caution:
+	Deleting .tres files or removing resources from the inspector without thoroughly checking their dependencies may not always cause immediate,
+	catastrophic crashes. However, such actions can easily break functionality in unexpected and hard-to-find places within the game.
+	This can lead to a significant increase in debugging time and potentially introduce long-term instability. 
+	Therefore, it's crucial to always double-check where resources are being used before removing them from the inspector or deleting the files altogether.
+	This principle extends beyond game development and applies to software engineering in general: understanding the interconnectedness of different components is essential for maintaining a stable and robust system.
+	
