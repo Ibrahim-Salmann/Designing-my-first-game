@@ -40,6 +40,5 @@ layout_mode = 2
 slot_name = "Potion"
 
 [node name="SpellSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_eu1bd")]
-visible = false
 layout_mode = 2
 slot_name = "Spell"

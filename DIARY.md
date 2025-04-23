@@ -1807,3 +1807,25 @@ And for solo developers like me, this work shapes our whole lifestyle — workin
 
 So yeah — today was about item drops.
 But really, it was about how even the smallest gameplay action requires harmony between systems. And how debugging is just another form of design — one where your tool is patience, your canvas is the codebase, and your payoff is that sweet moment when it all clicks.
+
+Developing spell configurations.
+To break up the monotony a bit, I'm adding a new system for spellcasting, which will be a good learning experience for a beginner in game development.
+
+In the game's user interface, the right-hand side will display short combat actions,
+while the left-hand side of the inventory slots will be dedicated to the spells the player can cast.
+Initially, I'm focusing on implementing Fire and Ice spells.
+
+I've developed the necessary resources for these spells, including their collision shapes, textures, and item representations.
+After importing the assets, such as the textures, in the inspector, I added their individual collision shapes under the resources folders.
+This ensures that the spells will appear correctly on screen and interact with the game world.
+
+Now, when the player picks up a spellbook and presses the 'L' key, they can cast the associated spell in any direction.
+While enemies aren't yet implemented, I've added animations for both the Fireball and Ice spells.
+
+I've also written some code and scripts for spell configuration.
+This includes setting up the properties that will appear in the inspector tab,
+as well as the code itself for handling projectile movement, direction, and connecting these behaviors to the spell configuration.
+
+My next steps involve developing the user interface for spellcasting and implementing the spell cooldown mechanism.
+This will involve creating visual elements to represent the available spells and their cooldown states, as well as writing the code to manage the timing of spell usage.
+This is an exciting step that will bring the magic system to life, and I'm looking forward to the challenges it presents.
