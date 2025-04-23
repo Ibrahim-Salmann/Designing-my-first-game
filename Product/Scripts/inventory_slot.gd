@@ -6,6 +6,7 @@ var is_empty = true
 var is_selected = false
 
 signal equip_item 
+signal drop_item
 
 @export var single_button_press = false
 @export var starting_texture: Texture
@@ -42,8 +43,8 @@ func on_popup_menu_item_pressed(id: int):
 	var pressed_menu_item = menu_button.get_popup().get_item_text(id)
 	
 	if pressed_menu_item == "Drop":
-		#TODO: handle item dropping
-		print_debug("DROP")
+		drop_item.emit()
+		menu_button.disabled = true
 	elif pressed_menu_item.contains("Equip") && slot_to_equip != "NotEquipable":
 		equip_item.emit(slot_to_equip)
 	#print_debug(id)
@@ -68,3 +69,10 @@ func add_item(item: InventoryItem):
 	stacks_label.text = str(item.stacks)
 	
 	
+func clear_slot():
+	is_empty = true
+	slot_to_equip = "NotEquipable"
+	texture_rect.texture = null
+	name_label.text = ""
+	stacks_label.text = ""
+	menu_button.disabled = true

@@ -11,6 +11,9 @@ signal attack_animation_finished
 
 var is_attacking: bool = false
 
+#var velocity: Vector2 = Vector2.ZERO
+
+
 # Attack animation
 const DIRECTION_TO_ATTACK_ANIMATION = {
 	"down": "Attack_down",
@@ -31,6 +34,8 @@ var last_direction: String = "down"
 
 var attack_animation = null
 
+var item_eject_direction = Vector2.DOWN
+
 func _physics_process(delta: float) -> void:
 	# Handle player movement
 	if not is_attacking:
@@ -48,6 +53,11 @@ func player_movement(_delta: float) -> void:
 	# Normalize the vector to ensure consistent speed in all directions
 	if input_vector != Vector2.ZERO:
 		input_vector = input_vector.normalized()
+		#item_eject_direction = input_vector # Update ejection direction to match player movement
+		
+		# Only update eject direction if input is strong enough
+		if input_vector.length() > 0.2:
+			item_eject_direction = input_vector
 
 	# Set velocity based on input
 	velocity = input_vector * SPEED
