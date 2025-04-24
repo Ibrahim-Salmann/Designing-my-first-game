@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bli2urk1pe3ol"]
+[gd_scene load_steps=75 format=3 uid="uid://bli2urk1pe3ol"]
 
 [ext_resource type="Script" path="res://Product/Scripts/player.gd" id="1_3jtev"]
 [ext_resource type="Texture2D" uid="uid://cie7684rror8g" path="res://Product/Assets/Characters/Players/player.png" id="2_g6uir"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cpbw53s2elfys" path="res://Product/Scenes/UI/inventory_ui.tscn" id="5_o66m7"]
 [ext_resource type="Script" path="res://Product/Scripts/inventory.gd" id="6_ryfti"]
 [ext_resource type="PackedScene" uid="uid://dlkic0pscuw7a" path="res://Product/Scenes/UI/on_screen_ui.tscn" id="7_8l5m0"]
+[ext_resource type="Script" path="res://Product/Scripts/combat_system.gd" id="8_gau5f"]
+[ext_resource type="Script" path="res://Product/Scripts/spell_system.gd" id="9_fi4wl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1ryi"]
 atlas = ExtResource("2_g6uir")
@@ -39,6 +41,22 @@ region = Rect2(96, 336, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fb4ro"]
 atlas = ExtResource("2_g6uir")
 region = Rect2(144, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o60ne"]
+atlas = ExtResource("3_l7tx4")
+region = Rect2(240, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypu1r"]
+atlas = ExtResource("3_l7tx4")
+region = Rect2(192, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpqum"]
+atlas = ExtResource("3_l7tx4")
+region = Rect2(144, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hxbd"]
+atlas = ExtResource("3_l7tx4")
+region = Rect2(96, 336, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2fkw3"]
 atlas = ExtResource("2_g6uir")
@@ -263,7 +281,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_danhg")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_down",
 "speed": 7.0
 }, {
@@ -280,12 +298,24 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fb4ro")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_left",
 "speed": 7.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o60ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypu1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpqum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hxbd")
+}],
+"loop": false,
 "name": &"Attack_right",
 "speed": 7.0
 }, {
@@ -302,7 +332,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_00qy5")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_up",
 "speed": 7.0
 }, {
@@ -499,9 +529,8 @@ script = ExtResource("1_3jtev")
 position = Vector2(0, -16)
 scale = Vector2(0.9375, 0.9375)
 sprite_frames = SubResource("SpriteFrames_2obup")
-animation = &"Run_right"
+animation = &"Attack_down"
 autoplay = "Idle_left"
-frame_progress = 0.182512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -528,4 +557,27 @@ visible = false
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("6_ryfti")
 
+[node name="CombatSystem" type="Node2D" parent="."]
+script = ExtResource("8_gau5f")
+
+[node name="RightHandWeaponSprite" type="Sprite2D" parent="CombatSystem"]
+
+[node name="Area2D" type="Area2D" parent="CombatSystem/RightHandWeaponSprite"]
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/RightHandWeaponSprite/Area2D"]
+
+[node name="LeftHandWeaponSprite" type="Sprite2D" parent="CombatSystem"]
+
+[node name="Area2D" type="Area2D" parent="CombatSystem/LeftHandWeaponSprite"]
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/LeftHandWeaponSprite/Area2D"]
+
+[node name="SpellSystem" type="Node" parent="."]
+script = ExtResource("9_fi4wl")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

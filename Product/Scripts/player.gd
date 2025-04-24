@@ -1,17 +1,52 @@
 extends CharacterBody2D
 
+class_name Player
+
 const SPEED = 100.0
+
+signal attack_animation_finished
 
 # Reference to the AnimatedSprite2D node
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var inventory: Inventory = $Inventory
 # To store the last movement direction for idle animation
 
+var is_attacking: bool = false
+
+#var velocity: Vector2 = Vector2.ZERO
+
+
+# Attack animation
+const DIRECTION_TO_ATTACK_ANIMATION = {
+	"down": "Attack_down",
+	"up": "Attack_up",
+	"left": "Attack_left",
+	"right": "Attack_right"
+}
+
+# Attack Animation Vector
+const DIRECTION_TO_ATTACK_VECTOR = {
+	"down": Vector2(0, -1),
+	"up": Vector2(0, 1),
+	"left": Vector2(1, 0),
+	"right": Vector2(-1, 0)
+}
+
 var last_direction: String = "down"
+
+var attack_animation = null
+
+var item_eject_direction = Vector2.DOWN
+
+var attack_vector:
+	get:
+		return DIRECTION_TO_ATTACK_VECTOR.get(last_direction, Vector2.ZERO)
+
 
 func _physics_process(delta: float) -> void:
 	# Handle player movement
-	player_movement(delta)
+	if not is_attacking:
+		player_movement(delta)
 	handle_animation()
 	
 func player_movement(_delta: float) -> void:
@@ -25,6 +60,11 @@ func player_movement(_delta: float) -> void:
 	# Normalize the vector to ensure consistent speed in all directions
 	if input_vector != Vector2.ZERO:
 		input_vector = input_vector.normalized()
+		#item_eject_direction = input_vector # Update ejection direction to match player movement
+		
+		# Only update eject direction if input is strong enough
+		if input_vector.length() > 0.2:
+			item_eject_direction = input_vector
 
 	# Set velocity based on input
 	velocity = input_vector * SPEED
@@ -44,6 +84,7 @@ func get_direction(input_vector: Vector2) -> String:
 		return "up" if input_vector.y < 0 else "down"
 
 func handle_animation() -> void:
+	if is_attacking: return  # Prevent animation override during attack
 	if velocity == Vector2.ZERO:
 		# Play idle animation based on last movement direction
 		animated_sprite.play("Idle_" + last_direction)
@@ -57,3 +98,27 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		# Error fixed: syntex error
 		inventory.add_item(area.inventory_item, area.stacks)
 		area.queue_free()
+
+# Attack Animation
+func play_attack_animation():
+	if DIRECTION_TO_ATTACK_ANIMATION.has(last_direction) and not is_attacking:
+		is_attacking = true
+		animated_sprite.play(DIRECTION_TO_ATTACK_ANIMATION[last_direction])
+
+#func _on_AnimatedSprite2D_animation_finished():
+	#if animated_sprite.animation.begins_with("Attack"):
+		#is_attacking = false
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite.animation.begins_with("Attack"):
+		is_attacking = false
+		# Added for combat_system.gd
+		attack_animation_finished.emit()
+
+@export var attack_direction: String:
+	get:
+		match last_direction:
+			"up": return "back"
+			"down": return "front"
+			_: return last_direction

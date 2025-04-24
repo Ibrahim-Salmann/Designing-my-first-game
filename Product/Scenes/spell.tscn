@@ -1,0 +1,116 @@
+[gd_scene load_steps=18 format=3 uid="uid://bbmn0rnofh33g"]
+
+[ext_resource type="Script" path="res://Product/Scripts/spell.gd" id="1_36xut"]
+[ext_resource type="Texture2D" uid="uid://egfx3sh3c4vl" path="res://Product/Assets/FX/Projectile/IceSpike.png" id="1_jsdv4"]
+[ext_resource type="Texture2D" uid="uid://dv6y8r1oskrd7" path="res://Product/Assets/FX/Projectile/Fireball.png" id="2_iaatp"]
+[ext_resource type="Shape2D" uid="uid://dp2kydg1ygg8e" path="res://Product/Resources/Spells/Ice/ice_collision_shape.tres" id="4_qbrdr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jw2b"]
+atlas = ExtResource("2_iaatp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oah4b"]
+atlas = ExtResource("2_iaatp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c6g1"]
+atlas = ExtResource("2_iaatp")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0014"]
+atlas = ExtResource("2_iaatp")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llu4o"]
+atlas = ExtResource("1_jsdv4")
+region = Rect2(0, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byo5e"]
+atlas = ExtResource("1_jsdv4")
+region = Rect2(18, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4gkt"]
+atlas = ExtResource("1_jsdv4")
+region = Rect2(36, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw33l"]
+atlas = ExtResource("1_jsdv4")
+region = Rect2(54, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ccbq"]
+atlas = ExtResource("1_jsdv4")
+region = Rect2(72, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86aai"]
+atlas = ExtResource("1_jsdv4")
+region = Rect2(90, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcei5"]
+atlas = ExtResource("1_jsdv4")
+region = Rect2(108, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvwhj"]
+atlas = ExtResource("1_jsdv4")
+region = Rect2(126, 0, 18, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u4l4d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jw2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oah4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c6g1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0014")
+}],
+"loop": true,
+"name": &"fireball",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llu4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byo5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4gkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw33l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ccbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86aai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcei5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvwhj")
+}],
+"loop": true,
+"name": &"ice",
+"speed": 10.0
+}]
+
+[node name="Spell" type="Area2D"]
+script = ExtResource("1_36xut")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u4l4d")
+animation = &"ice"
+frame = 6
+frame_progress = 0.162018
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = ExtResource("4_qbrdr")

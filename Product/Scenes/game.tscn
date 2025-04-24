@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://e7h11uhkwbn8"]
+[gd_scene load_steps=38 format=4 uid="uid://e7h11uhkwbn8"]
 
 [ext_resource type="PackedScene" uid="uid://bli2urk1pe3ol" path="res://Product/Scenes/player.tscn" id="1_f8y10"]
 [ext_resource type="Texture2D" uid="uid://dd5pvfxfbl6rv" path="res://Product/Assets/Interface/Green Woods/Overworld.png" id="1_olshf"]
@@ -9,8 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bo7rck0kfvmir" path="res://Product/Assets/Interface/Village/RPG_MAKER_VX_ACE/B-C-D-E_Serene_Village_03.png" id="5_uecty"]
 [ext_resource type="Texture2D" uid="uid://duct3fpqfnidk" path="res://Product/Assets/Interface/Village/Serene_Village_16x16.png" id="6_hhtlk"]
 [ext_resource type="PackedScene" uid="uid://0b1a1rrfjmhq" path="res://Product/Scenes/pickup_item.tscn" id="9_ujjvk"]
-[ext_resource type="Resource" uid="uid://dey1w65qfk4n5" path="res://Product/Resources/gold_coin.tres" id="10_08k6i"]
+[ext_resource type="Resource" uid="uid://dey1w65qfk4n5" path="res://Product/Resources/GoldCoin/gold_coin.tres" id="10_08k6i"]
 [ext_resource type="Resource" uid="uid://8ydrl7q3sway" path="res://Product/Resources/Weapons/Sword/sword_inventory_item.tres" id="11_tciq2"]
+[ext_resource type="Resource" uid="uid://d265sfshjg64h" path="res://Product/Resources/Weapons/SpellBook/spell_book_inventory_item.tres" id="12_kjnd0"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_1pyqc"]
 tile_data = PackedInt32Array(0, 720896, 7, 65536, 720896, 8, 1, 786432, 7, 65537, 786432, 8)
@@ -6026,7 +6027,7 @@ tile_set = ExtResource("2_euxp4")
 position = Vector2(-6, -6)
 
 [node name="PickUpItem" parent="." instance=ExtResource("9_ujjvk")]
-position = Vector2(19, 64)
+position = Vector2(36, 61)
 inventory_item = ExtResource("10_08k6i")
 stacks = 12
 
@@ -6036,6 +6037,11 @@ inventory_item = ExtResource("10_08k6i")
 stacks = 88
 
 [node name="PickUpItem3" parent="." instance=ExtResource("9_ujjvk")]
-position = Vector2(4, 106)
+position = Vector2(-13, 103)
 inventory_item = ExtResource("11_tciq2")
 stacks = 20
+
+[node name="PickUpItem4" parent="." instance=ExtResource("9_ujjvk")]
+position = Vector2(97, -10)
+inventory_item = ExtResource("12_kjnd0")
+stacks = 12

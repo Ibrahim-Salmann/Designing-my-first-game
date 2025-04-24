@@ -1,22 +1,18 @@
-[gd_resource type="Resource" script_class="WeaponItem" load_steps=4 format=3 uid="uid://bv6gu4eq834oy"]
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=2 format=3 uid="uid://osawsuer66wr"]
 
-[ext_resource type="Shape2D" uid="uid://co2o3nxutw7pr" path="res://Product/Resources/Weapons/Sword/sword_weapon_item_collision_shape.tres" id="1_1asci"]
-[ext_resource type="Texture2D" uid="uid://bdljug5tdq1sx" path="res://Product/Assets/Items or Mechanics/Items/Weapons/Sword2/SpriteInHand.png" id="2_lqtq3"]
 [ext_resource type="Script" path="res://Product/Scripts/WeaponItem.gd" id="3_2aesd"]
 
 [resource]
 script = ExtResource("3_2aesd")
-in_hand_texture = ExtResource("2_lqtq3")
-collision_shape = ExtResource("1_1asci")
 attack_type = "Meele"
-left_attachment_position = Vector2(-13, 4)
-right_attachment_position = Vector2(13, 4)
+left_attachment_position = Vector2(-10, -8)
+right_attachment_position = Vector2(10, 8)
 front_attachment_position = Vector2(5, 10)
 back_attachment_position = Vector2(-5, 11)
 left_rotation = 90
 right_rotation = -90
 front_rotation = 0
-back_rotation = -180
+back_rotation = 180
 left_z_index = 1
 right_z_index = 1
 front_z_index = 1

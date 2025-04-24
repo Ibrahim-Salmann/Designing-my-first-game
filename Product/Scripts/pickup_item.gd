@@ -15,3 +15,8 @@ func _ready() -> void:
 	collision_shape_2d.shape = inventory_item.ground_collision_shape
 	 
 	
+func disable_collision():
+	collision_shape_2d.disabled = true
+	
+func enable_collision():
+	collision_shape_2d.disabled = false

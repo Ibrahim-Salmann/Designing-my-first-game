@@ -1680,3 +1680,234 @@ By correcting the scene structure, the Inventory script was able to correctly ac
 The diary entry concludes with the intention to: "and now I'm going to merge the items-inventory-implementation branch with the main, and moving to combat."
 
 This indicates a successful resolution of the issue and a transition to the next development phase: implementing the combat system.
+
+21/04/2025
+
+Today marked a significant milestone in my game development journey.
+I successfully merged the items-inventory-implementation branch into the main branch.
+This was accomplished without losing any data or negatively impacting the history of previous successful merges.
+I paid close attention to potential merge conflicts, particularly in the game.tscn scene file, and carefully resolved these conflicts to ensure the integrity of all item and inventory systems.
+After thoroughly confirming the merge's success, I pushed the updated main branch to both GitLab and GitHub.
+This action ensured that the entire codebase and its complete commit history are synchronized across both platforms.
+I also gained valuable insight into how importing projects from GitLab to GitHub can affect the visibility of branches and commits.
+Specifically, I learned how to accurately push all branches and commit history to maintain consistency across different version control systems.
+
+Next, I dove into the exciting task of implementing attack animations for the player character.
+I already had a functional AnimatedSprite2D setup in place, with working idle and run states.
+I expanded the player.gd script to trigger directional attack animations based on the player's last movement direction.
+To prevent the player from moving during attacks, I introduced an is_attacking flag.
+This flag effectively locks player movement and prevents switching between idle and run animations while an attack is in progress.
+I then connected the animation_finished() signal to a new method.
+This method resets the is_attacking flag after each attack animation completes, allowing the player to move again.
+I also identified and fixed an issue where the attack animation would loop indefinitely. This was resolved by ensuring that the attack animation's "Loop" property was correctly disabled within the Godot editor.
+
+A thoughtful design question arose during this process: Should the player be able to move while attacking?
+After careful consideration of the gameplay feel in classic Zelda-like games, I made a deliberate decision.
+I decided that attacks should briefly lock the player in place. This design choice aims to create a more intentional and strategic pace to combat,
+emphasizing deliberate actions over frantic button-mashing.
+This design philosophy reflects a broader trend in game development, where designers often prioritize player agency and meaningful choices over pure action.
+It also touches upon cultural differences in game design, where different regions and player demographics may have varying preferences for game feel and pacing.
+
+What’s next on my development roadmap: I still need to refine the combat system further.
+Specifically, I plan to make the attack animation play only when the player has a sword (or another suitable weapon) equipped in their inventory.
+Soon, I will also begin to add spells to the player's combat repertoire. This addition of spells will introduce more dynamic and varied combat options, adding depth and complexity to the gameplay.
+And of course, the game world will eventually need enemies to fight, which is a whole other exciting challenge!
+
+I started by tackling the challenge of dynamically controlling attack animations based on the weapon's direction.
+I've implemented a system to fetch positional and visual data, including rotation, attachment point, and z-index.
+This data is retrieved from each weapon's WeaponItem resource using a newly created get_data_for_direction() method.
+
+The data structure within the WeaponItem resource utilizes direction keys such as "left", "right", "front", and "back".
+This design choice provides a clean and organized way to map weapon visuals to different attack states.
+
+One issue I encountered was an error related to accessing player.attack_direction. It turned out that this property did not yet exist within the player.gd script.
+This led to a discussion about aligning the direction naming convention. Specifically, we considered whether to use "up"/"down" or "front"/"back".
+I ultimately decided to convert my internal logic within the player script to use "front" and "back".
+This decision was made to ensure consistency and to better match the data structure already established in the WeaponItem resource.
+Maintaining this consistency improves code readability and reduces the potential for future errors.
+
+After resolving the direction naming convention, I focused on ensuring that attacks would only register when a weapon, such as the sword, is actually equipped.
+I updated the _input() logic within the CombatSystem.gd script to check for the presence of either a right_weapon or left_weapon before allowing any attack animation to play.
+This prevents the player from performing empty or ineffective attack animations. I also added a helper function called _set_weapon_pose().
+This function is responsible for applying the direction-based visual transformations to the weapon sprite when an attack occurs.
+This ensures that the weapon is displayed correctly, with the appropriate rotation and position, during the attack animation.
+
+Finally, I addressed an issue where the sword sprite was always visible, even when the player was not attacking.
+I fixed this by initially hiding both the right and left weapon sprites within the _ready() function.
+The weapon sprites are now only made visible during the execution of an attack animation. Once the animation completes, the on_attack_animation_finished() function is called.
+This function resets the visibility of the weapon sprites and also resets the player's attack state. This approach creates a much cleaner and more immersive visual effect.
+The sword now feels like a tangible extension of the player, only appearing when it's actively being used in combat.
+
+The entire flow of the combat system now feels significantly tighter and more polished.
+The animations are clean and responsive, there are no more floating swords, and input is correctly restricted based on whether a weapon is equipped.
+This improved system enhances the overall feel of the game and provides a more satisfying player experience.
+
+My next goals for the combat system are to add hitboxes to the attack animations.
+I also want to implement visual feedback when an attack connects with an enemy.
+This could include things like particle effects, screen shake, or temporary changes in enemy appearance.
+
+I've been experimenting with how removing or clearing resources impacts gameplay within the Godot engine.
+Specifically, I opened the sword_weapon_item.tres file, located at res://Product/Resources/Weapons/Sword/sword_weapon_item.tres, and cleared the assigned "in-hand" texture and collision shape.
+Upon running the game, the sword predictably disappeared, as it was now lacking the necessary visual and physical properties.
+
+These experiments yielded some key observations:
+	Sprite Texture:
+		Setting a sprite's texture to null results in the sprite becoming permanently invisible unless a new texture is explicitly assigned.
+		This highlights the importance of managing resource dependencies and understanding how the engine handles null values in visual components.
+	Node/Resource Dependency:
+		Removing a node or resource without carefully checking its dependencies throughout the project can lead to broken functionality in seemingly unrelated areas.
+		For example, deleting the sword_weapon_item.tres file without considering its connections to equipment logic, combat systems, and other game mechanics can introduce subtle bugs that may be difficult to trace and debug.
+		This underscores the importance of modular design and dependency management in game development.
+	Error Handling:
+		To further investigate the consequences of resource removal, I deleted the .tres resource directly through the Godot inspector and then ran the game to observe the resulting errors.
+		As expected, this action caused significant issues, demonstrating the critical role these resource files play in the game's structure and behavior.
+		I immediately reverted this change using Git by executing git restore Product/Resources/Weapons/Sword/sword_weapon_item.tres in Git Bash, effectively recovering the deleted resource.
+		This experience reinforced the value of version control in safeguarding against accidental data loss and facilitating rapid recovery from experimental changes.
+		
+A word of caution:
+	Deleting .tres files or removing resources from the inspector without thoroughly checking their dependencies may not always cause immediate,
+	catastrophic crashes. However, such actions can easily break functionality in unexpected and hard-to-find places within the game.
+	This can lead to a significant increase in debugging time and potentially introduce long-term instability. 
+	Therefore, it's crucial to always double-check where resources are being used before removing them from the inspector or deleting the files altogether.
+	This principle extends beyond game development and applies to software engineering in general: understanding the interconnectedness of different components is essential for maintaining a stable and robust system.
+	
+
+22/04/2025
+
+Today was a good example of how my day-to-day flows as a solo dev — a mix of building, testing, breaking, and debugging — and somehow it all still feels rewarding.
+
+I spent a big chunk of the day tightening up the item drop system in my Godot project.
+I’d already wired up most of the inventory logic — the UI components, the signals, the scripts for managing slots and items — but now I wanted to let the player physically eject items from their inventory into the game world.
+It's a small feature on paper, but it ties together a lot of different systems: the inventory backend, the visual UI, the game world’s spawning logic, and player input.
+
+I started by defining an item_eject_direction in my player.gd script,
+which follows the last movement input, so the item knows which way to pop out.
+Then I went into Inventory.gd and added a method called eject_item_into_the_ground(idx) — simple enough: grab the item at the given index, spawn a pickup object, assign it the right data, and throw it into the world with some velocity.
+
+Running the game the first time, everything seemed okay… until I hit the "Drop" button — and boom, an error:
+	“Out of bounds get index '0' (on base: 'Array[InventoryItem]')”
+	
+The engine highlighted multiple lines in different files — from Inventory.gd to InventoryUI.gd and even InventorySlot.gd. That’s where the beauty (and chaos) of interconnected code becomes real.
+Every piece was working in isolation, but as soon as they started talking to each other, one invalid index took down the whole interaction.
+
+Debugging it required tracing the signal flow: the slot emitted a drop event, the UI relayed it, the inventory script picked it up, and tried to drop an item that no longer existed.
+Classic case of bad timing — I was clearing the item slot before trying to use the item’s data to spawn it in the world.
+
+So I reversed the order of operations: eject first, clear second.
+I also added bounds and null checks to be safe — something that should always be second nature but is easy to overlook when you're in a build sprint.
+After patching up the logic and re-running the game, the error disappeared.
+More importantly, the item now gracefully launches into the world, just like I imagined.
+
+What I love about this process — the game dev loop — is that it feels like problem-solving in motion.
+It’s half engineering, half art. Each bug is like a little mystery to unravel, and each fix deepens my understanding of the system I’m building.
+It reminds me why I chose this route: to create something that feels alive, even if it’s all just pixels and code underneath.
+
+Culturally, I think game design attracts people who want to build worlds, not just apps. It’s about expression as much as functionality.
+And for solo developers like me, this work shapes our whole lifestyle — working in bursts of focus, making space to test and reflect, and constantly pivoting between systems thinking and visual storytelling.
+
+So yeah — today was about item drops.
+But really, it was about how even the smallest gameplay action requires harmony between systems. And how debugging is just another form of design — one where your tool is patience, your canvas is the codebase, and your payoff is that sweet moment when it all clicks.
+
+Developing spell configurations.
+To break up the monotony a bit, I'm adding a new system for spellcasting, which will be a good learning experience for a beginner in game development.
+
+In the game's user interface, the right-hand side will display short combat actions,
+while the left-hand side of the inventory slots will be dedicated to the spells the player can cast.
+Initially, I'm focusing on implementing Fire and Ice spells.
+
+I've developed the necessary resources for these spells, including their collision shapes, textures, and item representations.
+After importing the assets, such as the textures, in the inspector, I added their individual collision shapes under the resources folders.
+This ensures that the spells will appear correctly on screen and interact with the game world.
+
+Now, when the player picks up a spellbook and presses the 'L' key, they can cast the associated spell in any direction.
+While enemies aren't yet implemented, I've added animations for both the Fireball and Ice spells.
+
+I've also written some code and scripts for spell configuration.
+This includes setting up the properties that will appear in the inspector tab,
+as well as the code itself for handling projectile movement, direction, and connecting these behaviors to the spell configuration.
+
+My next steps involve developing the user interface for spellcasting and implementing the spell cooldown mechanism.
+This will involve creating visual elements to represent the available spells and their cooldown states, as well as writing the code to manage the timing of spell usage.
+This is an exciting step that will bring the magic system to life, and I'm looking forward to the challenges it presents.
+
+When Breakpoints Meet Breakthroughs
+
+Today was one of those classic “why is this breaking again?” kind of days in the dev cave.
+Everything started off with what should’ve been a simple tweak to the UI system for spell slots.
+I wanted a nice clean way to show or hide the magic UI depending on what kind of weapon the player equips — sword? No magic. Staff? Magic time. Seems straightforward, right?
+
+But as always, reality checked in.
+
+I started by trying to call toggle_spell_slot() and passed it the expected values. But Godot was like, “Breakpoint, my friend,” and stopped the show every time.
+I threw in some print statements to track the execution flow. Didn’t help much — breakpoints still hit, and it seemed like the engine was choking on the function call like it hadn’t even registered it existed.
+
+What followed was a bit of rabbit-hole spelunking — double-checking signal connections, refactoring names, staring into the void of InventoryUI.gd,
+and whispering to the Godot Debugger like it was a haunted Ouija board. At one point, I even suspected a misconfigured signal or a hidden circular reference. Classic overthinking move.
+
+Godot started handing me yellow warning signs like a safety officer on overtime:
+
+"You're shadowing is_visible and is_selected!"
+
+“You’re not using event in _input() — shame on you!”
+
+Nice to know, but not the issue. Just background noise while the real bug threw a tantrum.
+
+I ditched the previous spell slot logic and rewrote the whole thing more functionally:
+	
+	func check_magic_ui_visibility():
+	 var should_show_magic_ui = (combat_system.left_weapon != null and \
+	 combat_system.left_weapon.attack_type == "Magic") or \
+	 (combat_system.right_weapon != null and \
+	 combat_system.right_weapon.attack_type == "Magic")
+	 inventory_ui.toggle_spells_ui(should_show_magic_ui)
+	  if should_show_magic_ui == false:
+		  on_screen_ui.toggle_spell_slot(false, null)
+		
+Boom. That cleared the crash.
+Everything felt cleaner — no shadowed vars, no mysterious breakpoints, and spell slots now behave with actual logic.
+
+There’s something wild about how debugging code mirrors the rest of life: a mix of persistence, creativity, and sometimes a bit of stubbornness.
+One line in the wrong place and the whole mood shifts. Like knocking over a candle in a medieval tavern — suddenly you're doing fire control instead of storytelling.
+
+Game dev is such a beautifully messy art. You're half-engineer, half-author.
+A storyteller who needs to know memory management and how to trigger an animation with three boolean flags.
+The process feels like jazz sometimes — a bunch of trial and error, tweaks, and "does this work if I just nudge it slightly?"
+
+And I guess that’s what I love. You design spells and swords, yes — but you also design how people feel when they click on something.
+That’s culture. That’s meaning. Whether you’re making Wimbledon's Lot or just a little inventory UI, you're shaping digital behavior with human intention.
+
+Debugging isn’t just technical — it’s philosophical.
+You stare at broken systems and believe they can be fixed.
+You imagine something better and keep poking until the engine listens.
+It's like gardening in a digital dimension — a bit messy, but the reward? Magic.
+
+Mood: Tired but satisfied.
+Lessons Learned: Don’t trust early breakpoints. Shadowing is sneaky. And write UI logic that actually makes sense.
+Next Up: Animating the spell slot when a spell is equipped. Maybe with a little whoosh sound, just for flair.
+
+24/04/2025
+
+After what felt like a relentless battle of trial and error, I finally got projectiles working in the game.
+Yes — the spells now cast, fly, and even look halfway decent doing so.
+It's been a long haul: debugging missing functions, chasing down invalid property accesses, restructuring Player.gd to expose attack_vector correctly,
+and making sure the spell system actually talks to the UI, combat system, and player logic.
+
+A few core problems held me back longer than I expected:
+
+My Player script didn't initially expose the directional attack vector properly.
+
+Signals between systems (like cast_active_spell) weren't connecting at first.
+
+A method spell_cooldown_activated was called from SpellSystem, but never defined in OnScreenUI. A classic case of “I swear I added that already.”
+
+Many small but critical @onready and signal connection details needed to be just right — and weren’t, until they were.
+
+When everything finally clicked together, that first Fireball cast felt like a real moment. That said, not everything’s perfect.
+The vertical direction is flipped, meaning spells go up when I mean down and vice versa.
+On top of that, the ice projectiles are facing the wrong way horizontally. It's a visual bug, but since it doesn’t block gameplay logic or system functionality,
+I’ve chosen to ignore it for now.
+
+I’m on a tight clock, and spells firing at all is a huge milestone. So I’m shelving polish for later.
+
+Next up: Enemy behavior and hitboxes. I’ve branched off to a new feature branch to start prototyping enemy interactions.
+Let’s go.

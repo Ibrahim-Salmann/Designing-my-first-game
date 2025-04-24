@@ -45,7 +45,7 @@ func get_data_for_direction(direction: String):
 		"front":
 			return{
 				"attachment_position": front_attachment_position,
-				"roatation": front_rotation,
+				"rotation": front_rotation,
 				"z_index": front_z_index
 			}
 		"back":
