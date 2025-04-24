@@ -8,6 +8,8 @@ var is_selected = false
 signal equip_item 
 signal drop_item
 
+signal slot_clicked
+
 @export var single_button_press = false
 @export var starting_texture: Texture
 @export var start_label: String
@@ -33,6 +35,9 @@ func _ready() -> void:
 	on_click_button.disabled = !single_button_press
 	
 	on_click_button.visible = single_button_press
+	
+	menu_button.disabled = single_button_press
+	
 	
 	var popup_menu = menu_button.get_popup()
 	popup_menu.id_pressed.connect(on_popup_menu_item_pressed)
@@ -76,3 +81,11 @@ func clear_slot():
 	name_label.text = ""
 	stacks_label.text = ""
 	menu_button.disabled = true
+
+
+func _on_on_clickbutton_pressed() -> void:
+	slot_clicked.emit()
+	
+
+func toggle_button_selected_variation(is_selected: bool):
+	on_click_button.theme_type_variation = "selected" if is_selected else ""
