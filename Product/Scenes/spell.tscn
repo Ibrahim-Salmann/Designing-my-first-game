@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Product/Scripts/spell.gd" id="1_36xut"]
 [ext_resource type="Texture2D" uid="uid://egfx3sh3c4vl" path="res://Product/Assets/FX/Projectile/IceSpike.png" id="1_jsdv4"]
 [ext_resource type="Texture2D" uid="uid://dv6y8r1oskrd7" path="res://Product/Assets/FX/Projectile/Fireball.png" id="2_iaatp"]
-[ext_resource type="Shape2D" uid="uid://onx0graajypb" path="res://Product/Resources/Spells/FireBall/fireball_collision_shape.tres" id="4_xdonq"]
+[ext_resource type="Shape2D" uid="uid://dp2kydg1ygg8e" path="res://Product/Resources/Spells/Ice/ice_collision_shape.tres" id="4_qbrdr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jw2b"]
 atlas = ExtResource("2_iaatp")
@@ -107,8 +107,10 @@ script = ExtResource("1_36xut")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u4l4d")
-animation = &"fireball"
+animation = &"ice"
+frame = 6
+frame_progress = 0.162018
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)
-shape = ExtResource("4_xdonq")
+shape = ExtResource("4_qbrdr")

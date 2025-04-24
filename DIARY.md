@@ -1884,3 +1884,30 @@ It's like gardening in a digital dimension — a bit messy, but the reward? Magi
 Mood: Tired but satisfied.
 Lessons Learned: Don’t trust early breakpoints. Shadowing is sneaky. And write UI logic that actually makes sense.
 Next Up: Animating the spell slot when a spell is equipped. Maybe with a little whoosh sound, just for flair.
+
+24/04/2025
+
+After what felt like a relentless battle of trial and error, I finally got projectiles working in the game.
+Yes — the spells now cast, fly, and even look halfway decent doing so.
+It's been a long haul: debugging missing functions, chasing down invalid property accesses, restructuring Player.gd to expose attack_vector correctly,
+and making sure the spell system actually talks to the UI, combat system, and player logic.
+
+A few core problems held me back longer than I expected:
+
+My Player script didn't initially expose the directional attack vector properly.
+
+Signals between systems (like cast_active_spell) weren't connecting at first.
+
+A method spell_cooldown_activated was called from SpellSystem, but never defined in OnScreenUI. A classic case of “I swear I added that already.”
+
+Many small but critical @onready and signal connection details needed to be just right — and weren’t, until they were.
+
+When everything finally clicked together, that first Fireball cast felt like a real moment. That said, not everything’s perfect.
+The vertical direction is flipped, meaning spells go up when I mean down and vice versa.
+On top of that, the ice projectiles are facing the wrong way horizontally. It's a visual bug, but since it doesn’t block gameplay logic or system functionality,
+I’ve chosen to ignore it for now.
+
+I’m on a tight clock, and spells firing at all is a huge milestone. So I’m shelving polish for later.
+
+Next up: Enemy behavior and hitboxes. I’ve branched off to a new feature branch to start prototyping enemy interactions.
+Let’s go.

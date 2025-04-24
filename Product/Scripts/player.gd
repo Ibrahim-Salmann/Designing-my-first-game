@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 const SPEED = 100.0
 
 signal attack_animation_finished
@@ -35,6 +37,11 @@ var last_direction: String = "down"
 var attack_animation = null
 
 var item_eject_direction = Vector2.DOWN
+
+var attack_vector:
+	get:
+		return DIRECTION_TO_ATTACK_VECTOR.get(last_direction, Vector2.ZERO)
+
 
 func _physics_process(delta: float) -> void:
 	# Handle player movement

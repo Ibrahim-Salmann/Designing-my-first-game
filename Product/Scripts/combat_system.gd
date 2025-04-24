@@ -2,7 +2,9 @@ extends Node2D
 
 class_name CombatSystem
 
-@onready var player: Node = $".."
+signal cast_active_spell
+
+@onready var player: Player = $".."
 @onready var right_hand_weapon_sprite: Sprite2D = $RightHandWeaponSprite
 @onready var left_hand_weapon_sprite: Sprite2D = $LeftHandWeaponSprite
 @onready var right_hand_collision_shape_2d: CollisionShape2D = $RightHandWeaponSprite/Area2D/CollisionShape2D
@@ -48,6 +50,7 @@ func _input(event):
 		#left_hand_weapon_sprite.position = attack_data.get("attachment_position")
 		#left_hand_weapon_sprite.rotation_degrees = attack_data.get("rotation")
 		#left_hand_weapon_sprite.z_index = attack_data.get("z_index")
+		
 
 func set_active_weapon(weapon: WeaponItem, slot_to_equip: String):
 	if slot_to_equip == "Left_Hand":
@@ -63,6 +66,8 @@ func set_active_weapon(weapon: WeaponItem, slot_to_equip: String):
 			
 		right_hand_weapon_sprite.texture = weapon.in_hand_texture
 		right_weapon = weapon
+		
+	
 
 func on_attack_animation_finished():
 	can_attack = true
@@ -75,3 +80,6 @@ func _set_weapon_pose(weapon: WeaponItem, sprite: Sprite2D, direction: String):
 	sprite.rotation_degrees = data.get("rotation", 0)
 	sprite.z_index = data.get("z_index", 0)
 	sprite.visible = true  # Show sword during attack
+	
+	if weapon.attack_type == "Magic":
+		cast_active_spell.emit()
