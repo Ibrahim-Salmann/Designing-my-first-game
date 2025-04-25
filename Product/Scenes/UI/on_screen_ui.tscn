@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlkic0pscuw7a"]
+[gd_scene load_steps=5 format=3 uid="uid://dlkic0pscuw7a"]
 
 [ext_resource type="PackedScene" uid="uid://cxwpxq8is1dp1" path="res://Product/Scenes/UI/on_screen_equipment_slot.tscn" id="1_eu1bd"]
 [ext_resource type="Script" path="res://Product/Scripts/on_screen_ui.gd" id="1_lq68w"]
+[ext_resource type="StyleBox" uid="uid://dey7s2sqcrsw6" path="res://Product/Resources/UI/health_bar_background.tres" id="2_b526q"]
+[ext_resource type="StyleBox" uid="uid://bx33b5hy7g8qd" path="res://Product/Resources/UI/health_bar_fill.tres" id="3_5k3gi"]
 
 [node name="OnScreenUI" type="CanvasLayer"]
 script = ExtResource("1_lq68w")
@@ -18,8 +20,12 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 16)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_styles/background = ExtResource("2_b526q")
+theme_override_styles/fill = ExtResource("3_5k3gi")
+value = 100.0
 show_percentage = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]

@@ -1,14 +1,16 @@
-[gd_scene load_steps=75 format=3 uid="uid://bli2urk1pe3ol"]
+[gd_scene load_steps=81 format=3 uid="uid://bli2urk1pe3ol"]
 
 [ext_resource type="Script" path="res://Product/Scripts/player.gd" id="1_3jtev"]
 [ext_resource type="Texture2D" uid="uid://cie7684rror8g" path="res://Product/Assets/Characters/Players/player.png" id="2_g6uir"]
 [ext_resource type="Texture2D" uid="uid://7x2tnjup1pgo" path="res://Product/Assets/Characters/Players/playerMirror.png" id="3_l7tx4"]
+[ext_resource type="Texture2D" uid="uid://cepvi4x4n7hey" path="res://Product/Assets/Characters/Player_apocalypse/Death.png" id="4_2gjps"]
 [ext_resource type="Shape2D" uid="uid://c7wd8ktd2s1h5" path="res://Product/Resources/Player/player_collision_shape.tres" id="4_334lj"]
 [ext_resource type="PackedScene" uid="uid://cpbw53s2elfys" path="res://Product/Scenes/UI/inventory_ui.tscn" id="5_o66m7"]
 [ext_resource type="Script" path="res://Product/Scripts/inventory.gd" id="6_ryfti"]
 [ext_resource type="PackedScene" uid="uid://dlkic0pscuw7a" path="res://Product/Scenes/UI/on_screen_ui.tscn" id="7_8l5m0"]
 [ext_resource type="Script" path="res://Product/Scripts/combat_system.gd" id="8_gau5f"]
 [ext_resource type="Script" path="res://Product/Scripts/spell_system.gd" id="9_fi4wl"]
+[ext_resource type="Script" path="res://Product/Scripts/health_system.gd" id="10_8byh8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1ryi"]
 atlas = ExtResource("2_g6uir")
@@ -266,6 +268,22 @@ region = Rect2(192, 240, 48, 48)
 atlas = ExtResource("2_g6uir")
 region = Rect2(240, 240, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_plfnx"]
+atlas = ExtResource("4_2gjps")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbaqw"]
+atlas = ExtResource("4_2gjps")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt180"]
+atlas = ExtResource("4_2gjps")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vpcr"]
+atlas = ExtResource("4_2gjps")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_2obup"]
 animations = [{
 "frames": [{
@@ -519,6 +537,23 @@ animations = [{
 "loop": true,
 "name": &"Run_up",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plfnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbaqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt180")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vpcr")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 10.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -529,7 +564,7 @@ script = ExtResource("1_3jtev")
 position = Vector2(0, -16)
 scale = Vector2(0.9375, 0.9375)
 sprite_frames = SubResource("SpriteFrames_2obup")
-animation = &"Attack_down"
+animation = &"dead"
 autoplay = "Idle_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -542,7 +577,7 @@ position = Vector2(0, -7)
 zoom = Vector2(3, 3)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 8
+collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
@@ -567,6 +602,7 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/RightHandWeaponSprite/Area2D"]
+disabled = true
 
 [node name="LeftHandWeaponSprite" type="Sprite2D" parent="CombatSystem"]
 
@@ -575,9 +611,15 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/LeftHandWeaponSprite/Area2D"]
+disabled = true
 
 [node name="SpellSystem" type="Node" parent="."]
 script = ExtResource("9_fi4wl")
 
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("10_8byh8")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="CombatSystem/RightHandWeaponSprite/Area2D" to="CombatSystem" method="_on_area_2d_body_entered" binds= ["right"]]
+[connection signal="body_entered" from="CombatSystem/LeftHandWeaponSprite/Area2D" to="CombatSystem" method="_on_area_2d_body_entered" binds= ["left"]]

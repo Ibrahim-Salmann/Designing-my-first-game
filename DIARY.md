@@ -1963,3 +1963,33 @@ I'm currently working on how the player can defeat the enemies.
 My focus is on implementing the core mechanics for combat and projectiles.
 
 This will allow the player to fight back against the enemies and defend themselves.
+
+In the Node inspector tab, there are many functions available.
+
+Specifically, within the player scene, the "right-hand weapon Sprite" and "left-hand weapon Sprite" are children of the 2D scene.
+
+I connected the body_entered signal to the combat system.
+
+This means that when the player's weapon comes into contact with an enemy's hitbox, damage is registered.
+
+However, I have to admit that I encountered some confusion regarding directional terminology.
+
+I was initially unsure about the most appropriate way to label "left," "right," "up," and "down" in relation to the player's weapon sprites.
+
+As a result, there's an inconsistency: the weapon's sprite detection and the actual hand position are sometimes in opposite directions.
+
+While the damage registration works, the visual feedback might be slightly inconsistent.
+
+Unfortunately, at this time, I lack the time to thoroughly polish this aspect of the combat system.
+
+Therefore, I need to move on and quickly develop the last few remaining parts of the project.
+
+The next major task is implementing the merchant section, which I'm planning to create as a separate branch.
+
+I've decided to name this branch "merchant," as I think it sounds more fitting than "shop."
+
+If time permits, I might also develop a startup menu or boot sequence.
+
+However, I'm not optimistic about having enough time for that feature.
+
+So yeah, that's pretty much where the project stands for now.

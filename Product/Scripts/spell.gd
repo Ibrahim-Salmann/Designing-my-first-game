@@ -18,3 +18,9 @@ func init(config: SpellConfig):
 	name = config.spell_name
 	speed = config.speed
 	animated_sprite_2d.play(config.spell_name.to_lower())
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.get_parent() is Enemy:
+		(area.get_parent() as Enemy).apply_damage(damage)
+		queue_free()
