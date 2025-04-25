@@ -11,10 +11,29 @@ signal attack_animation_finished
 @onready var inventory: Inventory = $Inventory
 # To store the last movement direction for idle animation
 
+@onready var health_system: HealthSystem = $HealthSystem
+@onready var on_screen_ui: OnScreenUI = $OnScreenUI
+@onready var combat_system: CombatSystem = $CombatSystem
+
 var is_attacking: bool = false
+
+@export var health = 100
 
 #var velocity: Vector2 = Vector2.ZERO
 
+func _ready() -> void:
+	health_system.init(health)
+	health_system.died.connect(on_player_dead)
+	health_system.damage_taken.connect(on_damage_taken)
+	on_screen_ui.init_health_bar(health)
+
+func on_player_dead():
+	set_physics_process(false)
+	combat_system.set_process_input(false)
+	animated_sprite.play("dead")
+
+func on_damage_taken(damage: int) -> void:
+	on_screen_ui.apply_damage_to_health_bar(damage)
 
 # Attack animation
 const DIRECTION_TO_ATTACK_ANIMATION = {
@@ -98,6 +117,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		# Error fixed: syntex error
 		inventory.add_item(area.inventory_item, area.stacks)
 		area.queue_free()
+		
+	if area.get_parent() is Enemy:
+		var damage_to_player = (area.get_parent() as Enemy).damage_to_player
+		health_system.apply_damage(damage_to_player)
 
 # Attack Animation
 func play_attack_animation():

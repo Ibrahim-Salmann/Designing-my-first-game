@@ -6,7 +6,7 @@ class_name OnScreenUI
 @onready var left_hand_slot: OnScreenEquipmentSlot = $MarginContainer/HBoxContainer/LeftHandSlot
 @onready var potion_slot: OnScreenEquipmentSlot = $MarginContainer/HBoxContainer/PotionSlot
 @onready var spell_slot: OnScreenEquipmentSlot = $MarginContainer/HBoxContainer/SpellSlot
-
+@onready var progress_bar: ProgressBar = $MarginContainer/ProgressBar
 
 @onready var slots_dictionary = {
 	"Right_Hand": right_hand_slot,
@@ -24,3 +24,9 @@ func toggle_spell_slot(is_visible: bool, ui_texture: Texture):
 
 func spell_cooldown_activated(cooldown: float) -> void:
 	print("Spell cooldown started:", cooldown)
+
+func init_health_bar(max_health: int) -> void:
+	progress_bar.max_value = max_health
+	
+func apply_damage_to_health_bar(damage: int):
+	progress_bar.value -= damage

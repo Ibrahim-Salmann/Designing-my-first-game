@@ -28,7 +28,7 @@ func _input(event):
 			return
 		can_attack = false
 		player.play_attack_animation()
-		_set_weapon_pose(right_weapon, right_hand_weapon_sprite, player.attack_direction)
+		_set_weapon_pose(right_weapon, right_hand_weapon_sprite, player.attack_direction, right_hand_collision_shape_2d)
 		
 		#var attack_direction = player.attack_direction
 		#var attack_data = right_weapon.get_data_for_direction(attack_direction)
@@ -42,7 +42,7 @@ func _input(event):
 			return
 		can_attack = false
 		player.play_attack_animation()
-		_set_weapon_pose(left_weapon, left_hand_weapon_sprite, player.attack_direction)
+		_set_weapon_pose(left_weapon, left_hand_weapon_sprite, player.attack_direction, left_hand_collision_shape_2d)
 		
 		#var attack_direction = player.attack_direction
 		#var attack_data = left_weapon.get_data_for_direction(attack_direction)
@@ -73,13 +73,22 @@ func on_attack_animation_finished():
 	can_attack = true
 	right_hand_weapon_sprite.visible = false
 	left_hand_weapon_sprite.visible = false
+	left_hand_collision_shape_2d.disabled = true
+	right_hand_collision_shape_2d.disabled = true
 
-func _set_weapon_pose(weapon: WeaponItem, sprite: Sprite2D, direction: String):
+func _set_weapon_pose(weapon: WeaponItem, sprite: Sprite2D, direction: String, collision_shape: CollisionShape2D):
 	var data = weapon.get_data_for_direction(direction)
 	sprite.position = data.get("attachment_position", Vector2.ZERO)
 	sprite.rotation_degrees = data.get("rotation", 0)
 	sprite.z_index = data.get("z_index", 0)
 	sprite.visible = true  # Show sword during attack
 	
+	collision_shape.disabled = false
+	
 	if weapon.attack_type == "Magic":
 		cast_active_spell.emit()
+
+
+func _on_area_2d_body_entered(body: Node2D, hand_type) -> void:
+	if body.has_node("HealthSystem") and hand_type == "right":
+		(body.find_child("HealthSystem") as HealthSystem).apply_damage(right_weapon.damage)

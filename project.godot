@@ -84,6 +84,7 @@ right_hand_action={
 2d_physics/layer_3="Decoration"
 2d_physics/layer_4="PickUpItem"
 2d_physics/layer_5="Weapon"
+2d_physics/layer_6="Enemy"
 
 [rendering]
 

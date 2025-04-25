@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Product/Scripts/inventory_item.gd" id="1_c053u"]
 [ext_resource type="Shape2D" uid="uid://bo0dbe7fw0yi1" path="res://Product/Resources/Weapons/Sword/sword_ground_collision_shape.tres" id="1_hpsbk"]
 [ext_resource type="Texture2D" uid="uid://67xu8er7rvgc" path="res://Product/Assets/Items or Mechanics/Items/Weapons/Sword2/Sprite.png" id="2_2kjoi"]
-[ext_resource type="Resource" uid="uid://bv6gu4eq834oy" path="res://Product/Resources/Weapons/Sword/sword_weapon_item.tres" id="4_0dwdp"]
+[ext_resource type="Resource" uid="uid://osawsuer66wr" path="res://Product/Resources/Weapons/Sword/sword_weapon_item.tres" id="4_0dwdp"]
 
 [resource]
 script = ExtResource("1_c053u")
