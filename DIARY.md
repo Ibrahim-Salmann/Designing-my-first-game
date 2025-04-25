@@ -1911,3 +1911,35 @@ I’m on a tight clock, and spells firing at all is a huge milestone. So I’m s
 
 Next up: Enemy behavior and hitboxes. I’ve branched off to a new feature branch to start prototyping enemy interactions.
 Let’s go.
+
+25/04/2025
+
+I've now shifted my focus to developing the enemies for the game.
+
+First, I created two new scenes: one for the enemy itself, and another dedicated to the health system, which will be used for both the player and the enemies.
+
+For the enemy scene, I added several child nodes.
+
+These include animation players for walk, idle, and death animations, ensuring that the enemies have a visual representation of their state.
+
+I also added a collision shape, with its data stored in a resource file, and an Area2D node.
+
+The Area2D will likely be used for detecting when the player or other game elements are within range of the enemy, potentially for attacks or other interactions.
+
+To integrate the health system with the enemy, I created an instanced child scene.
+
+This approach allows me to connect the health system's functionality to each enemy instance.
+
+Additionally, I added a progress bar node to the enemy scene.
+
+This progress bar will visually represent the enemy's remaining health, similar to many other games, providing the player with clear feedback on how much damage the enemy has sustained.
+
+I also wrote scripts for both the health system and the enemy.
+
+In the enemy script, I've preloaded the pickup item scene.
+
+This is intended for use later in the combat system, likely to handle what happens when an enemy is defeated, such as dropping loot or other rewards.
+
+I'm going to break this diary entry here, as I'm eager to continue writing more code and further develop these systems.
+
+I feel like I'm making significant progress, and I'm almost at a point where I'll consider this project complete, for now.
