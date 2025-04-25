@@ -1943,3 +1943,23 @@ This is intended for use later in the combat system, likely to handle what happe
 I'm going to break this diary entry here, as I'm eager to continue writing more code and further develop these systems.
 
 I feel like I'm making significant progress, and I'm almost at a point where I'll consider this project complete, for now.
+
+I've continued working on the enemy system, and now the enemies are capable of movement.
+
+Specifically, if markers are placed in a square or rectangular pattern, the enemies will move to each marker in sequence.
+
+They will then loop around the pattern, continuously moving from one marker to the next.
+
+This creates a basic patrol or movement pattern for the enemies.
+
+I've also started implementing collision detection between the player and the enemies.
+
+Now, if the player collides with an enemy, the player will take damage.
+
+This establishes a fundamental element of risk and consequence in the gameplay.
+
+I'm currently working on how the player can defeat the enemies.
+
+My focus is on implementing the core mechanics for combat and projectiles.
+
+This will allow the player to fight back against the enemies and defend themselves.

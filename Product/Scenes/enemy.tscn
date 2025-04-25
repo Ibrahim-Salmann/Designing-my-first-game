@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bvil1d46pkur0" path="res://Product/Assets/Characters/Zombie_apocalypse/Walk.png" id="3_iyow7"]
 [ext_resource type="Texture2D" uid="uid://6kr513kj4ba3" path="res://Product/Assets/Characters/Zombie_apocalypse/Death.png" id="4_k2mmy"]
 [ext_resource type="Shape2D" uid="uid://cg7y71lttb2pb" path="res://Product/Resources/Enemy/zombie_collision_shape.tres" id="5_a8dr1"]
+[ext_resource type="Script" path="res://Product/Scripts/enemy_animated_sprite_2d.gd" id="5_o1y7l"]
 [ext_resource type="PackedScene" uid="uid://be8grr5xkur2t" path="res://Product/Scenes/health_system.tscn" id="6_lvkhk"]
+[ext_resource type="PackedScene" uid="uid://dwofx8n61ry7j" path="res://Product/Scenes/health_bar.tscn" id="7_g5iut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7nt3"]
 atlas = ExtResource("2_ot4u3")
@@ -524,18 +526,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jkqj"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lq6vc"]
-bg_color = Color(0.825497, 0, 0.130674, 1)
-
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_piub1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pox6i")
 animation = &"front_idle"
+script = ExtResource("5_o1y7l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 3)
@@ -550,12 +547,6 @@ shape = ExtResource("5_a8dr1")
 [node name="HealthSystem" parent="." instance=ExtResource("6_lvkhk")]
 max_health = 100
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -10.0
-offset_top = -14.0
-offset_right = 10.0
-offset_bottom = -10.0
-theme_override_styles/background = SubResource("StyleBoxFlat_3jkqj")
-theme_override_styles/fill = SubResource("StyleBoxFlat_lq6vc")
-step = 1.0
-show_percentage = false
+[node name="ProgressBar" parent="." instance=ExtResource("7_g5iut")]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
