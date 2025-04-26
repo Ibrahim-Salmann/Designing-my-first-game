@@ -1993,3 +1993,39 @@ If time permits, I might also develop a startup menu or boot sequence.
 However, I'm not optimistic about having enough time for that feature.
 
 So yeah, that's pretty much where the project stands for now.
+
+I've been developing the scene transition system, which is crucial for implementing the merchant functionality.
+
+My plan is to allow the player to enter a building, such as a house, and interact with a merchant to purchase items like health potions.
+
+To achieve this, I'm connecting sub-nodes using Area2D nodes.
+
+I've written two primary scripts for this system.
+
+The first, transition_change, handles the actual scene transition, specifically exiting to the shop scene.
+
+The second script, shop_entrance, is attached to the Area2D and connects to the shop_scene_transition_manager.
+
+This manager, in turn, handles the visual transition effects, such as fading and sliding.
+
+For the Area2D node, I used the Node inspector tab to connect the body_entered signal directly to the area itself.
+
+This facilitates the scene change when the player's body enters the defined area.
+
+In the project settings, I navigated to the "autoload" section under "globals."
+
+There, I added the path to the scene and then added the transition manager node.
+
+This approach provides a scalable way to manage scene transitions in future games, especially when creating multiple levels and indoor scenes.
+
+It's essentially an expansion of Godot's singleton/autoloading feature.
+
+This feature allows you to store global variables, such as player information, and effectively simulate a combined scene tree, acting as a kind of "scene main loop."
+
+I've added some tips and basic information about how this works within Godot.
+
+Finally, I'm moving on to develop the merchant's main scene.
+
+This will involve creating the shop transition, the merchant character, and the basic shopping interface.
+
+This system is a key part of the game.

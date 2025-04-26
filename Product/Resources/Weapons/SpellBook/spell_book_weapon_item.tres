@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_4la61")
+damage = 15
 in_hand_texture = ExtResource("1_xjgfy")
 attack_type = "Magic"
 left_attachment_position = Vector2(11, 2)
