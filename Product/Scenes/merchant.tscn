@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://b308u2my4ne2d"]
+
+[ext_resource type="Texture2D" uid="uid://d0sercec4psjd" path="res://Product/Assets/Characters/NPC/log.png" id="1_iqvmm"]
+[ext_resource type="Script" path="res://Product/Scripts/merchant.gd" id="2_am000"]
+[ext_resource type="Theme" uid="uid://bo4l2d1k4nc7h" path="res://Product/Resources/UI/theme.tres" id="3_1nfjp"]
+[ext_resource type="PackedScene" uid="uid://b1p47w7klaavv" path="res://Product/Scenes/shopping_ui.tscn" id="4_0vbv7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5bneo"]
+radius = 56.55
+height = 113.1
+
+[node name="Merchant" type="Sprite2D"]
+position = Vector2(-106, -6)
+texture = ExtResource("1_iqvmm")
+region_enabled = true
+region_rect = Rect2(-0.302597, 0, 32.3026, 32)
+script = ExtResource("2_am000")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(5, 3)
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, 0)
+shape = SubResource("CapsuleShape2D_5bneo")
+one_way_collision_margin = 0.0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.906
+anchor_top = 0.25
+anchor_right = 0.906
+anchor_bottom = 0.25
+offset_left = -106.992
+offset_top = -45.0
+offset_right = 82.008
+offset_bottom = -22.0
+theme = ExtResource("3_1nfjp")
+text = "Press M, and Welcome!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShoppingUI" parent="." instance=ExtResource("4_0vbv7")]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

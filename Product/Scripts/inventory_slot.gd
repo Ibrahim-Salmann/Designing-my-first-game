@@ -5,10 +5,13 @@ class_name InventorySlot
 var is_empty = true
 var is_selected = false
 
+
 signal equip_item 
 signal drop_item
 
-signal slot_clicked
+signal slot_clicked(idx: int)
+
+var my_index: int = -1
 
 @export var single_button_press = false
 @export var starting_texture: Texture
@@ -84,8 +87,12 @@ func clear_slot():
 
 
 func _on_on_clickbutton_pressed() -> void:
-	slot_clicked.emit()
+	slot_clicked.emit(my_index)
 	
 
 func toggle_button_selected_variation(is_selected: bool):
 	on_click_button.theme_type_variation = "selected" if is_selected else ""
+
+func show_price_tag(price: int):
+	price_label.text = str(price) + " gold"
+	price_label.show()

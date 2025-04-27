@@ -163,3 +163,15 @@ func check_magic_ui_visibility():
 	if should_show_magic_ui == false:
 		on_screen_ui.toggle_spell_slot(false, null)
 	
+
+func find_item_by_resource(resource: InventoryItem) -> InventoryItem:
+	for item in items:
+		if item == resource:
+			return item
+	return null
+
+func remove_item(item_to_remove: InventoryItem) -> void:
+	var index = items.find(item_to_remove)
+	if index != -1:
+		items.erase(item_to_remove)
+		clear_inventory_slot(index)
