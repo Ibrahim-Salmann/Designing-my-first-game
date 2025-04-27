@@ -2029,3 +2029,81 @@ Finally, I'm moving on to develop the merchant's main scene.
 This will involve creating the shop transition, the merchant character, and the basic shopping interface.
 
 This system is a key part of the game.
+
+I developed the merchant system, which allows the player to buy and sell items.
+
+I created two new scripts: shopping_ui.gd and merchant.gd, for the system itself.
+
+I also incorporated the transition change functionality.
+
+In the main game scene, I added a merchant's house (or shop) as a parent node.
+
+The player can enter this shop, which then transitions the player to a new scene representing the shop's interior.
+
+Inside the shop scene, the player can interact with the merchant and press the 'M' key to initiate buying and selling.
+
+The scene transition is triggered by collision detection.
+
+When the player reaches a specific point, they are transitioned to the new scene, such as an interior location or a new level.
+
+This approach offers flexibility for future game design, allowing for seamless transitions between different areas.
+
+Once inside the shop and interacting with the merchant, the player can buy and sell items.
+
+Currently, I have implemented a sword for these transactions.
+
+Over time, I plan to add more items, such as spells, armor, and other equipment.
+
+I think my next step is to develop the main start menu.
+
+After that is complete, I intend to merge the "merchant" branch with the main branch.
+
+I'll then create a new, final branch, which I'm calling "menu," specifically for the game's main menu.
+
+I don't think I will have time to develop much beyond that for now.
+
+Today was a challenging yet rewarding day, filled with debugging, refining the system, and polishing up various aspects of my game development.
+
+The main focus was on getting the buying and selling systems in the shopping UI to work properly.
+
+It felt like a mini rollercoaster of breakthroughs and setbacks.
+
+The initial issue was a frustrating problem with the inventory system and UI interaction.
+
+After setting up the inventory slots and connecting signals for buying and selling items, clicking on items wasn't triggering any actions.
+
+I discovered that the signal connections between the inventory slot UI and the actual logic behind buying and selling were misconfigured.
+
+The signals were being emitted with incorrect arguments, causing errors in the on_buy_slot_clicked and on_selling_slot_clicked methods.
+
+To fix this, I took extra care in verifying the parameters that the signals were sending.
+
+The InventorySlot's signal slot_clicked needed to be bound correctly to pass the item index.
+
+Using .bind(i) in the signal connection was key to solving this issue.
+
+I also noticed some issues in the logic where clicking an item wouldn't update the UI correctly, and the buttons for buying and selling were disabled or not triggering.
+
+I had to modify the button states to dynamically enable or disable them based on selected items.
+
+This was especially important for the buy and sell buttons to function as intended.
+
+I also encountered a tricky issue with the player's gold coin system.
+
+When trying to print a message showing the item being bought, I mistakenly tried to access item_name, which didn't exist in the InventoryItem class.
+
+Instead of item_name, I needed to use name, which was the correct property in my InventoryItem class.
+
+This required a simple code fix in the print statement.
+
+By the end of the day, I managed to resolve all the errors, and the buying/selling mechanics finally clicked into place.
+
+The signals now work correctly, and the player's inventory reacts as expected when items are bought or sold.
+
+The UI also correctly reflects the changes in the player's gold, with proper updates to the UI grids for buying and selling.
+
+The experience was a bit overwhelming at times, but it was a great reminder of the importance of attention to detail in game development.
+
+It feels rewarding to get this part of the game working, and now I can move on to the next challenge, maybe polishing up the item transaction logic or adding more intricate interactions.
+
+I'm looking forward to more refinements and testing tomorrow!

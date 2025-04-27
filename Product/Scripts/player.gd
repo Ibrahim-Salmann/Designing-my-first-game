@@ -145,3 +145,11 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 			"up": return "back"
 			"down": return "front"
 			_: return last_direction
+
+func setup_test_inventory():
+	const GOLD_INVENTORY_ITEM = preload("res://Product/Resources/GoldCoin/gold_coin.tres")
+	const SWORD_INVENTORY_ITEM = preload("res://Product/Resources/Weapons/Sword/sword_inventory_item.tres")
+	
+	inventory.add_item(SWORD_INVENTORY_ITEM, 1)
+	inventory.add_item(GOLD_INVENTORY_ITEM, 100)
+	
