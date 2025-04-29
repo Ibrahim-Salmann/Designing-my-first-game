@@ -66,6 +66,7 @@ item_to_drop = ExtResource("10_08k6i")
 loot_stacks = 15
 
 [node name="EnemyPatrolPath" type="Node2D" parent="."]
+visible = false
 position = Vector2(-121, 290)
 
 [node name="Marker2D3" type="Marker2D" parent="EnemyPatrolPath"]
@@ -80,6 +81,7 @@ position = Vector2(0, 77)
 position = Vector2(96, 10)
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 position = Vector2(233, -37)
 collision_layer = 64
 script = ExtResource("9_snvkr")
@@ -89,6 +91,7 @@ position = Vector2(-1.5, -3.5)
 shape = SubResource("RectangleShape2D_cs8lx")
 
 [node name="PlayerSpawnPoint" type="Marker2D" parent="."]
+visible = false
 position = Vector2(234, -12)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

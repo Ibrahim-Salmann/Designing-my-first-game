@@ -598,10 +598,12 @@ script = ExtResource("8_gau5f")
 [node name="RightHandWeaponSprite" type="Sprite2D" parent="CombatSystem"]
 
 [node name="Area2D" type="Area2D" parent="CombatSystem/RightHandWeaponSprite"]
+visible = false
 collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/RightHandWeaponSprite/Area2D"]
+visible = false
 disabled = true
 
 [node name="LeftHandWeaponSprite" type="Sprite2D" parent="CombatSystem"]
@@ -611,6 +613,7 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/LeftHandWeaponSprite/Area2D"]
+visible = false
 disabled = true
 
 [node name="SpellSystem" type="Node" parent="."]

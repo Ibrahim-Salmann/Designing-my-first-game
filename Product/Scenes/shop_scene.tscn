@@ -20,8 +20,10 @@ tile_set = ExtResource("1_skokw")
 items_to_buy = Array[ExtResource("4_sel3h")]([ExtResource("5_1b2ku")])
 
 [node name="ExitArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+visible = false
 position = Vector2(-0.5, 64)
 shape = SubResource("RectangleShape2D_pt8md")
 

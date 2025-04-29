@@ -114,6 +114,7 @@ frame = 6
 frame_progress = 0.162018
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.5, 1)
 shape = ExtResource("4_qbrdr")
 

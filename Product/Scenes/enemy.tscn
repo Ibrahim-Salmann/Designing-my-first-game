@@ -540,6 +540,7 @@ animation = &"died"
 script = ExtResource("5_o1y7l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, 3)
 shape = ExtResource("5_a8dr1")
 
@@ -547,6 +548,7 @@ shape = ExtResource("5_a8dr1")
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(-1, 3)
 shape = ExtResource("5_a8dr1")
 

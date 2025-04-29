@@ -32,7 +32,9 @@ func _ready():
 		inventory_slot.drop_item.connect(func (): if i >= 0 and i < size: drop_item_on_the_ground.emit(i))
 		
 	for i in spell_slots.size():
-		spell_slots[i].slot_clicked.connect(on_spell_slot_clicked.bind(i))
+		#spell_slots[i].slot_clicked.connect(on_spell_slot_clicked)
+		spell_slots[i].my_index = i
+		spell_slots[i].slot_clicked.connect(on_spell_slot_clicked)
 
 func toggle():
 	visible = !visible
@@ -66,8 +68,7 @@ func clear_slot_at_index(idx: int):
 
 
 func on_spell_slot_clicked(i: int):
-		spell_slot_clicked.emit(i)
-		
+	spell_slot_clicked.emit(i)
 
 func set_selected_spell_slot(idx: int):
 	for i in spell_slots.size():
